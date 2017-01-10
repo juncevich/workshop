@@ -7,14 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-/**
- * Created by alex on 10.01.17.
- */
 @Entity
 public class Bookmark {
 
     public String uri;
-    public String decription;
+    public String description;
     @JsonIgnore
     @ManyToOne
     private Account account;
@@ -22,13 +19,13 @@ public class Bookmark {
     @GeneratedValue
     private Long id;
 
-    public Bookmark() {
+    Bookmark() { // jpa only
     }
 
-    public Bookmark(Account account, String uri, String decription) {
-        this.account = account;
+    public Bookmark(Account account, String uri, String description) {
         this.uri = uri;
-        this.decription = decription;
+        this.description = description;
+        this.account = account;
     }
 
     public Account getAccount() {
@@ -43,7 +40,7 @@ public class Bookmark {
         return uri;
     }
 
-    public String getDecription() {
-        return decription;
+    public String getDescription() {
+        return description;
     }
 }

@@ -9,43 +9,25 @@ import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by alex on 10.01.17.
- */
+
 @Entity
 public class Account {
 
-    public String username;
     @JsonIgnore
     public String password;
+    public String username;
     @OneToMany(mappedBy = "account")
-    private Set<Bookmark> bookmarks = new HashSet();
+    private Set<Bookmark> bookmarks = new HashSet<>();
     @Id
     @GeneratedValue
     private Long id;
 
-    public Account() {
-    }
-
-    public Account(String username, String password) {
-        this.username = username;
+    public Account(String name, String password) {
+        this.username = name;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    Account() { // jpa only
     }
 
     public Set<Bookmark> getBookmarks() {
@@ -54,5 +36,13 @@ public class Account {
 
     public Long getId() {
         return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
