@@ -1,11 +1,11 @@
 package bookmarks;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Bookmark {
@@ -19,7 +19,7 @@ public class Bookmark {
     @GeneratedValue
     private Long id;
 
-    Bookmark() { // jpa only
+    public Bookmark() { // jpa only
     }
 
     public Bookmark(Account account, String uri, String description) {
