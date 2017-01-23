@@ -1,4 +1,4 @@
-package controller;
+package de.grabduck.controller;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.StackoverflowWebSite;
-import service.StackoverflowService;
+import de.grabduck.model.StackoverflowWebSite;
+import de.grabduck.service.StackoverflowService;
 
 /**
  * Created by alex on 23.01.17.
