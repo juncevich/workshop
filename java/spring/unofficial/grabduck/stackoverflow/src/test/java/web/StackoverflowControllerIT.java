@@ -1,4 +1,4 @@
-package de.grabduck.web;
+package web;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;

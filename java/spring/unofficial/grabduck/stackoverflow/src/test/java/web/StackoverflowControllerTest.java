@@ -1,4 +1,4 @@
-package de.grabduck.web;
+package web;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -15,6 +15,7 @@ import com.google.common.collect.ImmutableList;
 
 import de.grabduck.model.StackoverflowWebSite;
 import de.grabduck.service.StackoverflowService;
+import de.grabduck.web.StackoverflowController;
 
 /**
  * Created by alex on 24.01.17.
