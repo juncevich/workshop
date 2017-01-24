@@ -30,14 +30,18 @@ import de.grabduck.model.StackoverflowWebSite;
 /**
  * Created by alex on 24.01.17.
  */
-@RunWith(SpringJUnit4ClassRunner.class) @SpringApplicationConfiguration(Application.class)
-@WebIntegrationTest public class StackoverflowControllerIT {
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(Application.class)
+@WebIntegrationTest
+public class StackoverflowControllerIT {
 
     RestTemplate restTemplate = new TestRestTemplate();
 
-    @Autowired MongoTemplate mongoTemplate;
+    @Autowired
+    MongoTemplate mongoTemplate;
 
-    @Before public void before() {
+    @Before
+    public void before() {
 
         mongoTemplate.dropCollection(StackoverflowWebSite.class);
         mongoTemplate.save(new StackoverflowWebSite("id1", "website1", "iconImageUrl1", "title1",
@@ -46,11 +50,12 @@ import de.grabduck.model.StackoverflowWebSite;
                 "description2"));
     }
 
-    @Test public void testGetListOfProviders() throws Exception {
+    @Test
+    public void testGetListOfProviders() throws Exception {
 
-        ResponseEntity<List<StackoverflowWebSite>> responseEntity = restTemplate
-                .exchange("http://localhost:8099/api/stackoverflow", HttpMethod.GET, null,
-                        new ParameterizedTypeReference<List<StackoverflowWebSite>>() {
+        ResponseEntity<List<StackoverflowWebSite>> responseEntity =
+                restTemplate.exchange("http://localhost:8099/api/stackoverflow", HttpMethod.GET,
+                        null, new ParameterizedTypeReference<List<StackoverflowWebSite>>() {
 
                         });
         List<StackoverflowWebSite> actualList = responseEntity.getBody();

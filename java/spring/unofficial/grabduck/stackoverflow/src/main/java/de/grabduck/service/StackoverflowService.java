@@ -18,11 +18,14 @@ import lombok.NonNull;
 /**
  * Created by alex on 23.01.17.
  */
-@Service public class StackoverflowService {
+@Service
+public class StackoverflowService {
 
-    @Autowired private StackExchangeClient stackExchangeClient;
+    @Autowired
+    private StackExchangeClient stackExchangeClient;
 
-    @Autowired private StackoverflowWebsiteRepository repository;
+    @Autowired
+    private StackoverflowWebsiteRepository repository;
 
     public List<StackoverflowWebSite> findAll() {
 
@@ -38,8 +41,9 @@ import lombok.NonNull;
 
     private StackoverflowWebSite toStackOverflovWebsite(@NonNull SiteDto input) {
 
-        return new StackoverflowWebSite(input.getSite_url()
-                .substring("http://".length(), input.getSite_url().length() - ".com".length()),
+        return new StackoverflowWebSite(
+                input.getSite_url().substring("http://".length(),
+                        input.getSite_url().length() - ".com".length()),
                 input.getSite_url(), input.getFavicon_url(), input.getName(), input.getAudience());
     }
 }

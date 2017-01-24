@@ -12,11 +12,15 @@ import de.grabduck.service.StackoverflowService;
 /**
  * Created by alex on 23.01.17.
  */
-@RestController @RequestMapping("/api/stackoverflow") public class StackoverflowController {
+@RestController
+@RequestMapping("/api/stackoverflow")
+public class StackoverflowController {
 
-    @Autowired StackoverflowService stackoverflowService;
+    @Autowired
+    StackoverflowService stackoverflowService;
 
-    @RequestMapping public List<StackoverflowWebSite> getListOfProviders() {
+    @RequestMapping
+    public List<StackoverflowWebSite> getListOfProviders() {
 
         return stackoverflowService.findAll();
     }

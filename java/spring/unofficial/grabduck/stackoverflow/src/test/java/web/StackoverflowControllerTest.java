@@ -20,18 +20,23 @@ import de.grabduck.web.StackoverflowController;
 /**
  * Created by alex on 24.01.17.
  */
-@RunWith(MockitoJUnitRunner.class) public class StackoverflowControllerTest {
+@RunWith(MockitoJUnitRunner.class)
+public class StackoverflowControllerTest {
 
-    @InjectMocks StackoverflowController sut;
+    @InjectMocks
+    StackoverflowController sut;
 
-    @Mock private StackoverflowService stackoverflowService;
+    @Mock
+    private StackoverflowService stackoverflowService;
 
-    @Test public void testGetListOfProviders() throws Exception {
-        //prepare
+    @Test
+    public void testGetListOfProviders() throws Exception {
+
+        // prepare
         when(stackoverflowService.findAll()).thenReturn(ImmutableList.of());
-        //testing
+        // testing
         List<StackoverflowWebSite> listOfProviders = sut.getListOfProviders();
-        //validate
+        // validate
         verify(stackoverflowService).findAll();
     }
 }

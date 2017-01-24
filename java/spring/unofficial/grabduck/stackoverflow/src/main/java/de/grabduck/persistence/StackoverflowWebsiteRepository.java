@@ -8,12 +8,13 @@ import de.grabduck.model.StackoverflowWebSite;
 /**
  * Created by alex on 23.01.17.
  */
-@Repository public interface StackoverflowWebsiteRepository
+@Repository
+public interface StackoverflowWebsiteRepository
         extends MongoRepository<StackoverflowWebSite, String> {
 
-    //    public List<StackoverflowWebSite> findAll() {
+    // public List<StackoverflowWebSite> findAll() {
     //
-    //        return mongoTemplate.findAll(StackoverflowWebSite.class);
-    //    }
-    
+    // return mongoTemplate.findAll(StackoverflowWebSite.class);
+    // }
+
 }

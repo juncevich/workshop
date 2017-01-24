@@ -5,7 +5,8 @@ import lombok.Data;
 /**
  * Created by alex on 24.01.17.
  */
-@Data public class SiteDto {
+@Data
+public class SiteDto {
 
     private String favicon_url;
 

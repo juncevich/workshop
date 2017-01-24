@@ -17,7 +17,8 @@ import de.grabduck.model.SitesDto;
 /**
  * Created by alex on 24.01.17.
  */
-@Component public class StackExchangeClient {
+@Component
+public class StackExchangeClient {
 
     HttpClient httpClient = HttpClientBuilder.create().build();
 
