@@ -1,4 +1,4 @@
-package de.grabduck.controller;
+package de.grabduck.web;
 
 import java.util.List;
 
