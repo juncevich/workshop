@@ -19,32 +19,31 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableZuulProxy
 public class UiApplication {
 
-	@RequestMapping("/user")
-	public Principal user(Principal user) {
-		return user;
-	}
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UiApplication.class, args);
-	}
+        SpringApplication.run(UiApplication.class, args);
+    }
 
-	@Configuration
-	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			// @formatter:off
-			http
-				.httpBasic().and()
-				.logout().and()
-				.authorizeRequests()
-					.antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll()
-					.anyRequest().authenticated()
-					.and()
-				.csrf()
-					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-			// @formatter:on
-		}
-	}
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+
+        return user;
+    }
+
+    @Configuration
+    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+    protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+
+            // @formatter:off
+            http.httpBasic().and().logout().and().authorizeRequests()
+                    .antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll()
+                    .anyRequest().authenticated().and().csrf()
+                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+            // @formatter:on
+        }
+    }
 
 }

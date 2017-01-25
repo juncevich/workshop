@@ -22,57 +22,60 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ApplicationTests {
 
-	@LocalServerPort
-	private int port;
+    @LocalServerPort
+    private int port;
 
-	private TestRestTemplate template = new TestRestTemplate();
+    private TestRestTemplate template = new TestRestTemplate();
 
-	@Test
-	public void homePageLoads() {
-		ResponseEntity<String> response = template.getForEntity("http://localhost:"
-				+ port + "/", String.class);
-		assertEquals(HttpStatus.OK, response.getStatusCode());
-	}
+    @Test
+    public void homePageLoads() {
 
-	@Test
-	public void userEndpointProtected() {
-		ResponseEntity<String> response = template.getForEntity("http://localhost:"
-				+ port + "/user", String.class);
-		assertEquals(HttpStatus.FOUND, response.getStatusCode());
-	}
+        ResponseEntity<String> response =
+                template.getForEntity("http://localhost:" + port + "/", String.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
 
-	@Test
-	public void loginSucceeds() {
-		ResponseEntity<String> response = template.getForEntity("http://localhost:"
-				+ port + "/resource", String.class);
-		String csrf = getCsrf(response.getHeaders());
-		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
-		form.set("username", "user");
-		form.set("password", "password");
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("X-XSRF-TOKEN", csrf);
-		headers.put("COOKIE", response.getHeaders().get("Set-Cookie"));
-		RequestEntity<MultiValueMap<String, String>> request = new RequestEntity<MultiValueMap<String, String>>(
-				form, headers, HttpMethod.POST, URI.create("http://localhost:" + port
-						+ "/login"));
-		ResponseEntity<Void> location = template.exchange(request, Void.class);
-		assertEquals("http://localhost:" + port + "/",
-				location.getHeaders().getFirst("Location"));
-	}
+    @Test
+    public void userEndpointProtected() {
 
-	private String getCsrf(HttpHeaders headers) {
-		for (String header : headers.get("Set-Cookie")) {
-			List<HttpCookie> cookies = HttpCookie.parse(header);
-			for (HttpCookie cookie : cookies) {
-				if ("XSRF-TOKEN".equals(cookie.getName())) {
-					return cookie.getValue();
-				}
-			}
-		}
-		return null;
-	}
-	
+        ResponseEntity<String> response =
+                template.getForEntity("http://localhost:" + port + "/user", String.class);
+        assertEquals(HttpStatus.FOUND, response.getStatusCode());
+    }
+
+    @Test
+    public void loginSucceeds() {
+
+        ResponseEntity<String> response =
+                template.getForEntity("http://localhost:" + port + "/resource", String.class);
+        String csrf = getCsrf(response.getHeaders());
+        MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
+        form.set("username", "user");
+        form.set("password", "password");
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-XSRF-TOKEN", csrf);
+        headers.put("COOKIE", response.getHeaders().get("Set-Cookie"));
+        RequestEntity<MultiValueMap<String, String>> request =
+                new RequestEntity<MultiValueMap<String, String>>(form, headers, HttpMethod.POST,
+                        URI.create("http://localhost:" + port + "/login"));
+        ResponseEntity<Void> location = template.exchange(request, Void.class);
+        assertEquals("http://localhost:" + port + "/", location.getHeaders().getFirst("Location"));
+    }
+
+    private String getCsrf(HttpHeaders headers) {
+
+        for (String header : headers.get("Set-Cookie")) {
+            List<HttpCookie> cookies = HttpCookie.parse(header);
+            for (HttpCookie cookie : cookies) {
+                if ("XSRF-TOKEN".equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
+        }
+        return null;
+    }
+
 }

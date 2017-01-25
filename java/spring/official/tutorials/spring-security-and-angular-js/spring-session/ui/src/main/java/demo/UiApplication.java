@@ -15,44 +15,43 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
 public class UiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UiApplication.class, args);
-	}
+    public static void main(String[] args) {
 
-	@Configuration
-	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+        SpringApplication.run(UiApplication.class, args);
+    }
 
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			// @formatter:off
-			http
-				.httpBasic().and()
-				.logout().and()
-				.authorizeRequests()
-					.antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll()
-					.anyRequest().authenticated().and()
-				.csrf()
-					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-			// @formatter:on
-		}
-	}
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
 
-	@RequestMapping("/user")
-	public Principal user(Principal user) {
-		return user;
-	}
+        return user;
+    }
 
-	@RequestMapping("/token")
-	public Map<String,String> token(HttpSession session) {
-		return Collections.singletonMap("token", session.getId());
-	}
+    @RequestMapping("/token")
+    public Map<String, String> token(HttpSession session) {
+
+        return Collections.singletonMap("token", session.getId());
+    }
+
+    @Configuration
+    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+    protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+
+            // @formatter:off
+            http.httpBasic().and().logout().and().authorizeRequests()
+                    .antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll()
+                    .anyRequest().authenticated().and().csrf()
+                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+            // @formatter:on
+        }
+    }
 
 }

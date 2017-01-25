@@ -20,28 +20,29 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableRedisHttpSession
 public class UiApplication {
 
-	@RequestMapping("/user")
-	public Map<String, String> user(Principal user) {
-		return Collections.singletonMap("name", user.getName());
-	}
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UiApplication.class, args);
-	}
+        SpringApplication.run(UiApplication.class, args);
+    }
 
-	@Configuration
-	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			// @formatter:off
-			http
-				.httpBasic().and()
-				.authorizeRequests()
-					.antMatchers("/index.html", "/").permitAll()
-					.anyRequest().hasRole("USER");
-			// @formatter:on
-		}
-	}
+    @RequestMapping("/user")
+    public Map<String, String> user(Principal user) {
+
+        return Collections.singletonMap("name", user.getName());
+    }
+
+    @Configuration
+    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+    protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+
+            // @formatter:off
+            http.httpBasic().and().authorizeRequests().antMatchers("/index.html", "/").permitAll()
+                    .anyRequest().hasRole("USER");
+            // @formatter:on
+        }
+    }
 
 }

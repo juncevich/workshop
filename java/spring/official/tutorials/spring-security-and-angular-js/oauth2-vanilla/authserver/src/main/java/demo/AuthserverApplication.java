@@ -15,13 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableAuthorizationServer
 public class AuthserverApplication {
 
-	@RequestMapping("/user")
-	public Principal user(Principal user) {
-		return user;
-	}
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AuthserverApplication.class, args);
-	}
+        SpringApplication.run(AuthserverApplication.class, args);
+    }
+
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+
+        return user;
+    }
 
 }

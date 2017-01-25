@@ -13,33 +13,41 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableResourceServer
 public class ResourceApplication {
 
-	@RequestMapping("/")
-	public Message home() {
-		return new Message("Hello World");
-	}
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ResourceApplication.class, args);
-	}
+        SpringApplication.run(ResourceApplication.class, args);
+    }
+
+    @RequestMapping("/")
+    public Message home() {
+
+        return new Message("Hello World");
+    }
 
 }
 
 class Message {
-	private String id = UUID.randomUUID().toString();
-	private String content;
 
-	Message() {
-	}
+    private String id = UUID.randomUUID().toString();
 
-	public Message(String content) {
-		this.content = content;
-	}
+    private String content;
 
-	public String getId() {
-		return id;
-	}
+    Message() {
 
-	public String getContent() {
-		return content;
-	}
+    }
+
+    public Message(String content) {
+
+        this.content = content;
+    }
+
+    public String getId() {
+
+        return id;
+    }
+
+    public String getContent() {
+
+        return content;
+    }
 }

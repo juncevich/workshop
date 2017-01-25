@@ -18,34 +18,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AdminApplication {
 
-	@RequestMapping("/user")
-	public Map<String, Object> user(Principal user) {
-		Map<String, Object> map = new LinkedHashMap<String, Object>();
-		map.put("name", user.getName());
-		map.put("roles", AuthorityUtils.authorityListToSet(((Authentication) user)
-				.getAuthorities()));
-		return map;
-	}
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AdminApplication.class, args);
-	}
+        SpringApplication.run(AdminApplication.class, args);
+    }
 
-	@Configuration
-	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			// @formatter:off
-			http
-				.httpBasic()
-			.and()
-				.authorizeRequests()
-					.antMatchers("/index.html", "/unauthenticated.html", "/").permitAll()
-					.anyRequest().hasRole("ADMIN")
-			.and()
-				.csrf().disable();
-			// @formatter:on
-		}
-	}
+    @RequestMapping("/user")
+    public Map<String, Object> user(Principal user) {
+
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("name", user.getName());
+        map.put("roles",
+                AuthorityUtils.authorityListToSet(((Authentication) user).getAuthorities()));
+        return map;
+    }
+
+    @Configuration
+    protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+
+            // @formatter:off
+            http.httpBasic().and().authorizeRequests()
+                    .antMatchers("/index.html", "/unauthenticated.html", "/").permitAll()
+                    .anyRequest().hasRole("ADMIN").and().csrf().disable();
+            // @formatter:on
+        }
+    }
 
 }

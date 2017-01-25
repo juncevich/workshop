@@ -26,55 +26,52 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @EnableZuulProxy
 public class GatewayApplication {
 
-	@RequestMapping("/user")
-	@ResponseBody
-	public Map<String, Object> user(Principal user) {
-		Map<String, Object> map = new LinkedHashMap<String, Object>();
-		map.put("name", user.getName());
-		map.put("roles", AuthorityUtils.authorityListToSet(((Authentication) user)
-				.getAuthorities()));
-		return map;
-	}
+    public static void main(String[] args) {
 
-	@RequestMapping("/login")
-	public String login() {
-		return "forward:/";
-	}
+        SpringApplication.run(GatewayApplication.class, args);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(GatewayApplication.class, args);
-	}
+    @RequestMapping("/user")
+    @ResponseBody
+    public Map<String, Object> user(Principal user) {
 
-	@Configuration
-	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("name", user.getName());
+        map.put("roles",
+                AuthorityUtils.authorityListToSet(((Authentication) user).getAuthorities()));
+        return map;
+    }
 
-		@Autowired
-		public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-			// @formatter:off
-			auth.inMemoryAuthentication()
-				.withUser("user").password("password").roles("USER")
-			.and()
-				.withUser("admin").password("admin").roles("USER", "ADMIN", "READER", "WRITER")
-			.and()
-				.withUser("audit").password("audit").roles("USER", "ADMIN", "READER");
-// @formatter:on
-		}
+    @RequestMapping("/login")
+    public String login() {
 
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			// @formatter:off
-			http
-				.httpBasic().and()
-				.logout().and()
-				.authorizeRequests()
-					.antMatchers("/index.html", "/login", "/").permitAll()
-					.anyRequest().authenticated()
-					.and()
-				.csrf()
-					.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-			// @formatter:on
-		}
-	}
+        return "forward:/";
+    }
+
+    @Configuration
+    @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+    protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+        @Autowired
+        public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
+
+            // @formatter:off
+            auth.inMemoryAuthentication().withUser("user").password("password").roles("USER").and()
+                    .withUser("admin").password("admin").roles("USER", "ADMIN", "READER", "WRITER")
+                    .and().withUser("audit").password("audit").roles("USER", "ADMIN", "READER");
+            // @formatter:on
+        }
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+
+            // @formatter:off
+            http.httpBasic().and().logout().and().authorizeRequests()
+                    .antMatchers("/index.html", "/login", "/").permitAll().anyRequest()
+                    .authenticated().and().csrf()
+                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+            // @formatter:on
+        }
+    }
 
 }
