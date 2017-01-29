@@ -26,5 +26,4 @@ public class UiApplication {
         model.put("content", "Hello World");
         return model;
     }
-
 }
