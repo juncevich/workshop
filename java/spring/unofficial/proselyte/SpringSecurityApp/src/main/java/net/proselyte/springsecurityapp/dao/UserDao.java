@@ -5,9 +5,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import net.proselyte.springsecurityapp.model.User;
 
 /**
- * Created by alex on 29.01.17.
+ * User dao Created by alex on 29.01.17.
  */
 public interface UserDao extends JpaRepository<User, Long> {
 
+    /**
+     * Find user by username
+     * 
+     * @param username
+     * @return
+     */
     User findByUserName(String username);
 }

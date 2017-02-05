@@ -17,6 +17,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * User entity
+ * 
  * Created by alex on 29.01.17.
  */
 @Entity
