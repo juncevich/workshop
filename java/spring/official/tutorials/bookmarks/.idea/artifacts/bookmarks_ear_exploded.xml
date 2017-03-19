@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="bookmarks:ear exploded">
+    <output-path>$PROJECT_DIR$/target/bookmarks-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="bookmarks/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/bookmarks-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="library" level="project" name="Maven: org.springframework.security.oauth:spring-security-oauth2:2.0.9.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.2.6.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-core:4.2.6.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-context:4.2.6.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.2.6.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.2.6.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.6.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.0.4.RELEASE" />
+      <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+      <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.0.4.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.0.4.RELEASE" />
+      <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
+      <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
+      <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
+      <element id="library" level="project" name="Maven: org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.6.RELEASE" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
+    </root>
+  </artifact>
+</component>
