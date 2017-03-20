@@ -7,7 +7,7 @@ var builder = new Builder("./");
 
 builder.config({
     paths: {
-        "rxjs/*": "node_modules/rxjs*.js"
+        "rxjs/*": "node_modules/rxjs/*.js"
     },
     map: {
         "rxjs": "node_modules/rxjs"
