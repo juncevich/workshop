@@ -1,10 +1,6 @@
-/**
- * Created by alex on 20.03.17.
- */
 var Builder = require("systemjs-builder");
 
 var builder = new Builder("./");
-
 builder.config({
     paths: {
         "rxjs/*": "node_modules/rxjs/*.js"
