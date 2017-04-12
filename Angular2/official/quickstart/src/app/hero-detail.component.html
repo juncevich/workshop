@@ -1,4 +1,11 @@
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedHero.name | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
 <div *ngIf="hero">
+
   <h2>{{hero.name}} details!</h2>
   <div>
     <label>id: </label>{{hero.id}}</div>
