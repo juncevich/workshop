@@ -1,10 +1,10 @@
 /**
  * Created by alex on 12.04.17.
  */
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 
-import {Hero} from "../hero";
-import {HeroService} from "../services/hero.service";
+import {Hero} from '../hero';
+import {HeroService} from '../services/hero.service';
 @Component({
   selector: 'my-dashboard',
   templateUrl: '../../view/dashboard.component.html',
