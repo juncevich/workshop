@@ -4,8 +4,8 @@ import {HeroService} from "../services/hero.service";
 import {Router} from "@angular/router";
 @Component({
   selector: 'my-heroes',
-  templateUrl: '../view/heroes.component.html',
-  styleUrls: ['../styles/heroes.component.css']
+  templateUrl: '../../view/heroes.component.html',
+  styleUrls: ['../../styles/heroes.component.css']
 })
 
 export class HeroesComponent implements OnInit {
