@@ -6,12 +6,12 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
 
-import {Hero} from "./hero";
-import {HeroService} from "./hero.service";
+import {Hero} from "../hero";
+import {HeroService} from "../services/hero.service";
 @Component({
   selector: 'hero-detail',
-  templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.css'],
+  templateUrl: '../view/hero-detail.component.html',
+  styleUrls: ['../styles/hero-detail.component.css'],
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
