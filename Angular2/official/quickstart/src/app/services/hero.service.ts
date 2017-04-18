@@ -11,6 +11,12 @@ export class HeroService {
   private heroesUrl = 'api/heroes';
   constructor(private http: Http) { }
 
+  getHero(id: number): Promise<Hero> {
+    const url = `${this.heroesUrl}/${id}`;
+
+    return this.http.get(url).toPromise().then(response => response.json().data as Hero).catch(this.handleError);
+  }
+
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl).toPromise().then(response => response.json().data as Hero[]).catch(this.handleError);
   }
