@@ -20,6 +20,8 @@ task copySqlImport(type: Copy){
     into 'build/classes'
 }
 
+build.dependsOn(copySqlImport)
+
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
