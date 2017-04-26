@@ -12,6 +12,13 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
         path = "heroes")
 public interface HeroRepository extends CrudRepository<Hero, Long> {
 
+    /**
+     * Find hero by name
+     * 
+     * @param name
+     *            hero name
+     * @return hero
+     */
     @Query("select h from Hero h where lower(h.name) like CONCAT('%', lower(:name), '%')")
     Iterable<Hero> findByName(@Param("name") String name);
 }
