@@ -16,7 +16,7 @@ var HeroSearchService = (function () {
         this.http = http;
     }
     HeroSearchService.prototype.search = function (term) {
-        return this.http.get('http://localhost:8080/heroes/?name=${term}').map(function (response) { return response.json().data; });
+        return this.http.get('http://localhost:8080/heroes/search/findByName?name=${term}').map(function (response) { return response.json(); });
     };
     return HeroSearchService;
 }());
