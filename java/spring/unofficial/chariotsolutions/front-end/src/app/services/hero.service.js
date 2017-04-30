@@ -22,10 +22,10 @@ var HeroService = (function () {
     }
     HeroService.prototype.getHero = function (id) {
         var url = this.heroesUrl + "/" + id;
-        return this.http.get(url).toPromise().then(function (response) { return response.json().data; }).catch(this.handleError);
+        return this.http.get(url).toPromise().then(function (response) { return response.json(); }).catch(this.handleError);
     };
     HeroService.prototype.getHeroes = function () {
-        return this.http.get(this.heroesUrl).toPromise().then(function (response) { return response.json().embedded.heroes; }).catch(this.handleError);
+        return this.http.get(this.heroesUrl).toPromise().then(function (response) { return response.json()._embedded.heroes; }).catch(this.handleError);
     };
     HeroService.prototype.create = function (name) {
         return this.http.post(this.heroesUrl, JSON.stringify({ name: name }), { headers: this.headers }).toPromise().then(function (res) { return res.json(); }).catch(this.handleError);

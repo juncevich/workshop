@@ -15,11 +15,11 @@ export class HeroService {
   getHero(id: number): Promise<Hero> {
     const url = `${this.heroesUrl}/${id}`;
 
-    return this.http.get(url).toPromise().then(response => response.json().data as Hero).catch(this.handleError);
+    return this.http.get(url).toPromise().then(response => response.json() as Hero).catch(this.handleError);
   }
 
   getHeroes(): Promise<Hero[]> {
-    return this.http.get(this.heroesUrl).toPromise().then(response => response.json().embedded.heroes as Hero[]).catch(this.handleError);
+    return this.http.get(this.heroesUrl).toPromise().then(response => response.json()._embedded.heroes as Hero[]).catch(this.handleError);
   }
 
   create(name: string): Promise<Hero> {
