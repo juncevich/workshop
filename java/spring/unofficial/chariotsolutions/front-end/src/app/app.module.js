@@ -16,6 +16,7 @@ var hero_service_1 = require("./services/hero.service");
 var router_1 = require("@angular/router");
 var dashboard_component_1 = require("./components/dashboard.component");
 var hero_search_component_1 = require("./components/hero-search.component");
+var home_component_1 = require("./components/home.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,6 +39,10 @@ AppModule = __decorate([
                     component: heroes_component_1.HeroesComponent
                 },
                 {
+                    path: 'home',
+                    component: home_component_1.HomeComponent
+                },
+                {
                     path: 'dashboard',
                     component: dashboard_component_1.DashboardComponent
                 },
@@ -52,7 +57,8 @@ AppModule = __decorate([
             hero_detail_component_1.HeroDetailComponent,
             heroes_component_1.HeroesComponent,
             dashboard_component_1.DashboardComponent,
-            hero_search_component_1.HeroSearchComponent
+            hero_search_component_1.HeroSearchComponent,
+            home_component_1.HomeComponent
         ],
         providers: [
             hero_service_1.HeroService
