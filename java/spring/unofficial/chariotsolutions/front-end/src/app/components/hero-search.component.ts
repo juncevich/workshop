@@ -12,8 +12,8 @@ import { HeroSearchService } from '../services/hero-search.service';
 import { Hero } from '../hero';
 @Component({
     selector: 'hero-search',
-    templateUrl: '../view/hero-search.component.html',
-    styleUrls: ['../styles/hero-search.component.css'],
+    templateUrl: '../../view/hero-search.component.html',
+    styleUrls: ['../../styles/hero-search.component.css'],
     providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {
