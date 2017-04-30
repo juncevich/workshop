@@ -9,6 +9,7 @@ import { HeroService } from './services/hero.service';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard.component';
 import { HeroSearchComponent } from './components/hero-search.component';
+import {HomeComponent} from './components/home.component'
 
 @NgModule({
   imports: [
