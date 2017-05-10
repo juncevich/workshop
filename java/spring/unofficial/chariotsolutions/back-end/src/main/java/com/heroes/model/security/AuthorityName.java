@@ -1,4 +1,4 @@
-package com.heroes;
+package com.heroes.model.security;
 
 /**
  * Created by juncevich on 30.04.17.
