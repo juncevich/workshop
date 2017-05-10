@@ -13,7 +13,6 @@ import java.util.Date;
  * Created by stephan on 20.03.16.
  */
 @Data
-@AllArgsConstructor
 public class JwtUser implements UserDetails {
 
     private final Long id;
