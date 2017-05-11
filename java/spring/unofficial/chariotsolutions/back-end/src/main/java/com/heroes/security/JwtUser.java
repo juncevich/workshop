@@ -13,6 +13,7 @@ import java.util.Date;
  * Created by stephan on 20.03.16.
  */
 @Data
+@AllArgsConstructor
 public class JwtUser implements UserDetails {
 
     private final Long id;
@@ -24,27 +25,6 @@ public class JwtUser implements UserDetails {
     private final Collection<? extends GrantedAuthority> authorities;
     private final boolean enabled;
     private final Date lastPasswordResetDate;
-
-    public JwtUser(
-            Long id,
-            String username,
-            String firstname,
-            String lastname,
-            String email,
-            String password, Collection<? extends GrantedAuthority> authorities,
-            boolean enabled,
-            Date lastPasswordResetDate
-    ) {
-        this.id = id;
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.authorities = authorities;
-        this.enabled = enabled;
-        this.lastPasswordResetDate = lastPasswordResetDate;
-    }
 
     @JsonIgnore
     public Long getId() {
