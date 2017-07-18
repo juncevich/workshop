@@ -1,1 +1,1 @@
-Project with show working with security and Angular 2
+Project with show working with Spring Security and Angular 2
