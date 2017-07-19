@@ -11,7 +11,7 @@ export class AppComponent {
   result = 0;
 
   changeState() {
-    this.results.push(this.results.length+1);
+    this.results.push(new Date());
     return this.enabled = !this.enabled;
   }
 }
