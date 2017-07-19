@@ -6,4 +6,4 @@
 </ol>
 <input type="text" [(ngModel)]="username">
 <p>{{ username }}</p>
-<button class="btn btn-primary">Reset username</button>
+<button class="btn btn-primary" [disabled]="!username" (click)="resetUserName()">Reset username</button>
