@@ -3,7 +3,7 @@
     <img [src]="recipe.imagePath"
          alt="{{recipe.name}}"
          class="img-responsive"
-    style="max-width: 300px;">
+         style="max-width: 300px;">
   </div>
 </div>
 <div class="row">
@@ -13,7 +13,9 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group">
+    <div
+      class="btn-group"
+      appDropdown>
       <button type="button"
               class="btn btn-primary dropdown-toggle">
         Manage Recipe <span class="caret"></span></button>
