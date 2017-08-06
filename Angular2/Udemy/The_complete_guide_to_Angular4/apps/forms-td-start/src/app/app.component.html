@@ -30,6 +30,17 @@
 
         </div>
         <p *ngIf="!userData.valid && userData.touched">User Data is Invalid</p>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              ngModel
+              [value]="gender"
+              required>
+            {{gender}}
+          </label>
+        </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <select
