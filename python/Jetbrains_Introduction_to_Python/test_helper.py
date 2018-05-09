@@ -35,7 +35,8 @@ def test_file_importable():
         import os
 
         parent = os.path.abspath(os.path.join(path, os.pardir))
-        python_files = [f for f in os.listdir(parent) if os.path.isfile(os.path.join(parent, f)) and f.endswith(".py")]
+        python_files = [f for f in os.listdir(parent) if os.path.isfile(
+            os.path.join(parent, f)) and f.endswith(".py")]
         for python_file in python_files:
             if python_file == "tests.py":
                 continue
@@ -52,7 +53,8 @@ def check_importable_path(path):
     try:
         import_file(path)
     except:
-        failed("The file contains syntax errors", test_file_importable.__name__)
+        failed("The file contains syntax errors",
+               test_file_importable.__name__)
         return
     finally:
         revert_input(saved_input)
@@ -213,7 +215,8 @@ def check_samples(samples=()):
                     "\n \n"
                     "Your result:\n{}".format(str.strip(sample[0]), str.strip(sample[1]), "\n".join(output)))
                 return
-        set_congratulation_message("All test from samples passed. Now we are checking your solution on Stepic server.")
+        set_congratulation_message(
+            "All test from samples passed. Now we are checking your solution on Stepic server.")
 
     passed()
 

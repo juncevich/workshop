@@ -10,12 +10,14 @@ def test_ASCII():
             return
     passed()
 
+
 def test_initial():
     window = get_answer_placeholders()[0]
     if window == "type your name":
         failed("You should modify the file")
     else:
         passed()
+
 
 def test_is_alpha():
     window = get_answer_placeholders()[0]
@@ -36,5 +38,3 @@ if __name__ == '__main__':
     run_common_tests("You should enter your name")
     test_is_alpha()
     test_initial()
-
-
