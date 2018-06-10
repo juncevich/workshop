@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo.iml" filepath="$PROJECT_DIR$/.idea/modules/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/demo_main.iml" group="demo" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/demo_test.iml" group="demo" />
+      <module fileurl="file://$PROJECT_DIR$/kotlin/kotlin-rest/kotlin-rest.iml" filepath="$PROJECT_DIR$/kotlin/kotlin-rest/kotlin-rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-rest_main.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-rest_main.iml" group="kotlin-rest" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-rest_test.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-rest_test.iml" group="kotlin-rest" />
       <module fileurl="file://$PROJECT_DIR$/.idea/workshop.iml" filepath="$PROJECT_DIR$/.idea/workshop.iml" />
     </modules>
   </component>

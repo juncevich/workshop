@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.kotlinrest
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-class SimpleRestApplicationTests {
+class KotlinRestApplicationTests {
 
     @Test
     fun contextLoads() {

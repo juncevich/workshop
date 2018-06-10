@@ -1,11 +1,11 @@
-package com.example.demo
+package com.example.kotlinrest
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SimpleRestApplication
+class KotlinRestApplication
 
 fun main(args: Array<String>) {
-    runApplication<SimpleRestApplication>(*args)
+    runApplication<KotlinRestApplication>(*args)
 }
