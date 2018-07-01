@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {Task} from "src/app/tasks/task.model";
 
 @Injectable()
 export class TaskService {
@@ -12,5 +13,10 @@ export class TaskService {
         return this
             .http
             .get('/api/tasks');
+    }
+
+    saveTask(task: Task, checked: boolean) {
+        task.completed = checked;
+        return this.http.post('/api/task/save', task);
     }
 }
