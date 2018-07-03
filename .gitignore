@@ -11,7 +11,7 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
-.idea/**/workspace.xml
+.idea/
 .idea/**/tasks.xml
 .idea/**/dictionaries
 .idea/**/shelf
