@@ -1,7 +1,8 @@
+
 {
-  "name": "tasks",
+  "name": "jblog",
   "version": "0.0.0",
-  "description": "Description for tasks",
+  "description": "Description for jblog",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [
@@ -89,10 +90,7 @@
     "yarn": ">=1.3.2"
   },
   "lint-staged": {
-    "src/**/*.{ts,css,scss}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{ts,css,scss}": ["prettier --write", "git add"]
   },
   "scripts": {
     "precommit": "lint-staged",
