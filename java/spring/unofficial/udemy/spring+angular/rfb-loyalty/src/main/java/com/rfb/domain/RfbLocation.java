@@ -29,7 +29,7 @@ public class RfbLocation implements Serializable {
     private String locationName;
 
     @Column(name = "run_day_of_the_week")
-    private String runDayOfTheWeek;
+    private Integer runDayOfTheWeek;
 
     @OneToMany(mappedBy = "rfbLocation")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -57,16 +57,16 @@ public class RfbLocation implements Serializable {
         this.locationName = locationName;
     }
 
-    public String getRunDayOfTheWeek() {
+    public Integer getRunDayOfTheWeek() {
         return runDayOfTheWeek;
     }
 
-    public RfbLocation runDayOfTheWeek(String runDayOfTheWeek) {
+    public RfbLocation runDayOfTheWeek(Integer runDayOfTheWeek) {
         this.runDayOfTheWeek = runDayOfTheWeek;
         return this;
     }
 
-    public void setRunDayOfTheWeek(String runDayOfTheWeek) {
+    public void setRunDayOfTheWeek(Integer runDayOfTheWeek) {
         this.runDayOfTheWeek = runDayOfTheWeek;
     }
 

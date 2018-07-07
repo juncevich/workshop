@@ -45,8 +45,8 @@ public class RfbLocationResourceIntTest {
     private static final String DEFAULT_LOCATION_NAME = "AAAAAAAAAA";
     private static final String UPDATED_LOCATION_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_RUN_DAY_OF_THE_WEEK = "AAAAAAAAAA";
-    private static final String UPDATED_RUN_DAY_OF_THE_WEEK = "BBBBBBBBBB";
+    private static final Integer DEFAULT_RUN_DAY_OF_THE_WEEK = 1;
+    private static final Integer UPDATED_RUN_DAY_OF_THE_WEEK = 1;
 
     @Autowired
     private RfbLocationRepository rfbLocationRepository;
@@ -54,7 +54,7 @@ public class RfbLocationResourceIntTest {
 
     @Autowired
     private RfbLocationMapper rfbLocationMapper;
-    
+
 
     @Autowired
     private RfbLocationService rfbLocationService;
@@ -158,7 +158,7 @@ public class RfbLocationResourceIntTest {
             .andExpect(jsonPath("$.[*].locationName").value(hasItem(DEFAULT_LOCATION_NAME.toString())))
             .andExpect(jsonPath("$.[*].runDayOfTheWeek").value(hasItem(DEFAULT_RUN_DAY_OF_THE_WEEK.toString())));
     }
-    
+
 
     @Test
     @Transactional

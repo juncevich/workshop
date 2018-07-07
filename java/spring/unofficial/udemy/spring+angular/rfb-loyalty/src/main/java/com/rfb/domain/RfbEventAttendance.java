@@ -31,8 +31,8 @@ public class RfbEventAttendance implements Serializable {
     @JsonIgnoreProperties("rfbEventAttendances")
     private RfbEvent rfbEvent;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties("rfbEventAttendances")
     private RfbUser rfbUser;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
