@@ -1,8 +1,11 @@
 package com.rfb.repository;
 
 import com.rfb.domain.RfbEvent;
+import com.rfb.domain.RfbLocation;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDate;
 
 
 /**
@@ -12,4 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RfbEventRepository extends JpaRepository<RfbEvent, Long> {
 
+    RfbEvent findByRfbLocationAndEventDate(RfbLocation location, LocalDate now);
 }
