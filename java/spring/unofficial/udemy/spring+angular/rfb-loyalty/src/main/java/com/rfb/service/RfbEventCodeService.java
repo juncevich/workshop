@@ -26,8 +26,8 @@ public class RfbEventCodeService {
     }
 
 
-    @Scheduled(cron = " * * * * * ?")//run once per second
-    private void generateRunEventCodes() {
+    @Scheduled(cron = " 0 0 * * * ?")//run once per second
+    public void generateRunEventCodes() {
         log.debug("Generating events");
 
         List<RfbLocation> rfbLocations = rfbLocationRepository.findAllByRunDayOfTheWeek(LocalDate.now().getDayOfWeek().getValue());
