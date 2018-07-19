@@ -1,7 +1,0 @@
-security:
-  user:
-    password: password
-    name: user
-server:
-  port: 8081
-    
