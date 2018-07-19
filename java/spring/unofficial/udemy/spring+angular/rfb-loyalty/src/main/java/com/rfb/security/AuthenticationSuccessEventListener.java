@@ -3,18 +3,17 @@ package com.rfb.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
+import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
-import org.springframework.stereotype.Component;
 
-@Component
-public class AuthenticationFailureEventListener implements ApplicationListener<AuthenticationFailureBadCredentialsEvent> {
+public class AuthenticationSuccessEventListener implements ApplicationListener<AuthenticationSuccessEvent> {
 
     @Autowired
     private LoginAttemptService loginAttemptService;
 
     @Override
-    public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent event) {
+    public void onApplicationEvent(AuthenticationSuccessEvent event) {
         WebAuthenticationDetails webAuthenticationDetails = (WebAuthenticationDetails) event.getAuthentication().getDetails();
-        loginAttemptService.loginFailed(webAuthenticationDetails.getRemoteAddress());
+        loginAttemptService.loginSucceeded(webAuthenticationDetails.getRemoteAddress());
     }
 }

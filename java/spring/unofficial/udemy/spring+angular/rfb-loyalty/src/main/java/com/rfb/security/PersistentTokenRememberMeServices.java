@@ -62,7 +62,7 @@ public class PersistentTokenRememberMeServices extends
 
     private static final int TOKEN_VALIDITY_SECONDS = 60 * 60 * 24 * TOKEN_VALIDITY_DAYS;
 
-    private static final long UPGRADED_TOKEN_VALIDITY_MILLIS = 5000l;
+    private static final long UPGRADED_TOKEN_VALIDITY_MILLIS = 5000L;
 
     private final PersistentTokenCache<UpgradedRememberMeToken> upgradedTokenCache;
 
