@@ -1,0 +1,1 @@
+Project with show working with Spring Security and Angular 2
