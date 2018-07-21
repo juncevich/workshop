@@ -30,7 +30,7 @@ export const rfbEventAttendanceRoute: Routes = [
         path: 'rfb-event-attendance',
         component: RfbEventAttendanceComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'RfbEventAttendances'
         },
         canActivate: [UserRouteAccessService]
@@ -42,7 +42,7 @@ export const rfbEventAttendanceRoute: Routes = [
             rfbEventAttendance: RfbEventAttendanceResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'RfbEventAttendances'
         },
         canActivate: [UserRouteAccessService]
@@ -54,7 +54,7 @@ export const rfbEventAttendanceRoute: Routes = [
             rfbEventAttendance: RfbEventAttendanceResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'RfbEventAttendances'
         },
         canActivate: [UserRouteAccessService]
@@ -66,7 +66,7 @@ export const rfbEventAttendanceRoute: Routes = [
             rfbEventAttendance: RfbEventAttendanceResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'RfbEventAttendances'
         },
         canActivate: [UserRouteAccessService]
@@ -81,7 +81,7 @@ export const rfbEventAttendancePopupRoute: Routes = [
             rfbEventAttendance: RfbEventAttendanceResolve
         },
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_ADMIN'],
             pageTitle: 'RfbEventAttendances'
         },
         canActivate: [UserRouteAccessService],

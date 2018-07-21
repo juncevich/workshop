@@ -69,17 +69,17 @@ public class UserService {
     }
 
     public Optional<User> completePasswordReset(String newPassword, String key) {
-       log.debug("Reset user password for reset key {}", key);
+        log.debug("Reset user password for reset key {}", key);
 
-       return userRepository.findOneByResetKey(key)
-           .filter(user -> user.getResetDate().isAfter(Instant.now().minusSeconds(86400)))
-           .map(user -> {
+        return userRepository.findOneByResetKey(key)
+            .filter(user -> user.getResetDate().isAfter(Instant.now().minusSeconds(86400)))
+            .map(user -> {
                 user.setPassword(passwordEncoder.encode(newPassword));
                 user.setResetKey(null);
                 user.setResetDate(null);
                 this.clearUserCaches(user);
                 return user;
-           });
+            });
     }
 
     public Optional<User> requestPasswordReset(String mail) {
@@ -137,6 +137,12 @@ public class UserService {
                 .map(Optional::get)
                 .collect(Collectors.toSet());
             user.setAuthorities(authorities);
+        } else {
+            Optional<Authority> authority = authorityRepository.findById(AuthoritiesConstants.RUNNER);
+            Set<Authority> authorities = new HashSet<>();
+            authority.ifPresent(authorities::add);
+
+            user.setAuthorities(authorities);
         }
         String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
         user.setPassword(encryptedPassword);
@@ -153,10 +159,10 @@ public class UserService {
      * Update basic information (first name, last name, email, language) for the current user.
      *
      * @param firstName first name of user
-     * @param lastName last name of user
-     * @param email email id of user
-     * @param langKey language key
-     * @param imageUrl image URL of user
+     * @param lastName  last name of user
+     * @param email     email id of user
+     * @param langKey   language key
+     * @param imageUrl  image URL of user
      */
     public void updateUser(String firstName, String lastName, String email, String langKey, String imageUrl) {
         SecurityUtils.getCurrentUserLogin()
