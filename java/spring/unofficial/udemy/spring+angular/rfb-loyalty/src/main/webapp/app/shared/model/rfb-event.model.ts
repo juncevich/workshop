@@ -1,11 +1,12 @@
 import { Moment } from 'moment';
 import { IRfbEventAttendance } from 'app/shared/model//rfb-event-attendance.model';
+import { IRfbLocation } from 'app/shared/model/rfb-location.model';
 
 export interface IRfbEvent {
     id?: number;
     eventDate?: Moment;
     eventCode?: string;
-    rfbLocationId?: number;
+    rfbLocation?: IRfbLocation;
     rfbEventAttendances?: IRfbEventAttendance[];
 }
 
