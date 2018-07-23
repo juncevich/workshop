@@ -1,10 +1,12 @@
 import { Moment } from 'moment';
+import { IRfbEvent, RfbEvent } from 'app/shared/model/rfb-event.model';
+import { IRfbUser, RfbUser } from 'app/shared/model/rfb-user.model';
 
 export interface IRfbEventAttendance {
     id?: number;
     attendanceDate?: Moment;
-    rfbEventId?: number;
-    rfbUserId?: number;
+    rfbEventDTO?: IRfbEvent;
+    rfbUserDTO?: IRfbUser;
 }
 
 export class RfbEventAttendance implements IRfbEventAttendance {

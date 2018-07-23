@@ -15,7 +15,7 @@ public class RfbEventDTO implements Serializable {
 
     private String eventCode;
 
-    private Long rfbLocationId;
+    private RfbLocationDTO rfbLocationDTO;
 
     public Long getId() {
         return id;
@@ -41,12 +41,12 @@ public class RfbEventDTO implements Serializable {
         this.eventCode = eventCode;
     }
 
-    public Long getRfbLocationId() {
-        return rfbLocationId;
+    public RfbLocationDTO getRfbLocation() {
+        return rfbLocationDTO;
     }
 
-    public void setRfbLocationId(Long rfbLocationId) {
-        this.rfbLocationId = rfbLocationId;
+    public void setRfbLocation(RfbLocationDTO rfbLocationDTO) {
+        this.rfbLocationDTO = rfbLocationDTO;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class RfbEventDTO implements Serializable {
             "id=" + getId() +
             ", eventDate='" + getEventDate() + "'" +
             ", eventCode='" + getEventCode() + "'" +
-            ", rfbLocation=" + getRfbLocationId() +
+            ", rfbLocation=" + getRfbLocation() +
             "}";
     }
 }
