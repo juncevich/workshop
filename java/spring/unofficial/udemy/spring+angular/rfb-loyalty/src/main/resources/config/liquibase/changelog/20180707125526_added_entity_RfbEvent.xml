@@ -18,25 +18,25 @@
         Added the entity RfbEvent.
     -->
     <changeSet id="20180707125526-1" author="jhipster">
-        <createTable tableName="rfb_event">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="event_date" type="date">
-                <constraints nullable="true" />
-            </column>
+        <!--<createTable tableName="rfb_event">-->
+            <!--<column name="id" type="bigint" autoIncrement="${autoIncrement}">-->
+                <!--<constraints primaryKey="true" nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="event_date" type="date">-->
+                <!--<constraints nullable="true" />-->
+            <!--</column>-->
 
-            <column name="event_code" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
+            <!--<column name="event_code" type="varchar(255)">-->
+                <!--<constraints nullable="true" />-->
+            <!--</column>-->
 
-            <column name="rfb_location_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
+            <!--<column name="rfb_location_id" type="bigint">-->
+                <!--<constraints nullable="true" />-->
+            <!--</column>-->
 
-            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
-        </createTable>
-        
+            <!--&lt;!&ndash; jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove&ndash;&gt;-->
+        <!--</createTable>-->
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

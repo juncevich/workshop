@@ -3,12 +3,13 @@ package com.rfb.bootstrap;
 import com.rfb.domain.RfbEvent;
 import com.rfb.domain.RfbEventAttendance;
 import com.rfb.domain.RfbLocation;
-import com.rfb.domain.RfbUser;
+import com.rfb.domain.User;
 import com.rfb.repository.RfbEventAttendanceRepository;
 import com.rfb.repository.RfbEventRepository;
 import com.rfb.repository.RfbLocationRepository;
-import com.rfb.repository.RfbUserRepository;
+import com.rfb.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,13 +22,15 @@ public class RfbBootstrap implements CommandLineRunner {
     private final RfbLocationRepository rfbLocationRepository;
     private final RfbEventRepository rfbEventRepository;
     private final RfbEventAttendanceRepository rfbEventAttendanceRepository;
-    private final RfbUserRepository rfbUserRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public RfbBootstrap(RfbLocationRepository rfbLocationRepository, RfbEventRepository rfbEventRepository, RfbEventAttendanceRepository rfbEventAttendanceRepository, RfbUserRepository rfbUserRepository) {
+    public RfbBootstrap(RfbLocationRepository rfbLocationRepository, RfbEventRepository rfbEventRepository, RfbEventAttendanceRepository rfbEventAttendanceRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.rfbLocationRepository = rfbLocationRepository;
         this.rfbEventRepository = rfbEventRepository;
         this.rfbEventAttendanceRepository = rfbEventAttendanceRepository;
-        this.rfbUserRepository = rfbUserRepository;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
@@ -40,35 +43,38 @@ public class RfbBootstrap implements CommandLineRunner {
     }
 
     private void initData() {
-        RfbUser rfbUser = new RfbUser();
-        rfbUser.setUserName("John");
-        rfbUserRepository.save(rfbUser);
+        User user = new User();
+        user.setFirstName("John");
+        user.setPassword(passwordEncoder.encode("admin"));
+        user.setLogin("john");
+        user.setActivated(true);
+        userRepository.save(user);
 
         RfbLocation aleAndWith = getRfbLocation("St Pete - Ale and the Witch", DayOfWeek.MONDAY.getValue());
-        rfbUser.setHomeLocation(aleAndWith);
-        rfbUserRepository.save(rfbUser);
+        user.setHomeLocation(aleAndWith);
+        userRepository.save(user);
 
         RfbEvent aleEvent = getRfbEvent(aleAndWith);
-        getRfbEventAttendance(rfbUser, aleEvent);
+        getRfbEventAttendance(user, aleEvent);
 
         RfbLocation ratc = getRfbLocation("St Pete - Right Around The Corner", DayOfWeek.TUESDAY.getValue());
         RfbEvent ratcEvent = getRfbEvent(ratc);
-        getRfbEventAttendance(rfbUser, ratcEvent);
+        getRfbEventAttendance(user, ratcEvent);
 
         RfbLocation stPeteBrew = getRfbLocation("St Pete - St Pete Brewing", DayOfWeek.WEDNESDAY.getValue());
         RfbEvent stPeteBrewEvent = getRfbEvent(stPeteBrew);
-        getRfbEventAttendance(rfbUser, stPeteBrewEvent);
+        getRfbEventAttendance(user, stPeteBrewEvent);
 
         RfbLocation yardOfAle = getRfbLocation("St Pete - Yard of Ale", DayOfWeek.THURSDAY.getValue());
         RfbEvent yardOfAleEvent = getRfbEvent(yardOfAle);
-        getRfbEventAttendance(rfbUser, yardOfAleEvent);
+        getRfbEventAttendance(user, yardOfAleEvent);
 
     }
 
-    private void getRfbEventAttendance(RfbUser rfbUser, RfbEvent rfbEvent) {
+    private void getRfbEventAttendance(User user, RfbEvent rfbEvent) {
         RfbEventAttendance rfbEventAttendance = new RfbEventAttendance();
         rfbEventAttendance.setRfbEvent(rfbEvent);
-        rfbEventAttendance.setRfbUser(rfbUser);
+        rfbEventAttendance.setUser(user);
         rfbEventAttendance.setAttendanceDate(LocalDate.now());
 
         System.out.println(rfbEventAttendance.toString());

@@ -7,12 +7,6 @@
         Added the constraints for entity RfbEvent.
     -->
     <changeSet id="20180707125526-2" author="jhipster">
-        
-        <addForeignKeyConstraint baseColumnNames="rfb_location_id"
-                                 baseTableName="rfb_event"
-                                 constraintName="fk_rfb_event_rfb_location_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="rfb_location"/>
 
     </changeSet>
 </databaseChangeLog>
