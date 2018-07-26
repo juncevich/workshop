@@ -1,14 +1,13 @@
 package com.rfb.service.dto;
 
 import com.rfb.config.Constants;
-
 import com.rfb.domain.Authority;
 import com.rfb.domain.User;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-
-import javax.validation.constraints.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -53,8 +52,27 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private Long homeLocation;
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
+    }
+
+    public UserDTO(Long id, @NotBlank @Pattern(regexp = Constants.LOGIN_REGEX) @Size(min = 1, max = 50) String login, @Size(max = 50) String firstName, @Size(max = 50) String lastName, @Email @Size(min = 5, max = 254) String email, @Size(max = 256) String imageUrl, boolean activated, @Size(min = 2, max = 6) String langKey, String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate, Set<String> authorities, Long homeLocation) {
+        this.id = id;
+        this.login = login;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.imageUrl = imageUrl;
+        this.activated = activated;
+        this.langKey = langKey;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.lastModifiedBy = lastModifiedBy;
+        this.lastModifiedDate = lastModifiedDate;
+        this.authorities = authorities;
+        this.homeLocation = homeLocation;
     }
 
     public UserDTO(User user) {
@@ -70,6 +88,7 @@ public class UserDTO {
         this.createdDate = user.getCreatedDate();
         this.lastModifiedBy = user.getLastModifiedBy();
         this.lastModifiedDate = user.getLastModifiedDate();
+        this.homeLocation = (user.getHomeLocation() != null) ? user.getHomeLocation().getId() : null;
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
             .collect(Collectors.toSet());
