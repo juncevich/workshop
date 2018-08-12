@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'auction-navbar',
   templateUrl: 'navbar.html'
 })
-export default class NavbarComponent {}
+export default class NavbarComponent { }
