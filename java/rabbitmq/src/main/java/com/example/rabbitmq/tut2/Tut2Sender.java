@@ -1,10 +1,12 @@
 package com.example.rabbitmq.tut2;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
+@Slf4j
 public class Tut2Sender {
     @Autowired
     private RabbitTemplate template;
@@ -28,6 +30,6 @@ public class Tut2Sender {
         builder.append(Integer.toString(++count));
         String message = builder.toString();
         template.convertAndSend(queue.getName(), message);
-        System.out.println(" [x] Sent '" + message + "'");
+        log.info(" [x] Sent '" + message + "'");
     }
 }

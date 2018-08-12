@@ -1,13 +1,16 @@
 package com.example.rabbitmq.tut4;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
+@Slf4j
 public class Tut4Sender {
 
-    private final String[] keys = {"orange", "black", "green"};
+    private static final String[] keys = {"orange", "black", "green"};
+    
     @Autowired
     private RabbitTemplate template;
     @Autowired
@@ -26,6 +29,6 @@ public class Tut4Sender {
         builder.append(Integer.toString(++this.count));
         String message = builder.toString();
         template.convertAndSend(direct.getName(), key, message);
-        System.out.println(" [x] Sent '" + message + "'");
+        log.info(" [x] Sent '" + message + "'");
     }
 }
