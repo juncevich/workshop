@@ -5,18 +5,17 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 
 @Slf4j
-public class PrintingHandler<S> implements Handler<S> {
-    private final Handler<S> other;
+public class PrintingHandler<S> extends DecoratedHandler<S> {
 
     public PrintingHandler(Handler<S> other) {
-        this.other = other;
+        super(other);
     }
 
     @Override
     public void handle(S s) throws IOException {
         log.info("Connected to {}", s);
         try {
-            other.handle(s);
+            super.handle(s);
         } finally {
             log.info("Disconnected from {}", s);
         }
