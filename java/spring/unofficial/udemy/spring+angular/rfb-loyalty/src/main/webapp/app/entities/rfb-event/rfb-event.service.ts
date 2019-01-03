@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
-import { IRfbEvent } from 'app/shared/model/rfb-event.model';
+import { IRfbEvent, RfbEvent } from 'app/shared/model/rfb-event.model';
 
 type EntityResponseType = HttpResponse<IRfbEvent>;
 type EntityArrayResponseType = HttpResponse<IRfbEvent[]>;
@@ -66,5 +66,13 @@ export class RfbEventService {
             rfbEvent.eventDate = rfbEvent.eventDate != null ? moment(rfbEvent.eventDate) : null;
         });
         return res;
+    }
+
+    public findByLocation(locationID: number): Observable<RfbEvent> {
+        return this.http.get(`${this.resourceUrl}/location/${locationID}`).pipe(
+            map((res: HttpResponse<RfbEvent>) => {
+                return res.body;
+            })
+        );
     }
 }
