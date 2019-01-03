@@ -12,6 +12,8 @@ repositories {
 }
 
 dependencies {
+    compile 'javax.validation:validation-api:2.0.1.Final'
+    compile 'org.apache.commons:commons-lang3:3.8.1'
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testCompile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
