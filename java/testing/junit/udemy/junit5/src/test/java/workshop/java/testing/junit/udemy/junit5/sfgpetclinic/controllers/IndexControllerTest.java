@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 class IndexControllerTest {
 
@@ -51,5 +52,11 @@ class IndexControllerTest {
 
             System.out.println("I got here 2    ");
         });
+    }
+
+    @Test
+    void testAssumptionTrueIsTrue() {
+
+        assumeTrue("True string".equalsIgnoreCase("True string"));
     }
 }
