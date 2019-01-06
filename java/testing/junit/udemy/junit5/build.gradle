@@ -5,20 +5,27 @@ plugins {
 group 'workshop.java.testing.junit.udemy'
 version '1.0-SNAPSHOT'
 
+
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+ext {
+    junitVersion = '5.3.1'
+    lombokVersion = '1.18.4'
+}
 dependencies {
     compile 'javax.validation:validation-api:2.0.1.Final'
     compile 'org.apache.commons:commons-lang3:3.8.1'
-    compile 'org.projectlombok:lombok:1.16.22'
     compile 'ch.qos.logback:logback-classic:1.2.3'
     compile 'org.slf4j:slf4j-api:1.7.25'
-    testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
-    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    compile 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testCompile "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     testCompile 'org.assertj:assertj-core:3.11.1'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
 }
