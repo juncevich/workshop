@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class WelcomeDataService {
 
   constructor() { }
+
+  public executeHelloWorldBeanService() {
+    console.log('Execute Hello World Bean Service');
+  }
 }

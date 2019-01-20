@@ -11,7 +11,7 @@ import { ListTodosComponent } from './list-todos/list-todos.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
-import { WelcomeDataComponent } from './service/data/welcome-data/welcome-data.component';
+
 
 @NgModule({
   declarations: [
@@ -22,8 +22,7 @@ import { WelcomeDataComponent } from './service/data/welcome-data/welcome-data.c
     ListTodosComponent,
     MenuComponent,
     FooterComponent,
-    LogoutComponent,
-    WelcomeDataComponent
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
