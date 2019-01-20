@@ -8,6 +8,7 @@ import { WelcomeDataService } from '../service/data/welcome-data.service';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  welcomeMessageFromService: string;
   name = '';
   constructor(
     private route: ActivatedRoute,
@@ -20,7 +21,14 @@ export class WelcomeComponent implements OnInit {
 
   getWelcomeMessage() {
     console.log(this.welcomeDataService.executeHelloWorldBeanService());
-    this.welcomeDataService.executeHelloWorldBeanService().subscribe();
+    this.welcomeDataService.executeHelloWorldBeanService().subscribe(
+      response => this.handleSuccessfullResponse(response)
+    );
+    console.log('last line of getWelcomeMessage');
+  }
+
+  handleSuccessfullResponse(response) {
+    this.welcomeMessageFromService = response.message;
   }
 
 }
