@@ -1,4 +1,4 @@
-package com.example.udemy.go_fullstack.backend;
+package com.example.udemy.go_fullstack.backend.helloworld;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
