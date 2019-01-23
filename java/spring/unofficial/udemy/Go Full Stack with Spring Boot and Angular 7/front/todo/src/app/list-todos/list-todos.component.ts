@@ -22,7 +22,7 @@ export class ListTodosComponent implements OnInit {
     new Todo(1, 'Learn to dance', false, new Date()),
     new Todo(2, 'Become an Expert at Angular', false, new Date()),
     new Todo(3, 'Visit India', false, new Date())
-  ]
+  ];
 
   // todo = {
   //   id: 1,
