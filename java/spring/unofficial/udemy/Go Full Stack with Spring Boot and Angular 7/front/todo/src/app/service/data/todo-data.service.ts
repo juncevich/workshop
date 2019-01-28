@@ -27,4 +27,8 @@ export class TodoDataService {
     return this.httpModule.put(`http://localhost:8080/users/${username}/todos/${id}`, todo);
   }
 
+  createTodo(username, todo) {
+    return this.httpModule.post(`http://localhost:8080/users/${username}/todos`, todo);
+  }
+
 }
