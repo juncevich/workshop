@@ -22,4 +22,9 @@ export class TodoDataService {
   retrieveTodo(username, id) {
     return this.httpModule.get<Todo>(`http://localhost:8080/users/${username}/todos/${id}`);
   }
+
+  updateTodo(username, id, todo) {
+    return this.httpModule.put(`http://localhost:8080/users/${username}/todos/${id}`, todo);
+  }
+
 }

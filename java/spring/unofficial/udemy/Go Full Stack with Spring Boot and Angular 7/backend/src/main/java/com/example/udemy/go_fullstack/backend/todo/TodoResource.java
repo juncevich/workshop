@@ -46,13 +46,13 @@ public class TodoResource {
     }
 
     @PutMapping("/users/{username}/todos/{id}")
-    public ResponseEntity<Todo> updateTodo(@PathVariable String username, @RequestBody Todo todo) {
+    public ResponseEntity<Todo> updateTodo(@PathVariable String username, @PathVariable int id, @RequestBody Todo todo) {
         Todo updatedTodo = todoService.save(todo);
         return new ResponseEntity<>(updatedTodo, HttpStatus.OK);
     }
 
     @PostMapping("/users/{username}/todos")
-    public ResponseEntity<Todo> createTodo(@PathVariable String username, @PathVariable int id, @RequestBody Todo todo) {
+    public ResponseEntity<Todo> createTodo(@PathVariable String username, @RequestBody Todo todo) {
         Todo createdTodo = todoService.save(todo);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTodo.getId()).toUri();
 
