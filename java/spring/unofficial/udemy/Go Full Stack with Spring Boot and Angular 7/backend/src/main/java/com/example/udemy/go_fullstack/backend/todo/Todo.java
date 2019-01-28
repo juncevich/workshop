@@ -2,11 +2,13 @@ package com.example.udemy.go_fullstack.backend.todo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.Objects;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class Todo {
     private int id;
