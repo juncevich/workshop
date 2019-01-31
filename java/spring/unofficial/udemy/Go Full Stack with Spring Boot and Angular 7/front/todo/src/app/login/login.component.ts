@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
 
   constructor(
-    private router: Router,
-    private hardcodedAuthenticationService: HardcodedAuthenticationService,
+    private router: Router, private hardcodedAuthenticationService: HardcodedAuthenticationService,
     private basicAuthenticationService: BasicAuthenticationService) { }
 
   ngOnInit() {
@@ -39,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.basicAuthenticationService.executeBasicAuthenticationService(this.username, this.password)
       .subscribe(
         data => {
-          console.log(data);
+          console.log('Data is:' + data);
           this.router.navigate(['welcome', this.username]);
           this.invalidLogin = false;
         },
