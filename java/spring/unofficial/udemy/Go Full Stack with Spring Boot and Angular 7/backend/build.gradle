@@ -32,4 +32,5 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     compile 'org.projectlombok:lombok:1.18.4'
+    compile 'io.jsonwebtoken:jjwt:0.9.1'
 }
