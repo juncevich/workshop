@@ -35,6 +35,20 @@ export class BasicAuthenticationService {
     sessionStorage.removeItem(TOKEN);
   }
 
+
+  public executeJWTAuthenticationService(username, password) {
+
+    return this.http.post<any>(`http://localhost:8080/authenticate`, { username, password }).pipe(
+      map(
+        data => {
+          sessionStorage.setItem(AUTHENTICATED_USER, username);
+          sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+          return data;
+        }
+      )
+    );
+  }
+
   public executeBasicAuthenticationService(username, password) {
 
     const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
