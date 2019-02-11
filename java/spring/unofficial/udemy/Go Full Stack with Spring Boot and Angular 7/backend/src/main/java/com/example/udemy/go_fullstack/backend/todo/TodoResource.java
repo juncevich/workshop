@@ -30,13 +30,13 @@ public class TodoResource {
     }
 
     @GetMapping("/users/{username}/todos/{id}")
-    public Todo getAllTodo(@PathVariable String username, @PathVariable int id) {
+    public Todo getAllTodo(@PathVariable String username, @PathVariable Long id) {
 
         return todoService.findById(id);
     }
 
     @DeleteMapping("/users/{username}/todos/{id}")
-    public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable int id) {
+    public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable Long id) {
 
         Todo todo = todoService.deleteById(id);
         if (todo != null) {

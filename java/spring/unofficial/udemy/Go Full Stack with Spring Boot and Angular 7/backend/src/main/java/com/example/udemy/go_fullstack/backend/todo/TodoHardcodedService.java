@@ -10,7 +10,7 @@ import java.util.List;
 public class TodoHardcodedService {
 
     private static List<Todo> todos = new ArrayList<>();
-    private static int idCounter = 0;
+    private static Long idCounter = 0L;
 
     static {
         todos.add(new Todo(++idCounter, "alex", "Learn to dance", new Date(), false));
@@ -33,7 +33,7 @@ public class TodoHardcodedService {
         return todo;
     }
 
-    public Todo deleteById(int id) {
+    public Todo deleteById(Long id) {
         Todo todo = findById(id);
         if (todo == null) return null;
         if (todos.remove(todo)) {
@@ -42,9 +42,9 @@ public class TodoHardcodedService {
         return null;
     }
 
-    public Todo findById(int id) {
+    public Todo findById(Long id) {
         for (Todo todo : todos) {
-            if (todo.getId() == id) {
+            if (todo.getId().equals(id)) {
                 return todo;
             }
         }
