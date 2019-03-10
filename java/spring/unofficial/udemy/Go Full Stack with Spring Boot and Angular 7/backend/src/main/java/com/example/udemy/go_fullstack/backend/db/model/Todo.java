@@ -1,4 +1,4 @@
-package com.example.udemy.go_fullstack.backend.todo;
+package com.example.udemy.go_fullstack.backend.db.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

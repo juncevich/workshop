@@ -1,4 +1,4 @@
-package com.example.udemy.go_fullstack.backend.jwt.resource;
+package com.example.udemy.go_fullstack.backend.controller.model.response;
 
 import java.io.Serializable;
 

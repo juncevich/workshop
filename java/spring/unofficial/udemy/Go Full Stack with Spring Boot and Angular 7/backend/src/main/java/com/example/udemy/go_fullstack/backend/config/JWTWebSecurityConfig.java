@@ -1,5 +1,6 @@
-package com.example.udemy.go_fullstack.backend.jwt;
+package com.example.udemy.go_fullstack.backend.config;
 
+import com.example.udemy.go_fullstack.backend.jwt.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

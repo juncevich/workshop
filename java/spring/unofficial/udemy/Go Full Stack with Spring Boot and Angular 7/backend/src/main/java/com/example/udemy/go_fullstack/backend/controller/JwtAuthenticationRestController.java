@@ -1,5 +1,8 @@
-package com.example.udemy.go_fullstack.backend.jwt.resource;
+package com.example.udemy.go_fullstack.backend.controller;
 
+import com.example.udemy.go_fullstack.backend.controller.model.request.*;
+import com.example.udemy.go_fullstack.backend.controller.model.response.*;
+import com.example.udemy.go_fullstack.backend.exception.*;
 import com.example.udemy.go_fullstack.backend.jwt.JwtTokenUtil;
 import com.example.udemy.go_fullstack.backend.jwt.JwtUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
