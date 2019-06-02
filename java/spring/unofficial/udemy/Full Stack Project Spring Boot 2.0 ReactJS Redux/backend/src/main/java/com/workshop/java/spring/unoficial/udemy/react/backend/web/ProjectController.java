@@ -6,10 +6,7 @@ import com.workshop.java.spring.unoficial.udemy.react.backend.services.ProjectSe
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Map;
@@ -35,6 +32,12 @@ public class ProjectController {
 
         Project savedProject = projectService.saveOrUpdateProject(project);
         return new ResponseEntity<>(savedProject, HttpStatus.CREATED);
+    }
+
+    @GetMapping("{projectId}")
+    public ResponseEntity<Project> getProjectById(@PathVariable String projectId) {
+        Project project = projectService.findByProjectIdentifier(projectId.toUpperCase());
+        return new ResponseEntity<>(project, HttpStatus.OK);
     }
 
 
