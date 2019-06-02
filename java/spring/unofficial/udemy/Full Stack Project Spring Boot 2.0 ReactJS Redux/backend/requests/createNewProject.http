@@ -15,3 +15,10 @@ Content-Type: application/json
 }
 
 ###
+POST localhost:8080/api/project
+Content-Type: application/json
+
+{
+}
+
+###
