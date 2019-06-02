@@ -1,6 +1,7 @@
 package com.workshop.java.spring.unoficial.udemy.react.backend.services;
 
 import com.workshop.java.spring.unoficial.udemy.react.backend.domain.Project;
+import com.workshop.java.spring.unoficial.udemy.react.backend.exceptions.ProjectIdException;
 import com.workshop.java.spring.unoficial.udemy.react.backend.repositories.ProjectRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,11 @@ public class ProjectService {
     }
 
     public Project saveOrUpdateProject(Project project) {
-        return projectRepository.save(project);
+        try {
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+        } catch (Exception e) {
+            throw new ProjectIdException("Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
+        }
     }
 }
