@@ -8,6 +8,10 @@ export const createProject = (project, history) => async dispatch => {
         );
         history.push("/dashboard");
         console.log(res);
+        dispatch({
+            type: GET_ERRORS,
+            payload: {}
+        })
     } catch (err) {
         dispatch({
             type: GET_ERRORS,
