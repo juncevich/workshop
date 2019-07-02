@@ -1,5 +1,6 @@
 package com.workshop.java.spring.unoficial.udemy.react.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,6 +26,11 @@ public class ProjectTask {
 
     @Column(updatable = false)
     private String projectIdentifier;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "backlog_id", updatable = false, nullable = false)
+    @JsonIgnore
+    private Backlog backlog;
 
     @PrePersist
     protected void onCreate() {
