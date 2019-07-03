@@ -7,6 +7,8 @@ import com.workshop.java.spring.unoficial.udemy.react.backend.repositories.Proje
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectTaskService {
     @Autowired
@@ -33,5 +35,9 @@ public class ProjectTaskService {
 
 
         return projectTaskRepository.save(projectTask);
+    }
+
+    public List<ProjectTask> findBacklogById(String backlogId) {
+        return projectTaskRepository.findByProjectIdentifierOrderByPriority(backlogId);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -24,7 +25,7 @@ public class BacklogController {
     private MapValidationErrorService validationErrorService;
 
     @PostMapping("/{backlogId}")
-    public ResponseEntity<?> addPtToBacklog(@Valid @RequestBody ProjectTask projectTask,
+    public ResponseEntity addPtToBacklog(@Valid @RequestBody ProjectTask projectTask,
                                             BindingResult bindResult, @PathVariable String backlogId) {
         Map<String, String> errorMap = validationErrorService.mapValidationService(bindResult);
         if (errorMap != null) {
@@ -32,7 +33,12 @@ public class BacklogController {
         }
 
         ProjectTask projectTask1 = projectTaskService.addProjectTask(backlogId, projectTask);
-        return new ResponseEntity<ProjectTask>(projectTask1, HttpStatus.OK);
+        return new ResponseEntity<>(projectTask1, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/{backlogId}")
+    public List<ProjectTask> getProjectBacklog(@PathVariable String backlogId) {
+        return projectTaskService.findBacklogById(backlogId);
     }
 }
