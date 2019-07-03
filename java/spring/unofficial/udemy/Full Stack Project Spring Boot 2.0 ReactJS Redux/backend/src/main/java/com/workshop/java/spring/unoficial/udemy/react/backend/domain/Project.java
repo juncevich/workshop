@@ -37,6 +37,8 @@ public class Project {
     Date createdAt;
     @JsonFormat(pattern = "yyyy-mm-dd")
     Date updatedAt;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    Backlog backlog;
 
     @PrePersist
     protected void onCreate() {
