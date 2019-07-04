@@ -42,7 +42,7 @@ public class ProjectTaskService {
 
 
             return projectTaskRepository.save(projectTask);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new ProjectNotFoundException("Project not found");
         }
     }
@@ -51,8 +51,12 @@ public class ProjectTaskService {
         Project project = projectRepository.findByProjectIdentifier(backlogId);
 
         if (project == null) {
-            throw new ProjectNotFoundException("Project with ID: '"+ backlogId + "' does not exist.");
+            throw new ProjectNotFoundException("Project with ID: '" + backlogId + "' does not exist.");
         }
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(backlogId);
+    }
+
+    public ProjectTask findPtByProjectSequence(String backlogId,String ptId) {
+        return projectTaskRepository.findByProjectSequence(ptId);
     }
 }
