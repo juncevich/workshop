@@ -5,17 +5,26 @@ import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSet;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSetDifficulty;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.ProductReview;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 
 @Service
 public class DbSeeder implements CommandLineRunner {
+    private MongoTemplate mongoTemplate;
+
+    public DbSeeder(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @Override
     public void run(String... args) {
+
+
         /*
         Lego Sets
          */
@@ -65,5 +74,8 @@ public class DbSeeder implements CommandLineRunner {
                         new ProductReview("James", 10)
                 )
         );
+
+        List<LegoSet> legoSets = Arrays.asList(milleniumFalcon, skyPolice, mindstormsEve, mcLarenSenna);
+        this.mongoTemplate.insertAll(legoSets);
     }
 }
