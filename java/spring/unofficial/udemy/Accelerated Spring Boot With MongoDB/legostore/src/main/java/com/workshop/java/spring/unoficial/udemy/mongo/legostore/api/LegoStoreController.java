@@ -1,6 +1,7 @@
 package com.workshop.java.spring.unoficial.udemy.mongo.legostore.api;
 
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSet;
+import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSetDifficulty;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.persistence.LegoSetRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,4 +46,8 @@ public class LegoStoreController {
         return this.legoSetRepository.findAllByThemeContains(theme);
     }
 
+    @GetMapping("hardThatStartWithM")
+    public Collection<LegoSet> hardThatStartWithM() {
+        return this.legoSetRepository.findAllByDifficultyAndNameStartsWith(LegoSetDifficulty.HARD, "M");
+    }
 }
