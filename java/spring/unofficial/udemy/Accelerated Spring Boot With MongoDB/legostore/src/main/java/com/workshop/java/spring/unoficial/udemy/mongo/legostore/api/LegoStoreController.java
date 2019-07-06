@@ -1,7 +1,10 @@
 package com.workshop.java.spring.unoficial.udemy.mongo.legostore.api;
 
+import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSet;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSetDifficulty;
+import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.QLegoSet;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.persistence.LegoSetRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
@@ -62,5 +65,16 @@ public class LegoStoreController {
     @GetMapping("greatReviews")
     public Collection<LegoSet> byGreatReviews() {
         return this.legoSetRepository.findAllByGreatReviews();
+    }
+
+    @GetMapping("bestBuys")
+    public Collection<LegoSet> bestBuys() {
+        QLegoSet query = new QLegoSet("query");
+        BooleanExpression inStockFilter = query.deliveryInfo.inStock.isTrue();
+        BooleanExpression smallDeliveryFeeFilter = query.deliveryInfo.deliveryFee.lt(50);
+        BooleanExpression hasGreatReviews = query.reviews.any().rating.eq(10);
+
+        Predicate bestBuysFilter = inStockFilter.and(smallDeliveryFeeFilter).and(hasGreatReviews);
+        return (Collection<LegoSet>) this.legoSetRepository.findAll(bestBuysFilter);
     }
 }
