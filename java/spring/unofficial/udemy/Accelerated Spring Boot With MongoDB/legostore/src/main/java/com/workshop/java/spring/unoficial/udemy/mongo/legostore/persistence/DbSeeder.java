@@ -5,7 +5,6 @@ import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSet;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSetDifficulty;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.ProductReview;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,15 +14,15 @@ import java.util.List;
 
 @Service
 public class DbSeeder implements CommandLineRunner {
-    private MongoTemplate mongoTemplate;
+    private LegoSetRepository repository;
 
-    public DbSeeder(MongoTemplate mongoTemplate) {
-        this.mongoTemplate = mongoTemplate;
+    public DbSeeder(LegoSetRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void run(String... args) {
-        mongoTemplate.dropCollection(LegoSet.class);
+        this.repository.deleteAll();
 
         /*
         Lego Sets
@@ -76,6 +75,6 @@ public class DbSeeder implements CommandLineRunner {
         );
 
         List<LegoSet> legoSets = Arrays.asList(milleniumFalcon, skyPolice, mindstormsEve, mcLarenSenna);
-        this.mongoTemplate.insertAll(legoSets);
+        this.repository.insert(legoSets);
     }
 }

@@ -3,6 +3,7 @@ package com.workshop.java.spring.unoficial.udemy.mongo.legostore.persistence;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSet;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSetDifficulty;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
@@ -21,4 +22,6 @@ public interface LegoSetRepository extends MongoRepository<LegoSet, String>, Que
 
     @Query("{'reviews.rating' : {$eq: 10}}")
     Collection<LegoSet> findAllByGreatReviews();
+
+    Collection<LegoSet> findAllBy(TextCriteria textCriteria);
 }

@@ -7,6 +7,7 @@ import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSetDif
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.QLegoSet;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.persistence.LegoSetRepository;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -76,5 +77,11 @@ public class LegoStoreController {
 
         Predicate bestBuysFilter = inStockFilter.and(smallDeliveryFeeFilter).and(hasGreatReviews);
         return (Collection<LegoSet>) this.legoSetRepository.findAll(bestBuysFilter);
+    }
+
+    @GetMapping("fullTextSearch/{text}")
+    public Collection<LegoSet> fullTextSearch(@PathVariable String text) {
+        TextCriteria textCriteria = TextCriteria.forDefaultLanguage().matching(text);
+        return this.legoSetRepository.findAllBy(textCriteria);
     }
 }
