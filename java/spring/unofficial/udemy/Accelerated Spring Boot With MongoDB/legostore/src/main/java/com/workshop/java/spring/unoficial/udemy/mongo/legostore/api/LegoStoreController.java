@@ -3,6 +3,7 @@ package com.workshop.java.spring.unoficial.udemy.mongo.legostore.api;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSet;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.model.LegoSetDifficulty;
 import com.workshop.java.spring.unoficial.udemy.mongo.legostore.persistence.LegoSetRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -33,7 +34,8 @@ public class LegoStoreController {
 
     @GetMapping("/all")
     public Collection<LegoSet> all() {
-        return this.legoSetRepository.findAll();
+        Sort sortByThemeAsc = Sort.by("theme").ascending();
+        return this.legoSetRepository.findAll(sortByThemeAsc);
     }
 
     @GetMapping("/{id}")
@@ -43,7 +45,8 @@ public class LegoStoreController {
 
     @GetMapping("/byTheme/{theme}")
     public Collection<LegoSet> byTheme(@PathVariable String theme) {
-        return this.legoSetRepository.findAllByThemeContains(theme);
+        Sort sortByThemeAsc = Sort.by("theme").ascending();
+        return this.legoSetRepository.findAllByThemeContains(theme, sortByThemeAsc);
     }
 
     @GetMapping("hardThatStartWithM")
