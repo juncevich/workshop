@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aabea34d-8886-4c46-9233-5794a0f18cd5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/kafka-consumer-elasticsearch/src/main/java/tutorial3/ElasticSearchConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ConsumerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ConsumerDemoAssignAndSeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ConsumerDemoAssignAndSeek.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ConsumerDemoGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ConsumerDemoGroups.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ConsumerDemoWithThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ConsumerDemoWithThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ProducerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ProducerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ProducerDemoKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ProducerDemoKeys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ProducerDemoWithCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ProducerDemoWithCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial2/TwitterProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-producer-twitter/src/main/java/tutorial2/TwitterProducer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +51,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.workshop.kafka.tutorial1" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConsumerDemoAssignAndSeek">
+  <component name="RunManager" selected="Application.ElasticSearchConsumer">
     <configuration name="ConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.workshop.kafka.tutorial1.ConsumerDemo" />
       <module name="kafka-for-beginners.main" />
@@ -93,6 +100,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ElasticSearchConsumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tutorial3.ElasticSearchConsumer" />
+      <module name="kafka-for-beginners.kafka-consumer-elasticsearch.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tutorial3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProducerDemoKeys" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.workshop.kafka.tutorial1.ProducerDemoKeys" />
       <module name="kafka-for-beginners.main" />
@@ -106,26 +126,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProducerDemoWithCallback" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.workshop.kafka.tutorial1.ProducerDemoWithCallback" />
-      <module name="kafka-for-beginners.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.workshop.kafka.tutorial1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ElasticSearchConsumer" />
         <item itemvalue="Application.ConsumerDemoAssignAndSeek" />
         <item itemvalue="Application.ConsumerDemoWithThread" />
         <item itemvalue="Application.ConsumerDemo" />
         <item itemvalue="Application.ProducerDemoKeys" />
-        <item itemvalue="Application.ProducerDemoWithCallback" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +159,7 @@
       <workItem from="1574887173278" duration="2393000" />
       <workItem from="1575228194726" duration="189000" />
       <workItem from="1575489002555" duration="806000" />
-      <workItem from="1575820374878" duration="1250000" />
+      <workItem from="1575820374878" duration="2709000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit for kafka-for-beginners projects">
       <created>1574606385998</created>
@@ -245,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575821342317</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Refactoring">
+      <created>1575822210800</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1575822210800</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,28 +292,53 @@
     <MESSAGE value="Create kafka producer" />
     <MESSAGE value="Add idempotence of producer" />
     <MESSAGE value="Add high throughput properties to producer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add high throughput properties to producer" />
+    <MESSAGE value="Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="440" y="190" key="#Project_Structure" timestamp="1575823520705">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="190" key="#Project_Structure/0.0.1680.1050@0.0.1680.1050" timestamp="1575823520705" />
     <state x="343" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1575822053454">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="343" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575822053454" />
-    <state x="309" y="126" key="CommitChangelistDialog2" timestamp="1575821342137">
+    <state x="308" y="126" key="CommitChangelistDialog2" timestamp="1575822210580">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="309" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575821342137" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575821345062">
+    <state x="308" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575822210580" />
+    <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1575824471298">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575821345062" />
-    <state x="217" y="147" key="new project wizard" timestamp="1575822042935">
+    <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471298" />
+    <state width="1638" height="295" key="GridCell.Tab.0.center" timestamp="1575824471297">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="217" y="147" key="new project wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1575822042935" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1575821262831">
+    <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471297" />
+    <state width="1638" height="295" key="GridCell.Tab.0.left" timestamp="1575824471296">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1575821262831" />
+    <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471296" />
+    <state width="1638" height="295" key="GridCell.Tab.0.right" timestamp="1575824471298">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471298" />
+    <state x="378" y="187" key="Maven.ArtifactSearchDialog" timestamp="1575823342909">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="378" y="187" key="Maven.ArtifactSearchDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575823342909" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575822214521">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575822214521" />
+    <state x="217" y="147" key="new project wizard" timestamp="1575823257520">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="217" y="147" key="new project wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1575823257520" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1575824213144">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1575824213144" />
   </component>
 </project>
