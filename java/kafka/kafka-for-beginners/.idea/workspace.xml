@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aabea34d-8886-4c46-9233-5794a0f18cd5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kafka-consumer-elasticsearch/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-consumer-elasticsearch/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kafka-consumer-elasticsearch/src/main/java/tutorial3/ElasticSearchConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-consumer-elasticsearch/src/main/java/tutorial3/ElasticSearchConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +149,7 @@
       <workItem from="1574887173278" duration="2393000" />
       <workItem from="1575228194726" duration="189000" />
       <workItem from="1575489002555" duration="806000" />
-      <workItem from="1575820374878" duration="3240000" />
+      <workItem from="1575820374878" duration="4156000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit for kafka-for-beginners projects">
       <created>1574606385998</created>
@@ -255,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575824579675</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add sending to ElasticSearch">
+      <created>1575825285090</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1575825285090</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +298,8 @@
     <MESSAGE value="Add high throughput properties to producer" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Add ElasticSearchConsumer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ElasticSearchConsumer" />
+    <MESSAGE value="Add sending to ElasticSearch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add sending to ElasticSearch" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="190" key="#Project_Structure" timestamp="1575823520705">
@@ -301,10 +310,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="343" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575822053454" />
-    <state x="208" y="126" key="CommitChangelistDialog2" timestamp="1575824579254">
+    <state x="208" y="126" key="CommitChangelistDialog2" timestamp="1575825284914">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="208" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575824579254" />
+    <state x="208" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575825284914" />
     <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1575824471298">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -321,21 +330,21 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471298" />
-    <state x="378" y="187" key="Maven.ArtifactSearchDialog" timestamp="1575823342909">
+    <state x="378" y="187" key="Maven.ArtifactSearchDialog" timestamp="1575825837069">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="378" y="187" key="Maven.ArtifactSearchDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575823342909" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575824581656">
+    <state x="378" y="187" key="Maven.ArtifactSearchDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575825837069" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575825286861">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575824581656" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575825286861" />
     <state x="217" y="147" key="new project wizard" timestamp="1575823257520">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="217" y="147" key="new project wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1575823257520" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1575824213144">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1575826152853">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1575824213144" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1575826152853" />
   </component>
 </project>

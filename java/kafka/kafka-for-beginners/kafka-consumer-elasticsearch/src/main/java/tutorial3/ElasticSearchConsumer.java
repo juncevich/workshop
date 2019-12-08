@@ -1,5 +1,6 @@
 package tutorial3;
 
+import com.google.gson.JsonParser;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -33,18 +34,18 @@ public class ElasticSearchConsumer {
         RestHighLevelClient client = createClient();
 
 
-
-
         KafkaConsumer<String, String> consumer = createConsumer("twitter_tweets");
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
             records.forEach(
                     r -> {
-                        String jsonString =r.value();
-                        IndexRequest indexRequest = new IndexRequest("twitter", "tweets").source(jsonString, XContentType.JSON);
+                        String jsonString = r.value();
+                        String id = extractIdFromTweet(r.value());
+                        IndexRequest indexRequest = new IndexRequest("twitter", "tweets", id).source(jsonString, XContentType.JSON);
 
                         IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
-                        String id = response.getId();
+                        logger.info(response.getId());
+//                        String id = response.getId();
                         logger.info(id);
                         try {
                             Thread.sleep(1000);
@@ -79,6 +80,13 @@ public class ElasticSearchConsumer {
         KafkaConsumer<String, String> stringStringKafkaConsumer = new KafkaConsumer<>(properties);
         stringStringKafkaConsumer.subscribe(Collections.singleton(topic));
         return stringStringKafkaConsumer;
+    }
+
+    private static JsonParser jsonParser = new JsonParser();
+
+    private static String extractIdFromTweet(String tweetJson) {
+        return jsonParser.parse(tweetJson).getAsJsonObject().get("id_str").getAsString();
+
     }
 
 }
