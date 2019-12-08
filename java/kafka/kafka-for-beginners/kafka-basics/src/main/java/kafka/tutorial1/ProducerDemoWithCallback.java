@@ -1,18 +1,15 @@
-package com.workshop.kafka.tutorial1;
+package kafka.tutorial1;
 
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
-import java.util.concurrent.ExecutionException;
 
-public class ProducerDemoKeys {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Logger logger = LoggerFactory.getLogger(ProducerDemoKeys.class);
+public class ProducerDemoWithCallback {
+    public static void main(String[] args) {
+        Logger logger = LoggerFactory.getLogger(ProducerDemoWithCallback.class);
 
         Properties properties = new Properties();
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
@@ -21,12 +18,9 @@ public class ProducerDemoKeys {
 
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
-        for (int i = 0; i < 100; i++) {
-            String topic = "second-topic";
-            String value = "hello world " + i + " !";
-            String key = "id_" + i;
-            ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topic, key, value);
-            logger.info("Key: {}", key);
+        for (int i = 0; i< 1000000000; i++ ) {
+            ProducerRecord<String, String> producerRecord = new ProducerRecord<>("first-topic", "hello world " + i + " !");
+
             producer.send(producerRecord, (metadata, exception) -> {
                 if (exception == null) {
                     logger.info("Received new metadata.\n" +
@@ -37,7 +31,7 @@ public class ProducerDemoKeys {
                 } else {
                     logger.error("Error while producing: ", exception);
                 }
-            }).get();
+            });
         }
         producer.flush();
         producer.close();

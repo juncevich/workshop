@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="aabea34d-8886-4c46-9233-5794a0f18cd5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ConsumerDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ConsumerDemoAssignAndSeek.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ConsumerDemoAssignAndSeek.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ConsumerDemoGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ConsumerDemoGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ConsumerDemoWithThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ConsumerDemoWithThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ProducerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ProducerDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ProducerDemoKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ProducerDemoKeys.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial1/ProducerDemoWithCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-basics/src/main/java/kafka/tutorial1/ProducerDemoWithCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workshop/kafka/tutorial2/TwitterProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-producer-twitter/src/main/java/tutorial2/TwitterProducer.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="kafka-for-beginners" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1U4BhcX7CYR6Fujl4JRBtNsSEqP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.workshop.kafka.tutorial1" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ConsumerDemoAssignAndSeek">
+    <configuration name="ConsumerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.workshop.kafka.tutorial1.ConsumerDemo" />
+      <module name="kafka-for-beginners.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.workshop.kafka.tutorial1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConsumerDemoAssignAndSeek" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.workshop.kafka.tutorial1.ConsumerDemoAssignAndSeek" />
+      <module name="kafka-for-beginners.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.workshop.kafka.tutorial1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConsumerDemoWithThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.workshop.kafka.tutorial1.ConsumerDemoWithThread" />
+      <module name="kafka-for-beginners.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.workshop.kafka.tutorial1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProducerDemoKeys" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.workshop.kafka.tutorial1.ProducerDemoKeys" />
+      <module name="kafka-for-beginners.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.workshop.kafka.tutorial1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProducerDemoWithCallback" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.workshop.kafka.tutorial1.ProducerDemoWithCallback" />
+      <module name="kafka-for-beginners.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.workshop.kafka.tutorial1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ConsumerDemoAssignAndSeek" />
+        <item itemvalue="Application.ConsumerDemoWithThread" />
+        <item itemvalue="Application.ConsumerDemo" />
+        <item itemvalue="Application.ProducerDemoKeys" />
+        <item itemvalue="Application.ProducerDemoWithCallback" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aabea34d-8886-4c46-9233-5794a0f18cd5" name="Default Changelist" comment="" />
+      <created>1574606107210</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574606107210</updated>
+      <workItem from="1574606111294" duration="7268000" />
+      <workItem from="1574887173278" duration="2393000" />
+      <workItem from="1575228194726" duration="189000" />
+      <workItem from="1575489002555" duration="806000" />
+      <workItem from="1575820374878" duration="1250000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit for kafka-for-beginners projects">
+      <created>1574606385998</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574606385998</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add kafka demo producer">
+      <created>1574608102358</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574608102358</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add kafka demo producer with callback">
+      <created>1574609001978</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574609001978</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add kafka demo producer with key">
+      <created>1574609738237</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574609738237</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add kafka demo consumer demo">
+      <created>1574610972293</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574610972293</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add kafka demo consumer demo groups">
+      <created>1574611294149</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574611294149</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add kafka demo consumer demo with threads">
+      <created>1574617461699</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574617461699</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add kafka demo consumer demo assign and seek">
+      <created>1574618232694</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574618232694</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add Java Twitter client dependency">
+      <created>1574887303539</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1574887303539</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Create Kafka client">
+      <created>1574890037120</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574890037120</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Create kafka producer">
+      <created>1575490889101</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575490889101</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add idempotence of producer">
+      <created>1575821064757</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1575821064757</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add high throughput properties to producer">
+      <created>1575821342317</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1575821342317</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit for kafka-for-beginners projects" />
+    <MESSAGE value="Add kafka demo producer" />
+    <MESSAGE value="Add kafka demo producer with callback" />
+    <MESSAGE value="Add kafka demo producer with key" />
+    <MESSAGE value="Add kafka demo consumer demo" />
+    <MESSAGE value="Add kafka demo consumer demo groups" />
+    <MESSAGE value="Add kafka demo consumer demo with threads" />
+    <MESSAGE value="Add kafka demo consumer demo assign and seek" />
+    <MESSAGE value="Add Java Twitter client dependency" />
+    <MESSAGE value="Create Kafka client" />
+    <MESSAGE value="Create kafka producer" />
+    <MESSAGE value="Add idempotence of producer" />
+    <MESSAGE value="Add high throughput properties to producer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add high throughput properties to producer" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="343" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1575822053454">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="343" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575822053454" />
+    <state x="309" y="126" key="CommitChangelistDialog2" timestamp="1575821342137">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="309" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575821342137" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575821345062">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575821345062" />
+    <state x="217" y="147" key="new project wizard" timestamp="1575822042935">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="217" y="147" key="new project wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1575822042935" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1575821262831">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1575821262831" />
+  </component>
+</project>
