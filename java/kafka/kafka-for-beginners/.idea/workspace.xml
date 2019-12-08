@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aabea34d-8886-4c46-9233-5794a0f18cd5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/kafka-consumer-elasticsearch/src/main/java/tutorial3/ElasticSearchConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kafka-consumer-elasticsearch/src/main/java/tutorial3/ElasticSearchConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-consumer-elasticsearch/src/main/java/tutorial3/ElasticSearchConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +148,7 @@
       <workItem from="1574887173278" duration="2393000" />
       <workItem from="1575228194726" duration="189000" />
       <workItem from="1575489002555" duration="806000" />
-      <workItem from="1575820374878" duration="2709000" />
+      <workItem from="1575820374878" duration="3240000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit for kafka-for-beginners projects">
       <created>1574606385998</created>
@@ -259,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575822210800</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add ElasticSearchConsumer">
+      <created>1575824579675</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575824579675</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +289,8 @@
     <MESSAGE value="Add idempotence of producer" />
     <MESSAGE value="Add high throughput properties to producer" />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="Add ElasticSearchConsumer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ElasticSearchConsumer" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="190" key="#Project_Structure" timestamp="1575823520705">
@@ -304,10 +301,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="343" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575822053454" />
-    <state x="308" y="126" key="CommitChangelistDialog2" timestamp="1575822210580">
+    <state x="208" y="126" key="CommitChangelistDialog2" timestamp="1575824579254">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="308" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575822210580" />
+    <state x="208" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575824579254" />
     <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1575824471298">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -328,10 +325,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="378" y="187" key="Maven.ArtifactSearchDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575823342909" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575822214521">
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575824581656">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575822214521" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575824581656" />
     <state x="217" y="147" key="new project wizard" timestamp="1575823257520">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
