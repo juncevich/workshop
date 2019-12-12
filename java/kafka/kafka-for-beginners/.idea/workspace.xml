@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aabea34d-8886-4c46-9233-5794a0f18cd5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kafka-consumer-elasticsearch/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-consumer-elasticsearch/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kafka-consumer-elasticsearch/src/main/java/tutorial3/ElasticSearchConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/kafka-consumer-elasticsearch/src/main/java/tutorial3/ElasticSearchConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +147,7 @@
       <workItem from="1574887173278" duration="2393000" />
       <workItem from="1575228194726" duration="189000" />
       <workItem from="1575489002555" duration="806000" />
-      <workItem from="1575820374878" duration="4156000" />
+      <workItem from="1575820374878" duration="4297000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit for kafka-for-beginners projects">
       <created>1574606385998</created>
@@ -263,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575825285090</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add idempotence">
+      <created>1575826404304</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1575826404304</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +304,8 @@
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Add ElasticSearchConsumer" />
     <MESSAGE value="Add sending to ElasticSearch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add sending to ElasticSearch" />
+    <MESSAGE value="Add idempotence" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add idempotence" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="190" key="#Project_Structure" timestamp="1575823520705">
@@ -310,34 +316,34 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="343" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575822053454" />
-    <state x="208" y="126" key="CommitChangelistDialog2" timestamp="1575825284914">
+    <state x="208" y="126" key="CommitChangelistDialog2" timestamp="1575826404105">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="208" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575825284914" />
-    <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1575824471298">
+    <state x="208" y="126" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1575826404105" />
+    <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1575827677657">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471298" />
-    <state width="1638" height="295" key="GridCell.Tab.0.center" timestamp="1575824471297">
+    <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1575827677657" />
+    <state width="1638" height="295" key="GridCell.Tab.0.center" timestamp="1575827677656">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471297" />
-    <state width="1638" height="295" key="GridCell.Tab.0.left" timestamp="1575824471296">
+    <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1575827677656" />
+    <state width="1638" height="295" key="GridCell.Tab.0.left" timestamp="1575827677655">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471296" />
-    <state width="1638" height="295" key="GridCell.Tab.0.right" timestamp="1575824471298">
+    <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1575827677655" />
+    <state width="1638" height="295" key="GridCell.Tab.0.right" timestamp="1575827677656">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1575824471298" />
+    <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1575827677656" />
     <state x="378" y="187" key="Maven.ArtifactSearchDialog" timestamp="1575825837069">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="378" y="187" key="Maven.ArtifactSearchDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1575825837069" />
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575825286861">
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2" timestamp="1575826406238">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575825286861" />
+    <state x="440" y="265" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1575826406238" />
     <state x="217" y="147" key="new project wizard" timestamp="1575823257520">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
