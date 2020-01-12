@@ -1,0 +1,5 @@
+rootProject.name = 'kafka-for-beginners'
+include 'kafka-basics'
+include 'kafka-producer-twitter'
+include 'kafka-consumer-elasticsearch'
+
