@@ -1,12 +1,13 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+
 import {
     BackgroundImageContainer,
     ContentContainer,
     ContentSubtitle,
     ContentTitle,
     MenuItemContainer
-} from "./menu-item.styles";
+} from './menu-item.styles';
 
 const MenuItem = ({title, imageUrl, size, history, linkUrl, match}) => (
     <MenuItemContainer
@@ -25,4 +26,3 @@ const MenuItem = ({title, imageUrl, size, history, linkUrl, match}) => (
 );
 
 export default withRouter(MenuItem);
-
