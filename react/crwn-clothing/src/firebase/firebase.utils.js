@@ -56,6 +56,15 @@ export const convertCollectionsSnapshotToMap = collections => {
     }, {})
 };
 
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unSubscribe = auth.onAuthStateChanged(userAuth => {
+            unSubscribe();
+            resolve(userAuth)
+        }, reject)
+    })
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
@@ -68,6 +77,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
     });
     return await batch.commit();
 };
+
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({prompt: 'select_account'});
