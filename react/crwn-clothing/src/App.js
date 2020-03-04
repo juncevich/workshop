@@ -17,10 +17,10 @@ class App extends React.Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-
         const {checkUserSession} = this.props;
         checkUserSession();
     }
+
 
     componentWillUnmount() {
         this.unsubscribeFromAuth();
@@ -45,11 +45,14 @@ class App extends React.Component {
 
 
 const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser,
+    currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
     checkUserSession: () => dispatch(checkUserSession())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
