@@ -3,3 +3,12 @@ spring:
     name: intro-to-spring-boot
 server:
   port: 0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

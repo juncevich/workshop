@@ -35,6 +35,7 @@ dependencies {
     }
     implementation("org.springdoc:springdoc-openapi-webmvc-core:1.3.0")
     implementation("org.springdoc:springdoc-openapi-ui:1.3.0")
+    implementation("io.micrometer:micrometer-registry-prometheus")
 
 }
 
