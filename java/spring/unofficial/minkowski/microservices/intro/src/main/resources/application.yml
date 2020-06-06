@@ -1,9 +1,9 @@
 spring:
   application:
     name: intro-to-spring-boot
-server:
-  port: 0
-
+  output:
+    ansi:
+      enabled: always
 management:
   endpoints:
     web:
