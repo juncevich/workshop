@@ -33,6 +33,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.3.0")
+    implementation("org.springdoc:springdoc-openapi-ui:1.3.0")
+
 }
 
 tasks.withType<Test> {
