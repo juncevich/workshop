@@ -28,7 +28,7 @@ import static org.springframework.restdocs.snippet.Attributes.key;
 import org.springframework.util.StringUtils;
 
 @ExtendWith(RestDocumentationExtension.class)
-@AutoConfigureRestDocs
+@AutoConfigureRestDocs(uriScheme = "https", uriHost = "dev.springframework", uriPort = 80)
 @WebMvcTest(BeerController.class)
 class BeerControllerTest {
 
