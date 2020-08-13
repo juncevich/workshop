@@ -1,4 +1,4 @@
 package guru.springframework.msscbeerservice.web.controller;
 
-public class NotFoundException extends RuntimeException {
+public class BeerNotFound extends RuntimeException {
 }
