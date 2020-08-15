@@ -30,6 +30,7 @@ import java.util.UUID;
  */
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @Entity
 public class BeerInventory extends BaseEntity {

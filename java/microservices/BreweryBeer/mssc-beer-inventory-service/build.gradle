@@ -30,11 +30,11 @@ dependencies {
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
