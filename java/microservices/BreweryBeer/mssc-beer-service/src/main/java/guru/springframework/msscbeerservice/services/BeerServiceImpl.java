@@ -17,6 +17,7 @@ public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper     beerMapper;
 
+
     @Override
     public BeerDto getById(UUID beerId) {
         return beerRepository.findById(beerId)
