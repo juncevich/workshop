@@ -14,35 +14,28 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package guru.springframework.msscbeer_inventory_service.domain;
 
-import lombok.*;
+package guru.springframework.mssc_beer_order_service.web.model;
 
-import javax.persistence.Entity;
-import java.sql.Timestamp;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
-/**
- * Created by jt on 2019-01-26.
- */
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@Entity
-public class BeerInventory extends BaseEntity {
+@EqualsAndHashCode(callSuper = true)
+public class CustomerDto extends BaseItem {
 
-    private UUID    beerId;
-    private String  upc;
-    private Integer quantityOnHand = 0;
+    private String name;
 
     @Builder
-    public BeerInventory(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, UUID beerId,
-                         String upc, Integer quantityOnHand) {
+    public CustomerDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate, String name) {
         super(id, version, createdDate, lastModifiedDate);
-        this.beerId = beerId;
-        this.upc = upc;
-        this.quantityOnHand = quantityOnHand;
+        this.name = name;
     }
+
 }

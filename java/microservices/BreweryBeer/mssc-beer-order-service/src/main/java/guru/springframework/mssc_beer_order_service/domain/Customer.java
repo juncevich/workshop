@@ -14,12 +14,15 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package guru.springframework.msscbeer_inventory_service.domain;
+package guru.springframework.mssc_beer_order_service.domain;
 
 import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.sql.Timestamp;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -31,18 +34,21 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BeerInventory extends BaseEntity {
+public class Customer extends BaseEntity {
 
-    private UUID    beerId;
-    private String  upc;
-    private Integer quantityOnHand = 0;
+    private String         customerName;
+    @Column(length = 36, columnDefinition = "varchar")
+    private UUID           apiKey;
+    @OneToMany(mappedBy = "customer")
+    private Set<BeerOrder> beerOrders;
 
     @Builder
-    public BeerInventory(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, UUID beerId,
-                         String upc, Integer quantityOnHand) {
+    public Customer(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, String customerName,
+                    UUID apiKey, Set<BeerOrder> beerOrders) {
         super(id, version, createdDate, lastModifiedDate);
-        this.beerId = beerId;
-        this.upc = upc;
-        this.quantityOnHand = quantityOnHand;
+        this.customerName = customerName;
+        this.apiKey = apiKey;
+        this.beerOrders = beerOrders;
     }
+
 }

@@ -14,35 +14,22 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package guru.springframework.msscbeer_inventory_service.domain;
 
-import lombok.*;
+package guru.springframework.mssc_beer_order_service.services;
 
-import javax.persistence.Entity;
-import java.sql.Timestamp;
+
+import guru.springframework.mssc_beer_order_service.web.model.BeerOrderDto;
+import guru.springframework.mssc_beer_order_service.web.model.BeerOrderPagedList;
+import org.springframework.data.domain.Pageable;
+
 import java.util.UUID;
 
-/**
- * Created by jt on 2019-01-26.
- */
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-public class BeerInventory extends BaseEntity {
+public interface BeerOrderService {
+    BeerOrderPagedList listOrders(UUID customerId, Pageable pageable);
 
-    private UUID    beerId;
-    private String  upc;
-    private Integer quantityOnHand = 0;
+    BeerOrderDto placeOrder(UUID customerId, BeerOrderDto beerOrderDto);
 
-    @Builder
-    public BeerInventory(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, UUID beerId,
-                         String upc, Integer quantityOnHand) {
-        super(id, version, createdDate, lastModifiedDate);
-        this.beerId = beerId;
-        this.upc = upc;
-        this.quantityOnHand = quantityOnHand;
-    }
+    BeerOrderDto getOrderById(UUID customerId, UUID orderId);
+
+    void pickupOrder(UUID customerId, UUID orderId);
 }
