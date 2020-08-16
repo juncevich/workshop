@@ -16,7 +16,10 @@
  */
 package guru.springframework.msscbeer_inventory_service.domain;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import java.sql.Timestamp;
@@ -27,8 +30,6 @@ import java.util.UUID;
  */
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class BeerInventory extends BaseEntity {
