@@ -70,10 +70,17 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
-    public BeerDto getById(UUID beerId) {
-        return beerRepository.findById(beerId)
-                .map(beerMapper::entityToDto)
-                .orElseThrow(BeerNotFound::new);
+    public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
+        if (showInventoryOnHand) {
+            return beerRepository.findById(beerId)
+                    .map(beerMapper::entityToDtoWithInventory)
+                    .orElseThrow(BeerNotFound::new);
+        } else {
+            return beerRepository.findById(beerId)
+                    .map(beerMapper::entityToDto)
+                    .orElseThrow(BeerNotFound::new);
+        }
+
     }
 
     @Override
