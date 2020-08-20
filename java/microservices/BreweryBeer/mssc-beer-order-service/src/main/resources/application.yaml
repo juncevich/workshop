@@ -3,3 +3,15 @@ logging:
     guru: debug
 server:
   port: 8081
+spring:
+  application:
+    name: order-service
+  datasource:
+    initialization-mode: embedded
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+sfg:
+  brewery:
+    beer-service-host: http://localhost:8080

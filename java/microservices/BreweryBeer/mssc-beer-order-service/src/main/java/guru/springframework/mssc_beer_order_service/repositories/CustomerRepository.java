@@ -18,6 +18,7 @@ package guru.springframework.mssc_beer_order_service.repositories;
 
 import guru.springframework.mssc_beer_order_service.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,6 +26,8 @@ import java.util.UUID;
 /**
  * Created by jt on 2019-01-26.
  */
+@Repository
 public interface CustomerRepository extends JpaRepository<Customer, UUID> {
+
     List<Customer> findAllByCustomerNameLike(String customerName);
 }
