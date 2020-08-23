@@ -4,6 +4,10 @@ sfg:
 spring:
   datasource:
     initialization-mode: embedded
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
   cache:
     jcache:
       config: classpath:ehcache.xml
+  h2:
+    console:
+      enabled: true

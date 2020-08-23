@@ -46,6 +46,7 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	compile 'com.h2database:h2:1.4.200'
+	compile 'org.postgresql:postgresql:42.1.4'
 	asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 	testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
