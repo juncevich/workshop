@@ -5,6 +5,6 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/beerservice
-    username: beer_service_user
-    password: beer_service_password
+    url: jdbc:postgresql://localhost:5432/beerorderservice
+    username: beer_order_user
+    password: beer_order_password
