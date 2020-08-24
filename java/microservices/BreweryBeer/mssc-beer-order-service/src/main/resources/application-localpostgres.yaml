@@ -3,7 +3,9 @@ spring:
     database: postgresql
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
   datasource:
     url: jdbc:postgresql://localhost:5432/beerorderservice
     username: beer_order_user
