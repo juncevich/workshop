@@ -2,11 +2,18 @@ spring:
   jpa:
     database: postgresql
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
   datasource:
+    hikari:
+      maximum-pool-size: 20
     url: jdbc:postgresql://localhost:5432/beerservice
     username: beer_service_user
     password: beer_service_password
+logging:
+  level:
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    org.hibernate.sql: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
