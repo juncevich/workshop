@@ -1,4 +1,9 @@
 spring:
+  flyway:
+    enabled: true
+    password: example
+    user: test
+    url: jdbc:postgresql://localhost:5432/
   jpa:
     database: postgresql
     hibernate:
@@ -8,7 +13,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
   datasource:
     hikari:
-      maximum-pool-size: 20
+      maximum-pool-size: 5
     url: jdbc:postgresql://localhost:5432/beerservice
     username: beer_service_user
     password: beer_service_password
