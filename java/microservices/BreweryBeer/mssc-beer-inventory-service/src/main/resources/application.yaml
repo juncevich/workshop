@@ -4,5 +4,8 @@ logging:
 server:
   port: 8082
 spring:
+  artemis:
+    user: artemis
+    password: simetraehcapa
   datasource:
     initialization-mode: embedded

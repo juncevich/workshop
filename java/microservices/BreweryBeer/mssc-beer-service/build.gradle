@@ -38,7 +38,8 @@ dependencies {
 	implementation 'javax.cache:cache-api'
 	implementation 'org.ehcache:ehcache'
 	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
-
+	implementation 'org.springframework.boot:spring-boot-starter-artemis'
+	
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
@@ -51,6 +52,7 @@ dependencies {
 	asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 	testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc'
 	compile "org.flywaydb:flyway-core:6.5.5"
+
 }
 
 test {

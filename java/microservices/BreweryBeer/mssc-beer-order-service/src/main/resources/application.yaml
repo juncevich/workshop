@@ -4,6 +4,9 @@ logging:
 server:
   port: 8081
 spring:
+  artemis:
+    user: artemis
+    password: simetraehcapa
   application:
     name: order-service
   datasource:

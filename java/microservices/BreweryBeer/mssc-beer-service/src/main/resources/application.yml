@@ -2,6 +2,9 @@ sfg:
   brewery:
     beer-inventory-service-host: http://localhost:8082
 spring:
+  artemis:
+    user: artemis
+    password: simetraehcapa
   datasource:
     initialization-mode: embedded
     url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
