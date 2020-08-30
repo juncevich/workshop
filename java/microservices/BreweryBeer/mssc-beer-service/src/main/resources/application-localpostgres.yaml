@@ -19,6 +19,7 @@ spring:
     password: beer_service_password
 logging:
   level:
-    com.zaxxer.hikari.HikariConfig: DEBUG
-    org.hibernate.sql: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    guru.springframework: DEBUG
+#    com.zaxxer.hikari.HikariConfig: DEBUG
+#    org.hibernate.sql: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
