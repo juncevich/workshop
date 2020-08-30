@@ -1,6 +1,6 @@
 package guru.springframework.msscbeerservice.services.brewing;
 
-import guru.springframework.msscbeerservice.events.BrewBeerEvent;
+import guru.springframework.commons.events.BrewBeerEvent;
 import guru.springframework.msscbeerservice.mappers.BeerMapper;
 import guru.springframework.msscbeerservice.repositories.BeerRepository;
 import guru.springframework.msscbeerservice.services.inventory.BeerInventoryService;
@@ -33,7 +33,7 @@ public class BrewingService {
             log.debug("Inventory is: " + invQOH);
 
             if (beer.getMinOnHand() >= invQOH) {
-                final var beerDto       = beerMapper.entityToDto(beer);
+                final var beerDto       = beerMapper.entityToCommonDto(beer);
                 final var brewBeerEvent = new BrewBeerEvent(beerDto);
                 jmsTemplate.convertAndSend(BREWING_REQUEST_QUEUE, brewBeerEvent);
             }

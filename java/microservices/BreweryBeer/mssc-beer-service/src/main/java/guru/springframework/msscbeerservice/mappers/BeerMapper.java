@@ -11,6 +11,8 @@ public interface BeerMapper {
 
     BeerDto entityToDto(Beer beer);
 
+    guru.springframework.commons.events.BeerDto entityToCommonDto(Beer beer);
+
     BeerDto entityToDtoWithInventory(Beer beer);
 
     Beer dtoToEntity(BeerDto beerDto);
