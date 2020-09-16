@@ -1,4 +1,4 @@
-package guru.springframework.msscbeerservice.web.model;
+package guru.springframework.commons;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;

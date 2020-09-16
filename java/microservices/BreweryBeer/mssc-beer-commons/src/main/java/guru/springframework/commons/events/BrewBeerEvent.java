@@ -1,5 +1,6 @@
 package guru.springframework.commons.events;
 
+import guru.springframework.commons.BeerDto;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
