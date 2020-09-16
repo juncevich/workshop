@@ -1,14 +1,60 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.3.2.RELEASE'
 }
 
 group 'guru.springframework'
-version '1.0-SNAPSHOT'
+version '1.0'
+sourceCompatibility = '14'
 
 repositories {
     mavenCentral()
+    mavenLocal()
+}
+
+
+
+//allprojects {
+//    repositories {
+//        mavenCentral()
+//    }
+//    apply plugin: 'java-library'
+//    group 'guru.springframework'
+//    version '1.0'
+//    sourceCompatibility = '14'
+//
+//    dependencies{
+//        implementation 'org.springframework.boot:spring-boot-starter-web'
+//        testCompile group: 'junit', name: 'junit', version: '4.12'
+//    }
+//}
+
+dependencyManagement {
+    dependencies {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:2.3.3.RELEASE")
+        }
+//        imports {
+//            mavenBom("org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE")
+//        }
+        dependency("guru.springframework:mssc-beer-commons:1.1")
+        rootProject.subprojects.each {
+            dependency(group: it.group, name: it.name, version: it.version)
+        }
+    }
+}
+
+publishing {
+    publications {
+
+        mavenBom(MavenPublication) {
+        }
+    }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'guru.springframework:mssc-beer-commons'
 }

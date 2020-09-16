@@ -17,6 +17,15 @@
 
 package guru.springframework.mssc_beer_order_service.domain;
 
-public enum OrderStatusEnum {
-    NEW, READY, PICKED_UP
+public enum BeerOrderStatusEnum {
+    NEW,
+    VALIDATED,
+    VALIDATION_EXCEPTION,
+    ALLOCATED,
+    ALLOCATED_EXCEPTION,
+    PENDING_INVENTORY,
+    READY,
+    PICKED_UP,
+    DELIVERED,
+    DELIVERY_EXCEPTION;
 }
