@@ -1,4 +1,4 @@
-package guru.springframework.commons.events;
+package guru.springframework.commons;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
