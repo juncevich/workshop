@@ -1,5 +1,6 @@
 package com.appdeveloperblog.ws.api.resourceserver.security;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,6 +11,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/users").hasAnyAuthority("SCOPE_profile")
                 .anyRequest().authenticated()
                 .and()
                 .oauth2ResourceServer().jwt();
