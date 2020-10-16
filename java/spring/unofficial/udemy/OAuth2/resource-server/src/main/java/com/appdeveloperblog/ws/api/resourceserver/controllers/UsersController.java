@@ -15,7 +15,7 @@ public class UsersController {
     }
 
     //    @Secured("ROLE_developer")
-    @PreAuthorize("hasAuthority('ROLE_developer') or #id==#jwt.subject")
+    @PreAuthorize("hasAuthority('ROLE_developer') and #id==#jwt.subject")
 //    @PostAuthorize
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
