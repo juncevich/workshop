@@ -1,5 +1,5 @@
 POST http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=authorization_code&client_id=photo-app-code-flow-client&client_secret=6bc7863e-4dd8-4d7d-9951-e4213b18b6ff&code=962c9077-105b-40f5-b554-86620406a86d.e96ac0dc-82d8-46af-9703-98a5c406692c.50d08e16-4407-4b49-8eea-cf7341895723&redirect_uri=http://localhost:8083/callback
+grant_type=authorization_code&client_id=photo-app-code-flow-client&client_secret=6bc7863e-4dd8-4d7d-9951-e4213b18b6ff&code=d6384d2f-2a8e-4cdf-945f-3ec356441b1b.e96ac0dc-82d8-46af-9703-98a5c406692c.50d08e16-4407-4b49-8eea-cf7341895723&redirect_uri=http://localhost:8083/callback
 ###

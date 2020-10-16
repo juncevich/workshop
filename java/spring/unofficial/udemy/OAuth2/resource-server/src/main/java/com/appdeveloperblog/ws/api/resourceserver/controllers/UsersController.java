@@ -27,7 +27,7 @@ public class UsersController {
     @GetMapping("/{id}")
     public UserRest getUser(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
         return UserRest.builder()
-                .id("")
+                .id(id)
                 .firstName("Test First Name")
                 .lastName("Test Last Name")
                 .build();
