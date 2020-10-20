@@ -22,7 +22,7 @@ spring:
             - RemoveRequestHeader=Cookie
 
         - id: photos
-          uri: http://localhost:8090
+          uri: http://localhost:8092
           predicates:
             - Path=/photos
             - Method=GET
