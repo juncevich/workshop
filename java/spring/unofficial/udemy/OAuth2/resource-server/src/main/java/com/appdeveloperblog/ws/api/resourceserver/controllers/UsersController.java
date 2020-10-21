@@ -1,7 +1,7 @@
 package com.appdeveloperblog.ws.api.resourceserver.controllers;
 
 import com.appdeveloperblog.ws.api.resourceserver.response.UserRest;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,12 +9,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/users")
 public class UsersController {
 
-    @Autowired
-    private Environment environment;
+    private final Environment environment;
 
     @GetMapping("/status/check")
     public String status() {
