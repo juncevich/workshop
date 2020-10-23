@@ -1,17 +1,27 @@
 package com.appdeveloperblog.ws.clients.controllers;
 
 import com.appdeveloperblog.ws.clients.response.AlbumRest;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.AbstractOAuth2Token;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
+import static java.util.Optional.ofNullable;
+
 @Controller
 public class AlbumsController {
 
     @GetMapping("/albums")
-    public String getAlbums(Model model) {
+    public String getAlbums(Model model, @AuthenticationPrincipal OidcUser principal) {
+
+        System.out.println("Principal = " + principal);
+        ofNullable(principal.getIdToken())
+                .map(AbstractOAuth2Token::getTokenValue)
+                .ifPresent(tokenValue -> System.out.println("idTokenValue = " + tokenValue));
         AlbumRest album1 = new AlbumRest();
         album1.setAlbumId("albumIdHere");
         album1.setUserId("1");
