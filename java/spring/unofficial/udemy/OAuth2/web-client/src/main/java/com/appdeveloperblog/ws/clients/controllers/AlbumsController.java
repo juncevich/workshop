@@ -54,7 +54,7 @@ public class AlbumsController {
         headers.add("Authorization", "Bearer " + accessTokenValue);
 
         HttpEntity<List<AlbumRest>> httpEntity = new HttpEntity<>(headers);
-        String url = "http://localhost:8082/albums";
+        String url = "http://localhost:8091/albums";
         final ResponseEntity<List<AlbumRest>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, httpEntity, new ParameterizedTypeReference<List<AlbumRest>>() {
         });
 //        AlbumRest album1 = new AlbumRest();
