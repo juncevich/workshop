@@ -14,4 +14,12 @@ spring:
               - roles
             authorization-grant-type: authorization_code
             redirect-uri: http://localhost:8087/login/oauth2/code/webclient
+        provider:
+          webclient:
+            authorization-uri: http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/auth
+            token-uri: http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/token
+            jwk-set-uri: http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/certs
+            user-info-uri: http://localhost:8080/auth/realms/myrealm/protocol/openid-connect/userinfo
+            user-nameattribute: preferred_username
+
 
