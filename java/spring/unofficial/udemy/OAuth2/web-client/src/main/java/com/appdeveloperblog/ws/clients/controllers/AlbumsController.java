@@ -1,8 +1,15 @@
 package com.appdeveloperblog.ws.clients.controllers;
 
 import com.appdeveloperblog.ws.clients.response.AlbumRest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.AbstractOAuth2Token;
+import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +22,29 @@ import static java.util.Optional.ofNullable;
 @Controller
 public class AlbumsController {
 
+    @Autowired
+    OAuth2AuthorizedClientService oAuth2ClientService;
+
     @GetMapping("/albums")
     public String getAlbums(Model model, @AuthenticationPrincipal OidcUser principal) {
+        final Authentication      authentication      = SecurityContextHolder.getContext().getAuthentication();
+        OAuth2AuthenticationToken authenticationToken = (OAuth2AuthenticationToken) authentication;
+
+        final OAuth2AuthorizedClient oAuth2AuthorizedClient =
+                oAuth2ClientService.loadAuthorizedClient(authenticationToken.getAuthorizedClientRegistrationId(),
+                        authenticationToken.getName());
+
+        final String accessTokenValue = oAuth2AuthorizedClient.getAccessToken().getTokenValue();
+        System.out.println("jwtAccessToken = " + accessTokenValue);
 
         System.out.println("Principal = " + principal);
-        ofNullable(principal.getIdToken())
+        final OidcIdToken oauthToken = principal.getIdToken();
+        ofNullable(oauthToken)
                 .map(AbstractOAuth2Token::getTokenValue)
                 .ifPresent(tokenValue -> System.out.println("idTokenValue = " + tokenValue));
+
+
+
         AlbumRest album1 = new AlbumRest();
         album1.setAlbumId("albumIdHere");
         album1.setUserId("1");
