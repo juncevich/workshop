@@ -8,6 +8,7 @@ class ResourceServerApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//empty method
 	}
 
 }
