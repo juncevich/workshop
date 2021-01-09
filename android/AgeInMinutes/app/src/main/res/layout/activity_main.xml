@@ -7,7 +7,8 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:background="@color/backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,4 +19,32 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/head2"
+        android:textColor="#844046"
+        android:padding="10dp"
+        android:background="@color/ageTextBackgroundColor"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/head3"
+        android:textColor="@color/textColor"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Date"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
 </LinearLayout>
