@@ -51,7 +51,7 @@
         android:textColor="#929292"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:backgroundTint="@color/lightGreyTextColor" />
+        />
 
     <TextView
         android:id="@+id/tvSelectedDate"
