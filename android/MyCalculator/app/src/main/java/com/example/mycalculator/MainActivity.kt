@@ -2,7 +2,8 @@ package com.example.mycalculator
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +13,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onDigit(view: View) {
-        Toast.makeText(this, "Button works", Toast.LENGTH_SHORT).show()
+        val tvInput: TextView = findViewById(R.id.tvInput)
+        tvInput.append((view as Button).text)
+    }
+
+    fun onCLear(view: View) {
+        val tvInput: TextView = findViewById(R.id.tvInput)
+        tvInput.text = ""
     }
 }
