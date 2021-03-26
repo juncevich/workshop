@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.piomin.samples</groupId>
-    <artifactId>sample-springboot-dekorate-istio</artifactId>
+    <artifactId>test</artifactId>
     <version>1.0</version>
 
     <parent>
@@ -30,12 +30,12 @@
         <dependency>
             <groupId>io.dekorate</groupId>
             <artifactId>kubernetes-spring-starter</artifactId>
-            <version>0.12.2</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>io.dekorate</groupId>
             <artifactId>kubernetes-annotations</artifactId>
-            <version>0.12.2</version>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 
@@ -55,7 +55,16 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>2.3.0</version>
+                <version>2.4.0</version>
+                <configuration>
+                    <to>
+                        <image>alexunc/test</image>
+                        <tags>
+                            <tag>1.0</tag>
+                            <tag>latest</tag>
+                        </tags>
+                    </to>
+                </configuration>
             </plugin>
         </plugins>
     </build>
