@@ -6,7 +6,7 @@ import {signUpRouter} from "./routes/signup";
 import {signOutRouter} from "./routes/signout";
 import {errorHandler} from "./middlewares/error-handler";
 import {NotFoundError} from "./errors/not-found-error";
-
+import 'express-async-errors';
 
 const app = express();
 app.use(json())
@@ -16,7 +16,7 @@ app.use(signInRouter);
 app.use(signUpRouter);
 app.use(signOutRouter);
 
-app.all('*', () => {
+app.all('*', async (req, res) => {
     throw new NotFoundError();
 })
 
