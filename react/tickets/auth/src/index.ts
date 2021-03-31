@@ -21,6 +21,8 @@ app.all('*', async (req, res) => {
     throw new NotFoundError();
 })
 
+app.use(errorHandler);
+
 const start = async () => {
     try {
         await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
@@ -38,6 +40,5 @@ const start = async () => {
 
 };
 
-app.use(errorHandler);
-
 start();
+
