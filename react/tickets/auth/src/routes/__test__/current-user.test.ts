@@ -11,7 +11,7 @@ it('responds with details about the current user', async () => {
         .expect(201);
 
     const cookie = authResponse.get('Set-Cookie');
-
+    console.log(cookie)
     const response = await request(app)
         .get('/api/users/currentuser')
         .set('Cookie', cookie)
