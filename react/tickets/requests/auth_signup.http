@@ -1,4 +1,4 @@
-POST https://ticketing.dev/api/users/signup
+POST https://ticketing.test/api/users/signup
 Accept: application/json
 Content-Type: application/json
 
@@ -7,7 +7,7 @@ Content-Type: application/json
     "password": "qwerty"
 }
 ###
-POST https://ticketing.dev/api/users/signin
+POST https://ticketing.test/api/users/signin
 Accept: application/json
 Content-Type: application/json
 
@@ -17,8 +17,11 @@ Content-Type: application/json
 }
 
 ###
-GET https://ticketing.dev/api/users/currentuser
+GET https://ticketing.test/api/users/currentuser
 Cookie: express:sess=eyJqd3QiOiJleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcFpDSTZJall3TmpsbE4yUTRNbU5sWWpKbE1EQXhPVFkyTXpabU55SXNJbVZ0WVdsc0lqb2lkR1Z6ZEVCMFpYTjBMbkoxSWl3aWFXRjBJam94TmpFM05UVXpNelk0ZlEuS0J1dGpfRzFscmhiV081MjlVemt6czdWTldCM1hEUHFRU3UxRkFoX3MtayJ9; path=/; secure; httponly
 
 ###
-GET https://ticketing.dev/
+GET https://ticketing.test/
+
+###
+GET ticketing.dev/auth/signup
