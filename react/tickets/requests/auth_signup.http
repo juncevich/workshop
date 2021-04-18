@@ -19,3 +19,6 @@ Content-Type: application/json
 ###
 GET https://ticketing.dev/api/users/currentuser
 Cookie: express:sess=eyJqd3QiOiJleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcFpDSTZJall3TmpsbE4yUTRNbU5sWWpKbE1EQXhPVFkyTXpabU55SXNJbVZ0WVdsc0lqb2lkR1Z6ZEVCMFpYTjBMbkoxSWl3aWFXRjBJam94TmpFM05UVXpNelk0ZlEuS0J1dGpfRzFscmhiV081MjlVemt6czdWTldCM1hEUHFRU3UxRkFoX3MtayJ9; path=/; secure; httponly
+
+###
+GET https://ticketing.dev/
