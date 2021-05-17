@@ -24,4 +24,4 @@ Cookie: express:sess=eyJqd3QiOiJleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjk
 GET https://ticketing.test/
 
 ###
-GET ticketing.dev/auth/signup
+GET ticketing.test/auth/signup
