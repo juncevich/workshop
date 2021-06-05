@@ -12,6 +12,13 @@ func main() {
 	}
 
 	db.AutoMigrate(&User{})
+
+	user := User{
+		FirstName: "John",
+		LastName:  "Doe",
+		Email:     "john@doe.com",
+	}
+	db.Create(&user)
 }
 
 type User struct {
