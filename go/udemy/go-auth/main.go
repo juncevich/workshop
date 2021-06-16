@@ -5,9 +5,11 @@ import "github.com/gofiber/fiber"
 func main() {
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World 👋!")
-	})
+	app.Get("/", home)
 
 	app.Listen(":3000")
+}
+
+func home(c *fiber.Ctx) error {
+	return c.SendString("Hello, World 👋!")
 }
