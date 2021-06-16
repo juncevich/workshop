@@ -5,7 +5,7 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_DB: gorm_db
+      POSTGRES_DB: go_auth
       POSTGRES_USER: gorm_user
       POSTGRES_PASSWORD: gorm_password
     ports:
