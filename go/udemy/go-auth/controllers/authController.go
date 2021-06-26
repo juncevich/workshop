@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"../db"
 	"../models"
 	"github.com/gofiber/fiber"
+	"golang.org/x/crypto/bcrypt"
 )
 
 func Register(c *fiber.Ctx) error {
@@ -19,12 +21,16 @@ func Register(c *fiber.Ctx) error {
 			"message": "Password do not match!",
 		})
 	}
+
+	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 	user := models.User{
 		FirstName: data["first_name"],
 		LastName:  data["last_name"],
 		Email:     data["email"],
-		Password:  data["password"],
+		Password:  password,
 	}
+
+	db.DB.Create(&user)
 
 	return c.JSON(user)
 }
