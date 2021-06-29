@@ -7,4 +7,4 @@ Content-Type: application/json
 }
 ###
 GET localhost:3000/api/user
-Cookie: jwt
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjUwODY1NDEsImlzcyI6IjEifQ.O1ffUjcadYwSLQXdhQl3mWv-9dT2735K7WAWnlqy8rg; expires=Wed, 30 Jun 2021 20:55:41 GMT; path=/; HttpOnly; SameSite=Lax
