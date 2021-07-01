@@ -1,0 +1,39 @@
+package controllers
+
+import (
+	"../db"
+	"../models"
+	"github.com/gofiber/fiber"
+	"math/rand"
+)
+
+func Forgot(c *fiber.Ctx) error {
+	var data map[string]string
+
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	token := RandStringRunes(12)
+
+	passwordReset := models.PasswordReset{
+		Email: data["email"],
+		Token: token,
+	}
+
+	db.DB.Create(&passwordReset)
+
+	return c.JSON(fiber.Map{
+		"message": "success",
+	})
+}
+
+func RandStringRunes(n int) string {
+	var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+	b := make([]rune, n)
+	for i := range b {
+		b[i] = letterRunes[rand.Intn(len(letterRunes))]
+	}
+	return string(b)
+}
