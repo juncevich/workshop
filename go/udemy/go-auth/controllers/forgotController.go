@@ -5,6 +5,7 @@ import (
 	"../models"
 	"github.com/gofiber/fiber"
 	"math/rand"
+	"net/smtp"
 )
 
 func Forgot(c *fiber.Ctx) error {
@@ -23,6 +24,21 @@ func Forgot(c *fiber.Ctx) error {
 
 	db.DB.Create(&passwordReset)
 
+	from := "admin@example.com"
+
+	to:= []string{
+		data["email"],
+	}
+
+	url := "http://localhost:3000/reset/" + token
+
+	message :=[]byte("Click <a href=\""+ url+ "\"> here</a> to reset your password!")
+
+	err:= smtp.SendMail("0.0.0.0:1025", nil, from,to,message)
+
+	if err!=nil {
+		return err
+	}
 	return c.JSON(fiber.Map{
 		"message": "success",
 	})
