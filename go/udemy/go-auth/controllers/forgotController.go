@@ -26,19 +26,46 @@ func Forgot(c *fiber.Ctx) error {
 
 	from := "admin@example.com"
 
-	to:= []string{
+	to := []string{
 		data["email"],
 	}
 
 	url := "http://localhost:3000/reset/" + token
 
-	message :=[]byte("Click <a href=\""+ url+ "\"> here</a> to reset your password!")
+	message := []byte("Click <a href=\"" + url + "\"> here</a> to reset your password!")
 
-	err:= smtp.SendMail("0.0.0.0:1025", nil, from,to,message)
+	err := smtp.SendMail("0.0.0.0:1025", nil, from, to, message)
 
-	if err!=nil {
+	if err != nil {
 		return err
 	}
+	return c.JSON(fiber.Map{
+		"message": "success",
+	})
+}
+
+func Reset(c *fiber.Ctx) error {
+	var data map[string]string
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	if data["password"] != data["password_confirm"] {
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "Password do not match!",
+		})
+	}
+
+	var passwordReset = models.PasswordReset{}
+
+	if err := db.DB.Where("token=?", data["token"]).Last(&passwordReset); err.Error != nil {
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "Invalid token!",
+		})
+	}
+
 	return c.JSON(fiber.Map{
 		"message": "success",
 	})
