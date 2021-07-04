@@ -4,6 +4,7 @@ import (
 	"../db"
 	"../models"
 	"github.com/gofiber/fiber"
+	"golang.org/x/crypto/bcrypt"
 	"math/rand"
 	"net/smtp"
 )
@@ -65,6 +66,10 @@ func Reset(c *fiber.Ctx) error {
 			"message": "Invalid token!",
 		})
 	}
+
+	password, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
+
+	db.DB.Where("email = ?", passwordReset.Email).Update("password", password)
 
 	return c.JSON(fiber.Map{
 		"message": "success",
