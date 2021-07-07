@@ -1,15 +1,18 @@
 import React from 'react';
 import './App.css';
+import {BrowserRouter, Route} from "react-router-dom";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
 
 function App() {
     return (
         <div className="App">
-            <form className="form-signin">
-                <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <input type="email" className="form-control" placeholder="Email" required/>
-                <input type="password" className="form-control" placeholder="Password" required/>
-                <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            </form>
+            <BrowserRouter>
+                <Route path="/" exact component={Home}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/register" component={Register}/>
+            </BrowserRouter>
         </div>
     );
 }
