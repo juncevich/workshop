@@ -2,7 +2,7 @@ import React, {SyntheticEvent, useState} from 'react';
 import axios from "axios";
 import {Redirect} from "react-router-dom";
 
-const Login = () => {
+const Login = ({setLogin}:{setLogin:Function}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [redirect, setRedirect] = useState(false)
@@ -10,16 +10,17 @@ const Login = () => {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault()
 
-        const response = await axios.post('login', {
+        await axios.post('login', {
             email,
             password
         })
 
         setRedirect(true)
+        setLogin()
     }
 
     if (redirect) {
-        return <Redirect to="/" />
+        return <Redirect to="/"/>
     }
     return (
         <form className="form-signin" onSubmit={submit}>

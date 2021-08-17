@@ -10,6 +10,8 @@ import axios from "axios";
 function App() {
 
     const [user, setUser] = useState(null)
+    const [login, setLogin] = useState(false)
+
     useEffect(() => {
         (
             async () => {
@@ -23,16 +25,16 @@ function App() {
                 }
             }
         )()
-    }, [])
+    }, [login])
 
     return (
         <div className="App">
 
             <BrowserRouter>
-                <Nav user={{user}}/>
+                <Nav user={{user}} setLogin={() => setLogin(false)}/>
 
                 <Route path="/" exact component={() => <Home user={user}/>}/>
-                <Route path="/login" component={Login}/>
+                <Route path="/login" component={() => <Login setLogin={() => setLogin(true)}/>}/>
                 <Route path="/register" component={Register}/>
             </BrowserRouter>
         </div>
