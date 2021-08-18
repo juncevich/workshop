@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Nav from "./components/Nav";
 import axios from "axios";
+import Forgot from "./pages/Forgot";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/" exact component={() => <Home user={user}/>}/>
                 <Route path="/login" component={() => <Login setLogin={() => setLogin(true)}/>}/>
                 <Route path="/register" component={Register}/>
+                <Route path="/forgot" component={Forgot}/>
             </BrowserRouter>
         </div>
     );
