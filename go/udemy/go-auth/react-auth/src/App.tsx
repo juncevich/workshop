@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Nav from "./components/Nav";
 import axios from "axios";
 import Forgot from "./pages/Forgot";
+import Reset from "./pages/Reset";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/login" component={() => <Login setLogin={() => setLogin(true)}/>}/>
                 <Route path="/register" component={Register}/>
                 <Route path="/forgot" component={Forgot}/>
+                <Route path="/reset/:token" component={Reset}/>
             </BrowserRouter>
         </div>
     );
