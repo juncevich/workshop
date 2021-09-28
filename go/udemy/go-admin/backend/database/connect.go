@@ -14,5 +14,4 @@ func Connect() {
 		panic("Could not connect to the database")
 	}
 	fmt.Println(db)
-
 }
