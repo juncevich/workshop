@@ -1,0 +1,69 @@
+settings:
+  legacy:
+    force: true             // force polling watcher instead fsnotifiy
+    interval: 100ms         // polling interval
+  resources:                  // files names
+    outputs: outputs.log
+    logs: logs.log
+    errors: errors.log
+#server:
+#  status: false               // server status
+#  open: false                 // open browser at start
+#  host: localhost             // server host
+#  port: 5001                  // server port
+schema:
+  - name: backend
+    path: .              // project path
+    environment:            // env variables available at startup
+      test: test
+      myvar: value
+    commands: {}              // go commands supported
+#      vet:
+#        status: true
+#      fmt:
+#        status: true
+#        args:
+#          - -s
+#          - -w
+#      test:
+#        status: true
+#        method: gb test    // support different build tools
+#      generate:
+#        status: true
+#      install:
+#        status: true
+#      build:
+#        status: false
+#        method: gb build    // support differents build tool
+#        args:               // additional params for the command
+#          - -race
+#      run:
+#        status: true
+#    args:                     // arguments to pass at the project
+#      - --myarg
+    watcher:
+      paths:                 // watched paths
+        - /
+      ignore_paths:          // ignored paths
+        - vendor
+        - realize
+        - vendor
+      extensions:                  // watched extensions
+        - go
+        - html
+#      scripts:
+#        - type: before
+#          command: echo before global
+#          global: true
+#          output: true
+#        - type: before
+#          command: echo before change
+#          output: true
+#        - type: after
+#          command: echo after change
+#          output: true
+#        - type: after
+#          command: echo after global
+#          global: true
+#          output: true
+#      errorOutputPattern: mypattern   //custom error pattern
