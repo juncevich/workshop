@@ -17,7 +17,9 @@ schema:
     environment:            // env variables available at startup
       test: test
       myvar: value
-    commands: {}              // go commands supported
+    commands:               // go commands supported
+      run:
+        status: true
 #      vet:
 #        status: true
 #      fmt:
