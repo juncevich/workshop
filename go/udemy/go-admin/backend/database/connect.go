@@ -1,6 +1,7 @@
 package database
 
 import (
+	"backend/model"
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -14,4 +15,6 @@ func Connect() {
 		panic("Could not connect to the database")
 	}
 	fmt.Println(db)
+
+	db.AutoMigrate(&model.User{})
 }
