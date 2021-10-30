@@ -17,3 +17,9 @@ Content-Type: application/json
   "password_confirm": "Qwerty12345"
 }
 
+###
+
+POST http://localhost:8000/api/user
+Content-Type: application/json
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzU3MDQyMTMsImlzcyI6IjEifQ.hXQ9We_qPtv1GYdKC8Jfm08tfBp8LCdLxRdObfE7LLo;
+
