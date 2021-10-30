@@ -1,0 +1,19 @@
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+  "email": "john@doe.com",
+  "password": "Qwerty12345"
+}
+
+###
+
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+  "email": "john@doe.com",
+  "password": "Qwerty12345",
+  "password_confirm": "Qwerty12345"
+}
+
