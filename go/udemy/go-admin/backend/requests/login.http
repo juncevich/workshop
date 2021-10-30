@@ -2,7 +2,7 @@ POST http://localhost:8000/api/login
 Content-Type: application/json
 
 {
-  "email": "john@doe.com",
+  "email": "john@doe1.com",
   "password": "Qwerty12345"
 }
 
@@ -12,14 +12,16 @@ POST http://localhost:8000/api/register
 Content-Type: application/json
 
 {
-  "email": "john@doe.com",
+  "first_name": "john",
+  "last_name": "doe",
+  "email": "john@doe1.com",
   "password": "Qwerty12345",
   "password_confirm": "Qwerty12345"
 }
 
 ###
 
-POST http://localhost:8000/api/user
+GET http://localhost:8000/api/user
 Content-Type: application/json
-Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzU3MDQyMTMsImlzcyI6IjEifQ.hXQ9We_qPtv1GYdKC8Jfm08tfBp8LCdLxRdObfE7LLo;
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzU3MDUxNDAsImlzcyI6IjUifQ.M_hQxItFxw6GuYhf9MsWGIU-OoZx59YDU4t1yftQjjc;
 
