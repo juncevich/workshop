@@ -27,18 +27,18 @@ repositories {
 extra["springCloudVersion"] = "2020.0.4"
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.springframework.cloud:spring-cloud-starter-config")
-    compileOnly("org.projectlombok:lombok")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
-    runtimeOnly("org.postgresql:postgresql")
-    annotationProcessor("org.projectlombok:lombok")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:2.5.6")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.5.6")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.5.31")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31")
+    implementation("org.springframework.cloud:spring-cloud-starter-config:3.0.5")
+    compileOnly("org.projectlombok:lombok:1.18.22")
+    developmentOnly("org.springframework.boot:spring-boot-devtools:2.5.6")
+    runtimeOnly("org.postgresql:postgresql:42.3.1")
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.6")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:2.5.6")
 }
 
 dependencyManagement {
