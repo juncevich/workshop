@@ -2,18 +2,25 @@ package controllers
 
 import (
 	"backend/database"
+	"backend/midlewares"
 	"backend/model"
 	"github.com/gofiber/fiber/v2"
 	"strconv"
 )
 
 func AllUsers(c *fiber.Ctx) error {
+	if err := midlewares.IsAuthorized(c, "users"); err != nil {
+		return err
+	}
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 
 	return c.JSON(model.Paginate(database.DB, &model.User{}, page))
 }
 
 func CreateUser(c *fiber.Ctx) error {
+	if err := midlewares.IsAuthorized(c, "users"); err != nil {
+		return err
+	}
 	var user model.User
 
 	if err := c.BodyParser(&user); err != nil {
@@ -28,6 +35,9 @@ func CreateUser(c *fiber.Ctx) error {
 }
 
 func GetUser(c *fiber.Ctx) error {
+	if err := midlewares.IsAuthorized(c, "users"); err != nil {
+		return err
+	}
 	id, _ := strconv.Atoi(c.Params("id"))
 
 	user := model.User{
@@ -39,6 +49,9 @@ func GetUser(c *fiber.Ctx) error {
 }
 
 func UpdateUser(c *fiber.Ctx) error {
+	if err := midlewares.IsAuthorized(c, "users"); err != nil {
+		return err
+	}
 	id, _ := strconv.Atoi(c.Params("id"))
 
 	user := model.User{
@@ -54,6 +67,9 @@ func UpdateUser(c *fiber.Ctx) error {
 }
 
 func DeleteUser(c *fiber.Ctx) error {
+	if err := midlewares.IsAuthorized(c, "users"); err != nil {
+		return err
+	}
 	id, _ := strconv.Atoi(c.Params("id"))
 
 	user := model.User{
