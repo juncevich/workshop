@@ -1,13 +1,18 @@
 package com.appdeveloperblog.keycloak.remoteuserstorageprovider
 
+import org.keycloak.component.ComponentModel
 import org.keycloak.credential.CredentialInput
 import org.keycloak.credential.CredentialInputValidator
+import org.keycloak.models.KeycloakSession
 import org.keycloak.models.RealmModel
 import org.keycloak.models.UserModel
 import org.keycloak.storage.UserStorageProvider
 import org.keycloak.storage.user.UserLookupProvider
 
-class RemoteUserStorageProvider : UserStorageProvider, UserLookupProvider, CredentialInputValidator {
+class RemoteUserStorageProvider(
+    session: KeycloakSession?,
+    model: ComponentModel?
+) : UserStorageProvider, UserLookupProvider, CredentialInputValidator {
     override fun close() {
         TODO("Not yet implemented")
     }
