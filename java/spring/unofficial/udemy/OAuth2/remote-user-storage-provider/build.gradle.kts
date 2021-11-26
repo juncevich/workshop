@@ -33,6 +33,7 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    compileOnly("org.keycloak:keycloak-services:15.0.2")
 }
 
 tasks.withType<KotlinCompile> {
