@@ -10,5 +10,5 @@ interface UsersApiService {
 
     @GET
     @Path("/{userName}")
-    fun getUserDetails(@PathParam("userName") userName: String):User
+    fun getUserDetails(@PathParam("userName") userName: String): User
 }
