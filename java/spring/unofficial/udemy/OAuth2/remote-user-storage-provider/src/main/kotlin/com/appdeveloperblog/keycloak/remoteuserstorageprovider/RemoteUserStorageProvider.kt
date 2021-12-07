@@ -6,6 +6,7 @@ import org.keycloak.credential.CredentialInputValidator
 import org.keycloak.models.KeycloakSession
 import org.keycloak.models.RealmModel
 import org.keycloak.models.UserModel
+import org.keycloak.models.credential.PasswordCredentialModel
 import org.keycloak.storage.UserStorageProvider
 import org.keycloak.storage.adapter.AbstractUserAdapter
 import org.keycloak.storage.user.UserLookupProvider
@@ -52,8 +53,8 @@ class RemoteUserStorageProvider(
         TODO("Not yet implemented")
     }
 
-    override fun supportsCredentialType(credentialType: String?): Boolean {
-        TODO("Not yet implemented")
+    override fun supportsCredentialType(credentialType: String): Boolean {
+        return PasswordCredentialModel.TYPE == credentialType
     }
 
     override fun isConfiguredFor(realm: RealmModel?, user: UserModel?, credentialType: String?): Boolean {
