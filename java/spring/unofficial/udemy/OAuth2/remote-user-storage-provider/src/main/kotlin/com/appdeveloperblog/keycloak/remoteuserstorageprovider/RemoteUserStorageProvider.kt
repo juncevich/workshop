@@ -34,11 +34,17 @@ class RemoteUserStorageProvider(
 
     private fun createUserModel(username: String, realm: RealmModel): UserModel {
 
-        return AbstractUserAdapter(session, realm, this.model) {
-            override fun getUserByUsername(realm: RealmModel?, username: String?): UserModel {
-                return super.getUserByUsername(realm, username)
+        val adapter = AbstractUserAdapter(
+            this.session,
+            realm,
+            this.model
+        ) {
+            override fun getUsername(): String {
+                username
             }
         }
+
+        return adapter
     }
 
     override fun getUserByEmail(email: String?, realm: RealmModel?): UserModel {
