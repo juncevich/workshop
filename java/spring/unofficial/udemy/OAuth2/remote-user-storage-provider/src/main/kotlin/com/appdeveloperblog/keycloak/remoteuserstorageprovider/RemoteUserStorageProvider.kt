@@ -7,11 +7,13 @@ import org.keycloak.models.KeycloakSession
 import org.keycloak.models.RealmModel
 import org.keycloak.models.UserModel
 import org.keycloak.storage.UserStorageProvider
+import org.keycloak.storage.adapter.AbstractUserAdapter
 import org.keycloak.storage.user.UserLookupProvider
 
 class RemoteUserStorageProvider(
-    session: KeycloakSession?,
-    model: ComponentModel?
+    private val session: KeycloakSession,
+    private val model: ComponentModel,
+    private val usersApiService: UsersApiService
 ) : UserStorageProvider, UserLookupProvider, CredentialInputValidator {
     override fun close() {
         TODO("Not yet implemented")
@@ -21,11 +23,26 @@ class RemoteUserStorageProvider(
         TODO("Not yet implemented")
     }
 
-    override fun getUserByUsername(username: String?, realm: RealmModel?): UserModel {
-        TODO("Not yet implemented")
+    override fun getUserByUsername(username: String, realm: RealmModel): UserModel? {
+        val userDetails = usersApiService.getUserDetails(username)
+        if (userDetails != null) {
+            val userModel: UserModel = createUserModel(username, realm)
+            return userModel
+        }
+        return null
+    }
+
+    private fun createUserModel(username: String, realm: RealmModel): UserModel {
+
+        return AbstractUserAdapter(session, realm, this.model) {
+            override fun getUserByUsername(realm: RealmModel?, username: String?): UserModel {
+                return super.getUserByUsername(realm, username)
+            }
+        }
     }
 
     override fun getUserByEmail(email: String?, realm: RealmModel?): UserModel {
+
         TODO("Not yet implemented")
     }
 
