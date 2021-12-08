@@ -9,3 +9,4 @@ class CloudConfigServerApplication
 fun main(args: Array<String>) {
     runApplication<CloudConfigServerApplication>(*args)
 }
+                
