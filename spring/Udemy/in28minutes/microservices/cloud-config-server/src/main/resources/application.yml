@@ -3,3 +3,5 @@ server:
 spring:
   application:
     name: cloud-config-server
+  profiles:
+    active: native
