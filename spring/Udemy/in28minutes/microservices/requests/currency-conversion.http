@@ -1,0 +1,4 @@
+GET http://localhost:8100/currency-conversion/USD/INR/10
+Accept: application/json
+
+###

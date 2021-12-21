@@ -7,6 +7,7 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.spring") version "1.6.0"
     id("org.springframework.experimental.aot") version "0.11.0"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.6.10"
 }
 
 group = "ru.workspace.spring.microservices"
