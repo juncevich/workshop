@@ -5,6 +5,7 @@ include(":cloud-config-server")
 include(":currency-exchange-service")
 include(":currency-conversion-service")
 include(":naming-server")
+include(":api-gateway")
 
 pluginManagement {
     repositories {
