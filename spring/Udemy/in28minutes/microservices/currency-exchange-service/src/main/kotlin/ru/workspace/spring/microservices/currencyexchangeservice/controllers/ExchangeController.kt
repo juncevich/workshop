@@ -20,12 +20,14 @@ class ExchangeController(
     ): CurrencyExchange {
         val findByFromAndTo = currencyExchangeService.findExchange(from, to)
         val serverPort = environment.getProperty("local.server.port")!!
+        val host = environment.getProperty("HOSTNAME")!!
+        val version = "v1"
         return CurrencyExchange(
             findByFromAndTo.id,
             findByFromAndTo.from,
             findByFromAndTo.to,
             findByFromAndTo.conversionMultiple,
-            serverPort
+            "$serverPort $version $host"
         )
     }
 }
