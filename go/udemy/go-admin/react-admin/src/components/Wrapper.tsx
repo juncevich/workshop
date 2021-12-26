@@ -11,9 +11,7 @@ class Wrapper extends Component {
                     <div className="row">
                         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                             <Menu/>
-                            {/*<Routes>*/}
 
-                            {/*</Routes>*/}
                             {this.props.children}
                         </main>
                     </div>
