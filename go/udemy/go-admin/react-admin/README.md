@@ -47,3 +47,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 npm i react-router-dom @types/react-router-dom
+npm i axios @types/axios
