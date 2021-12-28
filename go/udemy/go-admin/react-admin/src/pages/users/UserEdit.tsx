@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, {SyntheticEvent, useEffect, useState} from 'react';
+import { Navigate } from 'react-router-dom';
 import Wrapper from "../../components/Wrapper";
+import {Role} from "../../models/Role";
 
 const UserEdit = (props: any) => {
     const [first_name, setFirstName] = useState('');
@@ -41,7 +43,7 @@ const UserEdit = (props: any) => {
     }
 
     if (redirect) {
-        return <Redirect to="/users"/>
+        return <Navigate to="/users"/>
     }
 
     return (
