@@ -3,6 +3,7 @@ import Wrapper from "../../components/Wrapper";
 import axios from "axios";
 import {User} from "../../models/User";
 import Paginator from "../../components/Paginator";
+import {Link} from "react-router-dom";
 
 const Users = () => {
 
@@ -31,15 +32,19 @@ const Users = () => {
 
     return (
         <Wrapper>
+            <div className="pt-3 pb-2 mb-3 border-bottom">
+                <Link to="/users/create" className="btn btn-sm btn-outline-secondary">Add</Link>
+            </div>
+
             <div className="table-responsive">
                 <table className="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,6 +55,15 @@ const Users = () => {
                                 <td>{user.first_name} {user.last_name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role.name}</td>
+                                <td>
+                                    <div className="btn-group mr-2">
+                                        <Link to={`/users/${user.id}/edit`}
+                                              className="btn btn-sm btn-outline-secondary">Edit</Link>
+                                        <a href="#" className="btn btn-sm btn-outline-secondary"
+                                           onClick={() => del(user.id)}
+                                        >Delete</a>
+                                    </div>
+                                </td>
                             </tr>
                         )
                     })}
