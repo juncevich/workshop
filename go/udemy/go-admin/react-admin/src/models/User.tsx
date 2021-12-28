@@ -1,11 +1,14 @@
+import {Role} from "./Role";
+
 export class User {
 
 
     constructor(
-        public id: number = 0,
-        public first_name: string = '',
-        public last_name: string = '',
-        public email: string = '',
+        public id = 0,
+        public first_name = '',
+        public last_name = '',
+        public email = '',
+        public role = new Role()
     ) {
     }
 
