@@ -2,19 +2,32 @@ import React, {useEffect, useState} from "react";
 import Wrapper from "../../components/Wrapper";
 import axios from "axios";
 import {User} from "../../models/User";
+import Paginator from "../../components/Paginator";
 
 const Users = () => {
 
     const [users, setUsers] = useState([])
+    const [page, setPage] = useState(1);
+    const [lastPage, setLastPage] = useState(0);
 
     useEffect(() => {
         (
             async () => {
-                const {data} = await axios.get('user');
-                setUsers(data.data)
+                const {data} = await axios.get(`users?page=${page}`);
+
+                setUsers(data.data);
+                setLastPage(data.meta.last_page);
             }
         )()
-    }, [])
+    }, [page]);
+
+    const del = async (id: number) => {
+        if (window.confirm('Are you sure you want to delete this record?')) {
+            await axios.delete(`users/${id}`);
+
+            setUsers(users.filter((u: User) => u.id !== id));
+        }
+    }
 
     return (
         <Wrapper>
@@ -43,6 +56,8 @@ const Users = () => {
                     </tbody>
                 </table>
             </div>
+
+            <Paginator page={page} lastPage={lastPage} pageChanged={setPage}/>
         </Wrapper>
     )
 }
