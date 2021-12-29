@@ -1,0 +1,26 @@
+const express = require('express');
+const socket = require('socket.io');
+
+const PORT = 5000;
+
+const app = express();
+
+const server = app.listen(PORT, () => {
+    console.log(`Server is listening in port : ${PORT}`);
+    console.log(`http://localhost:${PORT}`);
+});
+
+
+const io = socket(server, {
+        cors: {
+            origin: '*',
+            methods: ['GET', 'POST']
+        }
+    }
+);
+
+io.on('connection', (socket) => {
+    socket.emit('connection', null)
+    console.log('New user connected')
+    console.log(socket.io)
+})
