@@ -1,6 +1,9 @@
 import './App.css';
 import {useEffect} from "react";
 import {connectWithWebSocket} from "./util/wssConnection/wssConnection";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Login from "./pages/login/login";
 
 function App() {
 
@@ -8,9 +11,12 @@ function App() {
         connectWithWebSocket();
     }, [])
     return (
-        <div className="App">
-            Hello world!
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/dashboard" element={<Dashboard/>}/>
+                <Route path="/login" element={<Login/>}/>
+            </Routes>
+        </BrowserRouter>
     );
 }
 
