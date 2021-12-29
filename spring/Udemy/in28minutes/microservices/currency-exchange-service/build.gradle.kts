@@ -6,7 +6,8 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm")
     kotlin("plugin.spring") version "1.6.0"
-    id("org.springframework.experimental.aot") version "0.11.0"
+//    id("org.springframework.experimental.aot") version "0.11.0"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.6.10"
 }
 
 group = "ru.workspace.spring.microservices"
@@ -24,11 +25,18 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+//    implementation("org.springframework.amqp:spring-rabbit")
+
+//    implementation("org.springframework.cloud:spring-cloud-starter-config")
+//    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
+//    implementation("org.springframework.cloud:spring-cloud-sleuth-zipkin")
+
     runtimeOnly("com.h2database:h2")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.springframework.cloud:spring-cloud-starter-config")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

@@ -1,69 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Dashboard from "./pages/Dashboard";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Users from "./pages/users/Users";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import UserCreate from "./pages/users/UserCreate";
+import UserEdit from "./pages/users/UserEdit";
+import Roles from "./pages/roles/Roles";
+import RoleCreate from "./pages/roles/RoleCreate";
+import RoleEdit from "./pages/roles/RoleEdit";
+import Products from "./pages/products/Products";
+import ProductCreate from "./pages/products/ProductCreate";
+import ProductEdit from "./pages/products/ProductEdit";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
-        <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"/>
-          <div className="navbar-nav">
-            <div className="nav-item text-nowrap">
-              <a className="nav-link px-3" href="#">Sign out</a>
-            </div>
-          </div>
-      </header>
-
-      <div className="container-fluid">
-        <div className="row">
-          <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div className="position-sticky pt-3">
-              <ul className="nav flex-column">
-                <li className="nav-item">
-                  <a className="nav-link active">
-
-                    Dashboard
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-
-          <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-            <div className="table-responsive">
-              <table className="table table-striped table-sm">
-                <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Header</th>
-                  <th scope="col">Header</th>
-                  <th scope="col">Header</th>
-                  <th scope="col">Header</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>random</td>
-                  <td>data</td>
-                  <td>placeholder</td>
-                  <td>text</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </main>
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Dashboard/>}/>
+                    <Route path="/register" element={<Register/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/users" element={<Users/>}/>
+                    <Route path="/users/create" element={<UserCreate/>}/>
+                    <Route path="/users/:id/edit" element={<UserEdit/>}/>
+                    <Route path="/roles" element={<Roles/>}/>
+                    <Route path="/roles/create" element={<RoleCreate/>}/>
+                    <Route path="/roles/:id/edit" element={<RoleEdit/>}/>
+                    <Route path="/products" element={<Products/>}/>
+                    <Route path="/products/create" element={<ProductCreate/>}/>
+                    <Route path="/products/:id/edit" element={<ProductEdit/>}/>
+                </Routes>
+            </BrowserRouter>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default App;
