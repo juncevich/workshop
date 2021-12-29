@@ -1,7 +1,7 @@
 const express = require('express');
 const socket = require('socket.io');
 
-const PORT = 5000;
+const PORT = 5001;
 
 const app = express();
 
@@ -22,5 +22,5 @@ const io = socket(server, {
 io.on('connection', (socket) => {
     socket.emit('connection', null)
     console.log('New user connected')
-    console.log(socket.io)
+    console.log(socket.id)
 })
