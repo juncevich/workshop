@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import UsernameInput from './components/UsernameInput';
 import SubmitButton from './components/SubmitButton';
-import {useNavigate } from 'react-router-dom';
+import useNavigate from 'react-router-dom';
 import logo from '../../resources/logo.png';
 import './LoginPage.css';
 import {setUsername} from "../../store/actions/dashboardActions";
@@ -13,7 +13,7 @@ const LoginPage = ({saveUsername}) => {
     const navigate = useNavigate();
 
     const handleSubmitButtonPressed = () => {
-        navigate({ pathname: '/dashboard' })
+        navigate({pathname: '/dashboard'})
         saveUsername(username);
     };
 
