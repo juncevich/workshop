@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../resources/logo.png';
-
+import ActiveUsersList from '../dashboard/components/ActiveUserList';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -16,7 +16,7 @@ const Dashboard = () => {
             </div>
             <div className='dashboard_right_section background_secondary_color'>
                 <div className='dashboard_active_users_list'>
-                    users
+                    <ActiveUsersList />
                 </div>
                 <div className='dashboard_logo_container'>
                     <img className='dashboard_logo_image' src={logo} />
