@@ -6,6 +6,7 @@ import {useNavigate } from 'react-router-dom';
 import logo from '../../resources/logo.png';
 import './LoginPage.css';
 import {setUsername} from "../../store/actions/dashboardActions";
+import {registerNewUser} from "../../util/wssConnection/wssConnection";
 
 const LoginPage = ({saveUsername}) => {
     const [username, setUsername] = useState('');
@@ -13,8 +14,10 @@ const LoginPage = ({saveUsername}) => {
     const navigate = useNavigate();
 
     const handleSubmitButtonPressed = () => {
-        navigate({ pathname: '/dashboard' })
+
+        registerNewUser(username)
         saveUsername(username);
+        navigate({ pathname: '/dashboard' })
     };
 
     return (
