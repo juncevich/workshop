@@ -7,10 +7,13 @@ const DirectCall = (props) => {
   const { localStream, remoteStream } = props;
 
   return (
-    <>
-      <LocalVideoView localStream={localStream} />
-      {remoteStream && <RemoteVideoView remoteStream={remoteStream} />}
-    </>
+      <>
+        <LocalVideoView localStream={localStream} />
+        {remoteStream && <RemoteVideoView remoteStream={remoteStream} />}
+        {/* <CallRejectedDialog /> */}
+        {/* <IncomingCallDialog /> */}
+        {/* <CallingDialog /> */}
+      </>
   );
 };
 
