@@ -4,6 +4,7 @@ import ActiveUsersList from './components/ActiveUserList';
 import * as webRTCHandler from '../../util/webRTC/webRTCHandler';
 
 import './Dashboard.css';
+import DirectCall from "./components/DirectCall";
 
 const Dashboard = () => {
     useEffect(() => {
@@ -14,7 +15,7 @@ const Dashboard = () => {
         <div className='dashboard_container background_main_color'>
             <div className='dashboard_left_section'>
                 <div className='dashboard_content_container'>
-                    content
+                    <DirectCall />
                 </div>
                 <div className='dashboard_rooms_container background_secondary_color'>
                     rooms
