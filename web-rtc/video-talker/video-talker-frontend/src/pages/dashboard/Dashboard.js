@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import logo from '../../resources/logo.png';
 import ActiveUsersList from './components/ActiveUserList';
 import * as webRTCHandler from '../../util/webRTC/webRTCHandler';
@@ -15,7 +15,7 @@ const Dashboard = () => {
         <div className='dashboard_container background_main_color'>
             <div className='dashboard_left_section'>
                 <div className='dashboard_content_container'>
-                    <DirectCall />
+                    <DirectCall/>
                 </div>
                 <div className='dashboard_rooms_container background_secondary_color'>
                     rooms
@@ -23,10 +23,10 @@ const Dashboard = () => {
             </div>
             <div className='dashboard_right_section background_secondary_color'>
                 <div className='dashboard_active_users_list'>
-                    <ActiveUsersList />
+                    <ActiveUsersList/>
                 </div>
                 <div className='dashboard_logo_container'>
-                    <img className='dashboard_logo_image' src={logo} />
+                    <img alt="" className='dashboard_logo_image' src={logo}/>
                 </div>
             </div>
         </div>
