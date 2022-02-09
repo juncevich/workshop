@@ -3,6 +3,7 @@ import {
     callStates,
     setCallerUsername,
     setCallingDialogVisible,
+    setCallRejected,
     setCallState,
     setLocalStream
 } from '../../store/actions/callActions';

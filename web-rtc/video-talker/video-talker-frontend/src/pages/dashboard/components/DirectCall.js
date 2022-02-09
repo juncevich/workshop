@@ -4,16 +4,20 @@ import LocalVideoView from './LocalVideoView';
 import RemoteVideoView from './RemoteVideoView';
 import CallingDialog from "./CallingDialog/CallingDialog";
 import IncomingCallDialog from "./IncomingDialog/IncomingCallDialog";
-import {callStates} from "../../../store/actions/callActions";
+import {callStates, setCallRejected} from "../../../store/actions/callActions";
+import CallRejectedDialog from "./CallRejectedDialog/CallRejectedDialog";
 
 const DirectCall = (props) => {
-    const {localStream, remoteStream, callState, callerUsername, callingDialogVisible} = props;
+    const {localStream, remoteStream, callState, callerUsername, callingDialogVisible, callRejected, hideCallRejectedDialog} = props;
 
     return (
         <>
             <LocalVideoView localStream={localStream}/>
             {remoteStream && <RemoteVideoView remoteStream={remoteStream}/>}
-            {/* <CallRejectedDialog /> */}
+            {callRejected.rejected && <CallRejectedDialog
+                reason={callRejected.reason}
+                hideCallRejectedDialog={hideCallRejectedDialog}
+            />}
             {callState === callStates.CALL_REQUESTED && <IncomingCallDialog callerUsername={callerUsername}/>}
             {callingDialogVisible && <CallingDialog/>}
         </>
@@ -23,6 +27,12 @@ const DirectCall = (props) => {
 function mapStoreStateToProps({call}) {
     return {
         ...call
+    };
+}
+
+function mapDispatchToProps (dispatch) {
+    return {
+        hideCallRejectedDialog: (callRejectedDetails) => dispatch(setCallRejected(callRejectedDetails))
     };
 }
 
