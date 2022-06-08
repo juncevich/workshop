@@ -43,9 +43,9 @@ io.on('connection', (socket) => {
         });
     });
 
-    socket.on('disconnect', ()=> {
+    socket.on('disconnect', () => {
         console.log('user disconnected');
-        peers=peers.filter(peer => peer.socketId!== socket.id);
+        peers = peers.filter(peer => peer.socketId !== socket.id);
         io.sockets.emit('broadcast', {
             event: broadcastEventTypes.ACTIVE_USERS,
             activeUsers: peers
@@ -74,4 +74,11 @@ io.on('connection', (socket) => {
             offer: data.offer
         });
     });
+
+    socket.on('webRTC-answer', (data) => {
+        console.log('handling webRTC answer')
+        io.to(data.calleeSocketId).emit('webRTC-answer', {
+            answer: data.answer
+        });
+    })
 });

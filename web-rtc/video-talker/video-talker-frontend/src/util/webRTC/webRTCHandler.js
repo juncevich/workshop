@@ -134,12 +134,16 @@ const sendOffer = async () => {
 
 export const handleOffer = async (data) => {
     await peerConnection.setRemoteDescription(data.offer);
-    const answer = await peerConnection.createAnswer();
-    await peerConnection.setLocalDescription(answer);
+    const offer = await peerConnection.createOffer();
+    await peerConnection.setLocalDescription(offer);
     wss.sendWebRTCAnswer({
         callerSocketId: connectedUserSocketId,
-        answer: answer
+        offer: offer
     });
+};
+
+export const handleAnswer = async (data) => {
+    await peerConnection.setRemoteDescription(data.answer);
 };
 
 export const checkIfCallIsPossible = () => {
