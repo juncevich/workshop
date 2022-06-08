@@ -9,6 +9,7 @@ import {
 } from '../../store/actions/callActions';
 import * as wss from '../wssConnection/wssConnection';
 
+
 const preOfferAnswers = {
     CALL_ACCEPTED: 'CALL_ACCEPTED',
     CALL_REJECTED: 'CALL_REJECTED',
@@ -70,7 +71,12 @@ const createPeerConnection = () => {
     };
 
     peerConnection.onicecandidate = (event) => {
-        // send to connected user our ice candidates
+        if (event.candidate) {
+            wss.sendWebRTCCandidate({
+                candidate: event.candidate,
+                connectedUserSocketId: connectedUserSocketId
+            })
+        }
     };
 };
 
@@ -144,6 +150,15 @@ export const handleOffer = async (data) => {
 
 export const handleAnswer = async (data) => {
     await peerConnection.setRemoteDescription(data.answer);
+};
+
+export const handleCandidate = async (data) => {
+    try {
+        await peerConnection.addIceCandidate(data.candidate);
+    } catch (e) {
+        console.error('Error occured when trying to add received ice candidate', e)
+    }
+
 };
 
 export const checkIfCallIsPossible = () => {

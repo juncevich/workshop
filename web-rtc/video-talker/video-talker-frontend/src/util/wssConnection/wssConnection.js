@@ -3,6 +3,9 @@ import * as dashboardActions from "../../store/actions/dashboardActions";
 import store from "../../store/store";
 import * as webRTCHandler from '../webRTC/webRTCHandler';
 
+
+
+
 const SERVER = 'http://localhost:5001';
 
 const broadcastEventTypes = {
@@ -38,7 +41,11 @@ export const connectWithWebSocket = () => {
     });
 
     socket.on('webRTC-answer', (data) => {
-        webRTCHandler.handleOffer(data);
+        webRTCHandler.handleAnswer(data);
+    });
+
+    socket.on('webRTC-candidate', (data) => {
+        webRTCHandler.handleCandidate(data);
     });
 };
 
@@ -66,6 +73,10 @@ export const sendWebRTCOffer = (data) => {
 export const sendWebRTCAnswer = (data) => {
     socket.emit('webRTC-answer', data);
 };
+
+export const sendWebRTCCandidate = (data) => {
+    socket.emit('webRTC-candidate', data);
+}
 
 const handleBroadcastEvents = (data) => {
     switch (data.event) {
