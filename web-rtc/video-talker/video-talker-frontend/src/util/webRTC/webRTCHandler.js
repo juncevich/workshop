@@ -62,7 +62,7 @@ const createPeerConnection = () => {
 
     const localStream = store.getState().call.localStream;
 
-    for (const track of localStream.getTrack()) {
+    for (const track of localStream.getTracks()) {
         peerConnection.addTrack(track, localStream);
     }
 
@@ -78,6 +78,12 @@ const createPeerConnection = () => {
             })
         }
     };
+
+    peerConnection.onconnectionstatechange = (event) => {
+        if (peerConnection.connectionState === 'connected'){
+            console.log('Connected successfully')
+        }
+    }
 };
 
 export const handlePreOffer = (data) => {
