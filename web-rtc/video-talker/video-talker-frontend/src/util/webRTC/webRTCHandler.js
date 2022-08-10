@@ -5,7 +5,8 @@ import {
     setCallingDialogVisible,
     setCallRejected,
     setCallState,
-    setLocalStream
+    setLocalStream,
+    setRemoteStream
 } from '../../store/actions/callActions';
 import * as wss from '../wssConnection/wssConnection';
 
@@ -67,7 +68,7 @@ const createPeerConnection = () => {
     }
 
     peerConnection.ontrack = ({streams: [stream]}) => {
-        // dispatch remote stream in our store
+        store.dispatch(setRemoteStream(stream))
     };
 
     peerConnection.onicecandidate = (event) => {
@@ -80,7 +81,7 @@ const createPeerConnection = () => {
     };
 
     peerConnection.onconnectionstatechange = (event) => {
-        if (peerConnection.connectionState === 'connected'){
+        if (peerConnection.connectionState === 'connected') {
             console.log('Connected successfully')
         }
     }
@@ -125,6 +126,8 @@ export const acceptIncomingCallRequest = () => {
         callerSocketId: connectedUserSocketId,
         answer: preOfferAnswers.CALL_ACCEPTED
     });
+
+    store.dispatch(setCallState(callStates.CALL_IN_PROGRESS))
 };
 
 export const rejectIncomingCallRequest = () => {
