@@ -6,6 +6,7 @@ import CallingDialog from "./CallingDialog/CallingDialog";
 import IncomingCallDialog from "./IncomingDialog/IncomingCallDialog";
 import {callStates, setCallRejected} from "../../../store/actions/callActions";
 import CallRejectedDialog from "./CallRejectedDialog/CallRejectedDialog";
+import ConversationButtons from "./ConversationButtons/ConversationButtons";
 
 const DirectCall = (props) => {
     const {localStream, remoteStream, callState, callerUsername, callingDialogVisible, callRejected, hideCallRejectedDialog} = props;
@@ -20,6 +21,7 @@ const DirectCall = (props) => {
             />}
             {callState === callStates.CALL_REQUESTED && <IncomingCallDialog callerUsername={callerUsername}/>}
             {callingDialogVisible && <CallingDialog/>}
+            <ConversationButtons/>
         </>
     );
 };
