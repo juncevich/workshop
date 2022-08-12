@@ -1,5 +1,5 @@
 import React from 'react';
-import {MdCallEnd, MdMic, MdMicOff, MdVideoCam, MdVideoCamOff, MdVideoLabel, MdVideoCall, MdCamera} from 'react-icons/md'
+import {MdCallEnd, MdMic, MdMicOff, MdVideocam, MdVideocamOff, MdVideoLabel, MdVideoCall, MdCamera} from 'react-icons/md'
 import ConversationButton from "./ConversationButton";
 
 const styles = {
@@ -26,7 +26,7 @@ const ConversationButtons = () => {
                 <MdCallEnd style = {styles.icon}/>
             </ConversationButton>
             <ConversationButton>
-                <MdVideoCam style = {styles.icon}/>
+                <MdVideocam style = {styles.icon}/>
             </ConversationButton>
             <ConversationButton>
                 <MdVideoLabel style = {styles.icon}/>
