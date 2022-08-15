@@ -1,6 +1,6 @@
 import React from 'react';
 
-const styles ={
+const styles = {
     button: {
         width: '50px',
         height: '50px',

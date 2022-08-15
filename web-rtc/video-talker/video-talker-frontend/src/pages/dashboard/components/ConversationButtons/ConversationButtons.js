@@ -1,5 +1,5 @@
 import React from 'react';
-import {MdCallEnd, MdMic, MdMicOff, MdVideocam, MdVideocamOff, MdVideoLabel, MdVideoCall, MdCamera} from 'react-icons/md'
+import {MdCallEnd, MdMic, MdMicOff, MdVideocam, MdVideocamOff, MdVideoLabel} from 'react-icons/md'
 import ConversationButton from "./ConversationButton";
 
 const styles = {
@@ -16,20 +16,40 @@ const styles = {
     }
 }
 
-const ConversationButtons = () => {
+const ConversationButtons = (props) => {
+    const {
+        localStream,
+        localCameraEnabled,
+        localMicrophoneEnabled,
+        setLocalCameraEnabled,
+        setLocalMicrophoneEnabled
+    } = props
+
+    const handleMicButtonPressed = () => {
+        const micEnabled = localMicrophoneEnabled
+        localStream.getAudioTracks()[0].enabled = !micEnabled
+        setLocalMicrophoneEnabled(!micEnabled)
+    }
+
+    const handleCameraButtonPressed = () => {
+        const cameraEnabled = localCameraEnabled
+        localStream.getVideoTracks()[0].enabled = !cameraEnabled
+        setLocalCameraEnabled(!cameraEnabled)
+    }
+
     return (
         <div style={styles.buttonContainer}>
-            <ConversationButton>
-                <MdMic style = {styles.icon}/>
+            <ConversationButton onClickHandler={handleMicButtonPressed}>
+                {localMicrophoneEnabled ? <MdMic style={styles.icon}/> : <MdMicOff style={styles.icon}/>}
             </ConversationButton>
             <ConversationButton>
-                <MdCallEnd style = {styles.icon}/>
+                <MdCallEnd style={styles.icon}/>
+            </ConversationButton>
+            <ConversationButton onClickHandler={handleCameraButtonPressed}>
+                {localCameraEnabled ? <MdVideocam style={styles.icon}/> : <MdVideocamOff style={styles.icon}/>}
             </ConversationButton>
             <ConversationButton>
-                <MdVideocam style = {styles.icon}/>
-            </ConversationButton>
-            <ConversationButton>
-                <MdVideoLabel style = {styles.icon}/>
+                <MdVideoLabel style={styles.icon}/>
             </ConversationButton>
         </div>
     );
