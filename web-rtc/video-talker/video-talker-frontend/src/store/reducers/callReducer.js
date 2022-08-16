@@ -56,6 +56,11 @@ const reducer = (state = initState, action) => {
                     ...state,
                     localMicrophoneEnabled: action.enabled
                 };
+            case callActions.CALL_SET_SCREEN_SHARING_ACTIVE:
+                return {
+                    ...state,
+                    screenSharingActive: action.active
+                };
             default:
                 return state;
         }
