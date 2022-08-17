@@ -4,8 +4,6 @@ import store from "../../store/store";
 import * as webRTCHandler from '../webRTC/webRTCHandler';
 
 
-
-
 const SERVER = 'http://localhost:5001';
 
 const broadcastEventTypes = {
@@ -47,6 +45,10 @@ export const connectWithWebSocket = () => {
     socket.on('webRTC-candidate', (data) => {
         webRTCHandler.handleCandidate(data);
     });
+
+    socket.on('user-hanged-up', () => {
+        webRTCHandler.handleUserHangedUp();
+    });
 };
 
 export const registerNewUser = (username) => {
@@ -76,15 +78,21 @@ export const sendWebRTCAnswer = (data) => {
 
 export const sendWebRTCCandidate = (data) => {
     socket.emit('webRTC-candidate', data);
-}
+};
+
+export const sendUserHangedUp = (data) => {
+    socket.emit('user-hanged-up', data);
+};
 
 const handleBroadcastEvents = (data) => {
-    switch (data.event) {
-        case broadcastEventTypes.ACTIVE_USERS:
-            const activeUsers = data.activeUsers.filter(activeUser => activeUser.socketId !== socket.id);
-            store.dispatch(dashboardActions.setActiveUsers(activeUsers));
-            break;
-        default:
-            break;
+        switch (data.event) {
+            case broadcastEventTypes.ACTIVE_USERS:
+                const activeUsers = data.activeUsers.filter(activeUser => activeUser.socketId !== socket.id);
+                store.dispatch(dashboardActions.setActiveUsers(activeUsers));
+                break;
+            default:
+                break;
+        }
     }
-};
+;
+

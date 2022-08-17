@@ -51,6 +51,7 @@ io.on('connection', (socket) => {
             activeUsers: peers
         });
     });
+
     // listeners related with direct call
 
     socket.on('pre-offer', (data) => {
@@ -76,16 +77,20 @@ io.on('connection', (socket) => {
     });
 
     socket.on('webRTC-answer', (data) => {
-        console.log('handling webRTC answer')
-        io.to(data.calleeSocketId).emit('webRTC-answer', {
+        console.log('handling webRTC answer');
+        io.to(data.callerSocketId).emit('webRTC-answer', {
             answer: data.answer
         });
-    })
+    });
 
     socket.on('webRTC-candidate', (data) => {
-        console.log('handling webRTC candidate')
-        io.to(data.calleeSocketId).emit('webRTC-candidate', {
+        console.log('handling ice candidate');
+        io.to(data.connectedUserSocketId).emit('webRTC-candidate', {
             candidate: data.candidate
         });
-    })
+    });
+
+    socket.on('user-hanged-up', (data) => {
+        io.to(data.connectedUserSocketId).emit('user-hanged-up');
+    });
 });

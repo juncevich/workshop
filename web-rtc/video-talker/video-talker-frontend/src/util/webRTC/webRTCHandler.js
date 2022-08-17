@@ -1,6 +1,6 @@
 import store from '../../store/store';
 import {
-    callStates,
+    callStates, resetCallDataState,
     setCallerUsername,
     setCallingDialogVisible,
     setCallRejected,
@@ -43,7 +43,7 @@ export const getLocalStream = () => {
             console.log('error occured when trying to get an access to get local stream');
             console.log(err);
         });
-};
+}
 
 
 export const callToOtherUser = (calleeDetails) => {
@@ -69,23 +69,24 @@ const createPeerConnection = () => {
     }
 
     peerConnection.ontrack = ({streams: [stream]}) => {
-        store.dispatch(setRemoteStream(stream))
+        store.dispatch(setRemoteStream(stream));
     };
 
     peerConnection.onicecandidate = (event) => {
+        console.log('geeting candidates from stun server');
         if (event.candidate) {
             wss.sendWebRTCCandidate({
                 candidate: event.candidate,
                 connectedUserSocketId: connectedUserSocketId
-            })
+            });
         }
     };
 
     peerConnection.onconnectionstatechange = (event) => {
         if (peerConnection.connectionState === 'connected') {
-            console.log('Connected successfully')
+            console.log('succesfully connected with other peer');
         }
-    }
+    };
 };
 
 export const handlePreOffer = (data) => {
@@ -105,7 +106,7 @@ export const handlePreOfferAnswer = (data) => {
     store.dispatch(setCallingDialogVisible(false));
 
     if (data.answer === preOfferAnswers.CALL_ACCEPTED) {
-        sendOffer()
+        sendOffer();
     } else {
         let rejectionReason;
         if (data.answer === preOfferAnswers.CALL_NOT_AVAILABLE) {
@@ -128,7 +129,7 @@ export const acceptIncomingCallRequest = () => {
         answer: preOfferAnswers.CALL_ACCEPTED
     });
 
-    store.dispatch(setCallState(callStates.CALL_IN_PROGRESS))
+    store.dispatch(setCallState(callStates.CALL_IN_PROGRESS));
 };
 
 export const rejectIncomingCallRequest = () => {
@@ -150,11 +151,11 @@ const sendOffer = async () => {
 
 export const handleOffer = async (data) => {
     await peerConnection.setRemoteDescription(data.offer);
-    const offer = await peerConnection.createOffer();
-    await peerConnection.setLocalDescription(offer);
+    const answer = await peerConnection.createAnswer();
+    await peerConnection.setLocalDescription(answer);
     wss.sendWebRTCAnswer({
         callerSocketId: connectedUserSocketId,
-        offer: offer
+        answer: answer
     });
 };
 
@@ -164,16 +165,20 @@ export const handleAnswer = async (data) => {
 
 export const handleCandidate = async (data) => {
     try {
+        console.log('adding ice candidates');
         await peerConnection.addIceCandidate(data.candidate);
-    } catch (e) {
-        console.error('Error occured when trying to add received ice candidate', e)
+    } catch (err) {
+        console.error('error occured when trying to add received ice candidate', err);
     }
-
 };
 
 export const checkIfCallIsPossible = () => {
-    return !(store.getState().call.localStream === null ||
-        store.getState().call.callState !== callStates.CALL_AVAILABLE);
+    if (store.getState().call.localStream === null ||
+        store.getState().call.callState !== callStates.CALL_AVAILABLE) {
+        return false;
+    } else {
+        return true;
+    }
 };
 
 export const resetCallData = () => {
@@ -181,29 +186,57 @@ export const resetCallData = () => {
     store.dispatch(setCallState(callStates.CALL_AVAILABLE));
 };
 
+export const hangUp = () => {
+    wss.sendUserHangedUp({
+        connectedUserSocketId: connectedUserSocketId
+    });
+
+    resetCallDataAfterHangUp();
+};
+
+const resetCallDataAfterHangUp = () => {
+    peerConnection.close();
+    peerConnection = null;
+    createPeerConnection();
+    resetCallData();
+
+    const localStream = store.getState().call.localStream;
+    localStream.getVideoTracks()[0].enabled = true;
+    localStream.getAudioTracks()[0].enabled = true;
+
+    if (store.getState().call.screenSharingActive) {
+        screenSharingStream.getTracks().forEach(track => {
+            track.stop();
+        });
+    }
+
+    store.dispatch(resetCallDataState());
+};
+
+export const handleUserHangedUp = () => {
+    resetCallDataAfterHangUp();
+};
+
 let screenSharingStream;
 
 export const switchForScreenSharingStream = async () => {
-
     if (!store.getState().call.screenSharingActive) {
         try {
-            screenSharingStream = await navigator.mediaDevices.getDisplayMedia({video: true})
-            store.dispatch(setScreenSharingActive(true))
-            const senders = peerConnection.getSenders()
-            const sender = senders.find(sender => sender.track.kind == screenSharingStream.getVideoTracks()[0].kind)
-            sender.replaceTrack(screenSharingStream.getVideoTracks()[0])
-        } catch (e) {
-            console.error('Error occured when trying to get screen sharing stream', e)
+            screenSharingStream = await navigator.mediaDevices.getDisplayMedia({video: true});
+            store.dispatch(setScreenSharingActive(true));
+            const senders = peerConnection.getSenders();
+            const sender = senders.find(sender => sender.track.kind == screenSharingStream.getVideoTracks()[0].kind);
+            sender.replaceTrack(screenSharingStream.getVideoTracks()[0]);
+        } catch (err) {
+            console.error('error occured when trying to get screen sharing stream', err);
         }
     } else {
-        const localStream = store.getState().call.localStream
-        const senders = peerConnection.getSenders()
-        const sender = senders.find(sender => sender.track.kind == localStream.getVideoTracks()[0].kind)
-        sender.replaceTrack(localStream.getVideoTracks()[0])
-        store.dispatch(setScreenSharingActive(false))
-        screenSharingStream.getTracks().forEach(track => track.stop())
+        const localStream = store.getState().call.localStream;
+        const senders = peerConnection.getSenders();
+        const sender = senders.find(sender => sender.track.kind == localStream.getVideoTracks()[0].kind);
+        sender.replaceTrack(localStream.getVideoTracks()[0]);
+        store.dispatch(setScreenSharingActive(false));
+        screenSharingStream.getTracks().forEach(track => track.stop());
     }
-
-
 }
 

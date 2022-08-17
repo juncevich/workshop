@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import LocalVideoView from './LocalVideoView';
 import RemoteVideoView from './RemoteVideoView';
 import CallingDialog from "./CallingDialog/CallingDialog";
@@ -12,6 +11,7 @@ import {
 } from "../../../store/actions/callActions";
 import CallRejectedDialog from "./CallRejectedDialog/CallRejectedDialog";
 import ConversationButtons from "./ConversationButtons/ConversationButtons";
+import {connect} from "react-redux";
 
 const DirectCall = (props) => {
     const {
@@ -27,14 +27,15 @@ const DirectCall = (props) => {
     return (
         <>
             <LocalVideoView localStream={localStream}/>
-            {remoteStream && <RemoteVideoView remoteStream={remoteStream}/>}
+            {remoteStream && callState === callStates.CALL_IN_PROGRESS &&
+                <RemoteVideoView remoteStream={remoteStream}/>}
             {callRejected.rejected && <CallRejectedDialog
                 reason={callRejected.reason}
                 hideCallRejectedDialog={hideCallRejectedDialog}
             />}
             {callState === callStates.CALL_REQUESTED && <IncomingCallDialog callerUsername={callerUsername}/>}
             {callingDialogVisible && <CallingDialog/>}
-            <ConversationButtons {...props}/>
+            {remoteStream && callState === callStates.CALL_IN_PROGRESS && <ConversationButtons {...props} />}
         </>
     );
 };
@@ -53,5 +54,5 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStoreStateToProps, null)(DirectCall);
+export default connect(mapStoreStateToProps, mapDispatchToProps)(DirectCall);
 

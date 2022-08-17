@@ -27,9 +27,9 @@ const LocalVideoView = props => {
   }, [remoteStream]);
 
   return (
-    <div style={styles.videoContainer}>
-      <video style={styles.videoElement} ref={remoteVideoRef} autoPlay />
-    </div>
+      <div style={styles.videoContainer}>
+        <video style={styles.videoElement} ref={remoteVideoRef} autoPlay />
+      </div>
   );
 };
 
