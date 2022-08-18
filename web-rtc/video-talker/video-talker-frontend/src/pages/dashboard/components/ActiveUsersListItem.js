@@ -1,20 +1,21 @@
 import React from 'react';
 import userAvatar from '../../../resources/userAvatar.png';
 import {callToOtherUser} from "../../../util/webRTC/webRTCHandler";
+import {callStates} from "../../../store/actions/callActions";
 
 const ActiveUsersListItem = (props) => {
-    const {activeUser} = props;
+    const {activeUser, callState} = props;
 
     const handleListItemPressed = () => {
-        callToOtherUser(activeUser);
+        if (callState === callStates.CALL_AVAILABLE) {
+            callToOtherUser(activeUser);
+        }
     };
-
-    console.log(activeUser);
 
     return (
         <div className='active_user_list_item' onClick={handleListItemPressed}>
             <div className='active_user_list_image_container'>
-                <img alt="" className='active_user_list_image' src={userAvatar}/>
+                <img className='active_user_list_image' src={userAvatar}/>
             </div>
             <span className='active_user_list_text'>{activeUser.username}</span>
         </div>
