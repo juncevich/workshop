@@ -5,8 +5,10 @@ import * as webRTCHandler from '../../util/webRTC/webRTCHandler';
 
 import './Dashboard.css';
 import DirectCall from "./components/DirectCall";
+import DashboardInformation from "./components/DashboardInformation/DashboardInformation";
+import {connect} from "react-redux";
 
-const Dashboard = () => {
+const Dashboard = ({username, callState}) => {
     useEffect(() => {
         webRTCHandler.getLocalStream();
     }, []);
@@ -16,6 +18,7 @@ const Dashboard = () => {
             <div className='dashboard_left_section'>
                 <div className='dashboard_content_container'>
                     <DirectCall/>
+                    {callState !== callStates.CALL_IN_PROGRESS && <DashboardInformation username={username} />}
                 </div>
                 <div className='dashboard_rooms_container background_secondary_color'>
                     rooms
@@ -33,4 +36,9 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+const mapStateToProps = ({ call, dashboard }) => ({
+    ...call,
+    ...dashboard
+});
+
+export default connect(mapStateToProps)(Dashboard);
