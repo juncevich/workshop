@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import logo from '../../resources/logo.png';
 import ActiveUsersList from './components/ActiveUserList';
 import * as webRTCHandler from '../../util/webRTC/webRTCHandler';
-import * as webRTCGroupHandler from '../utils/webRTC/webRTCGroupCallHandler';
+import * as webRTCGroupHandler from '../../util/webRTC/webRTCGroupCallHandler';
 
 import './Dashboard.css';
 import DirectCall from "./components/DirectCall";
