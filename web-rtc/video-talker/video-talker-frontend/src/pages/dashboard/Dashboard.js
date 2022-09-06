@@ -8,6 +8,7 @@ import './Dashboard.css';
 import DirectCall from "./components/DirectCall";
 import DashboardInformation from "./components/DashboardInformation/DashboardInformation";
 import {connect} from "react-redux";
+import GroupCallRoomsList from "./components/GroupCallRoomsList/GroupCallRoomsList";
 
 const Dashboard = ({username, callState}) => {
     useEffect(() => {
@@ -20,10 +21,10 @@ const Dashboard = ({username, callState}) => {
             <div className='dashboard_left_section'>
                 <div className='dashboard_content_container'>
                     <DirectCall/>
-                    {callState !== callStates.CALL_IN_PROGRESS && <DashboardInformation username={username} />}
+                    {callState !== callStates.CALL_IN_PROGRESS && <DashboardInformation username={username}/>}
                 </div>
                 <div className='dashboard_rooms_container background_secondary_color'>
-                    rooms
+                    <GroupCallRoomsList/>
                 </div>
             </div>
             <div className='dashboard_right_section background_secondary_color'>
@@ -38,7 +39,7 @@ const Dashboard = ({username, callState}) => {
     );
 };
 
-const mapStateToProps = ({ call, dashboard }) => ({
+const mapStateToProps = ({call, dashboard}) => ({
     ...call,
     ...dashboard
 });
