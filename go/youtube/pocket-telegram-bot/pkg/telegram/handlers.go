@@ -1,14 +1,16 @@
 package telegram
 
 import (
-	"fmt"
+	"context"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
-	"log"
+	"github.com/zhashkevych/go-pocket-sdk"
+	"net/url"
 )
 
 const (
-	commandStart = "start"
-	replyStart   = "Какой-то текст в ответ на команду старт."
+	commandStart           = "start"
+	replyStart             = "Какой-то текст в ответ на команду старт."
+	replyAlreadyAuthorized = "Ты уже авторизирован. Присылай ссылку, а я ее сохраню."
 )
 
 func (b *Bot) handleUpdates(updates tgbotapi.UpdatesChannel) {
@@ -24,12 +26,32 @@ func (b *Bot) handleUpdates(updates tgbotapi.UpdatesChannel) {
 	}
 }
 
-func (b *Bot) handleMessage(message *tgbotapi.Message) {
-	log.Printf("[%s] %s", message.From.UserName, message.Text)
+func (b *Bot) handleMessage(message *tgbotapi.Message) error {
+	msg := tgbotapi.NewMessage(message.Chat.ID, "Ссылка успешно сохранена")
+	_, err := url.ParseRequestURI(message.Text)
 
-	msg := tgbotapi.NewMessage(message.Chat.ID, message.Text)
-	msg.ReplyToMessageID = message.MessageID
-	b.bot.Send(msg)
+	if err != nil {
+		msg.Text = "Это невалидная ссылка"
+		_, err = b.bot.Send(msg)
+		return err
+	}
+	accessToken, err := b.getAccessToken(message.Chat.ID)
+	if err != nil {
+		msg.Text = "Ты не авторизирован! Используй команду старт!"
+		_, err = b.bot.Send(msg)
+		return err
+	}
+
+	if err := b.pocketClient.Add(context.Background(), pocket.AddInput{
+		AccessToken: accessToken,
+		URL:         message.Text,
+	}); err != nil {
+		msg.Text = "Увы, не удалось сохранить ссылку.Попробуй позже."
+		_, err = b.bot.Send(msg)
+		return err
+	}
+	_, err = b.bot.Send(msg)
+	return err
 }
 
 func (b *Bot) handleCommand(message *tgbotapi.Message) error {
@@ -43,13 +65,11 @@ func (b *Bot) handleCommand(message *tgbotapi.Message) error {
 }
 
 func (b *Bot) handleCommandStart(message *tgbotapi.Message) error {
-	authLink, err := b.generateAuthorizationLink(message.Chat.ID)
+	_, err := b.getAccessToken(message.Chat.ID)
 	if err != nil {
-		return err
+		return b.initAuthorizationMessage(message)
 	}
-
-	msg := tgbotapi.NewMessage(message.Chat.ID,
-		fmt.Sprintf(replyStart, authLink))
+	msg := tgbotapi.NewMessage(message.Chat.ID, replyAlreadyAuthorized)
 	_, err = b.bot.Send(msg)
 	return err
 }
