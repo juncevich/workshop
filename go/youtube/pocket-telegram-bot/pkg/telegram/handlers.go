@@ -18,38 +18,45 @@ func (b *Bot) handleUpdates(updates tgbotapi.UpdatesChannel) {
 		if update.Message == nil {
 			continue
 		} else if update.Message.IsCommand() {
-			b.handleCommand(update.Message)
+			if err := b.handleCommand(update.Message); err != nil {
+				b.handleError(update.Message.Chat.ID, err)
+			}
 		} else {
-			b.handleMessage(update.Message)
+			if err := b.handleMessage(update.Message); err != nil {
+				b.handleError(update.Message.Chat.ID, err)
+			}
 		}
 
 	}
 }
 
 func (b *Bot) handleMessage(message *tgbotapi.Message) error {
-	msg := tgbotapi.NewMessage(message.Chat.ID, "Ссылка успешно сохранена")
 	_, err := url.ParseRequestURI(message.Text)
 
 	if err != nil {
-		msg.Text = "Это невалидная ссылка"
-		_, err = b.bot.Send(msg)
-		return err
+		return errInvalidUrl
+		//msg.Text = "Это невалидная ссылка"
+		//_, err = b.bot.Send(msg)
+		//return err
 	}
 	accessToken, err := b.getAccessToken(message.Chat.ID)
 	if err != nil {
-		msg.Text = "Ты не авторизирован! Используй команду старт!"
-		_, err = b.bot.Send(msg)
-		return err
+		return errUnAuthorized
+		//msg.Text = "Ты не авторизирован! Используй команду старт!"
+		//_, err = b.bot.Send(msg)
+		//return err
 	}
 
 	if err := b.pocketClient.Add(context.Background(), pocket.AddInput{
 		AccessToken: accessToken,
 		URL:         message.Text,
 	}); err != nil {
-		msg.Text = "Увы, не удалось сохранить ссылку.Попробуй позже."
-		_, err = b.bot.Send(msg)
-		return err
+		return errUnableToSave
+		//msg.Text = "Увы, не удалось сохранить ссылку.Попробуй позже."
+		//_, err = b.bot.Send(msg)
+		//return err
 	}
+	msg := tgbotapi.NewMessage(message.Chat.ID, "Ссылка успешно сохранена")
 	_, err = b.bot.Send(msg)
 	return err
 }
