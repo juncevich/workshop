@@ -5,6 +5,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/zhashkevych/go-pocket-sdk"
 	"log"
+	"pocket-telegram-bot/pkg/config"
 	"pocket-telegram-bot/pkg/repository"
 	"pocket-telegram-bot/pkg/repository/boltdb"
 	"pocket-telegram-bot/pkg/server"
@@ -12,7 +13,11 @@ import (
 )
 
 func main() {
-	bot, err := tgbotapi.NewBotAPI("MyAwesomeBotToken")
+	cfg, err := config.Init()
+	if err != nil {
+		log.Fatal(err)
+	}
+	bot, err := tgbotapi.NewBotAPI(cfg.TelegramToken)
 
 	if err != nil {
 		log.Fatal(err)
@@ -20,21 +25,21 @@ func main() {
 
 	bot.Debug = true
 
-	pocketClient, err := pocket.NewClient("")
+	pocketClient, err := pocket.NewClient(cfg.PocketConsumerKey)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	db, err := initDB()
+	db, err := initDB(cfg)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	tokenRepository := boltdb.NewTokenRepository(db)
 
-	telegramBot := telegram.NewBot(bot, pocketClient, tokenRepository, "http://localhost:8081")
+	telegramBot := telegram.NewBot(bot, pocketClient, tokenRepository, cfg.AuthServerURL, cfg.Messages)
 
-	authorizationServer := server.NewAuthorizationServer(pocketClient, tokenRepository, "https://t.me//bot_name")
+	authorizationServer := server.NewAuthorizationServer(pocketClient, tokenRepository, cfg.BotURL)
 	go func() {
 		if err := telegramBot.Start(); err != nil {
 			log.Fatal(err)
@@ -46,8 +51,8 @@ func main() {
 	}
 }
 
-func initDB() (*bolt.DB, error) {
-	db, err := bolt.Open("boltdb.db", 0600, nil)
+func initDB(cfg *config.Config) (*bolt.DB, error) {
+	db, err := bolt.Open(cfg.BoltDBFile, 0600, nil)
 	if err != nil {
 		return nil, err
 	}

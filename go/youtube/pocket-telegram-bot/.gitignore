@@ -132,3 +132,7 @@ Temporary Items
 .apdisk
 
 .bin
+
+
+#.env
+#*.db

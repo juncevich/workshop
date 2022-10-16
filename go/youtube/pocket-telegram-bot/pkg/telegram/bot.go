@@ -4,6 +4,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/zhashkevych/go-pocket-sdk"
 	"log"
+	"pocket-telegram-bot/pkg/config"
 	"pocket-telegram-bot/pkg/repository"
 )
 
@@ -12,10 +13,11 @@ type Bot struct {
 	pocketClient    *pocket.Client
 	redirectUrl     string
 	tokenRepository repository.TokenRepository
+	messages        config.Messages
 }
 
-func NewBot(bot *tgbotapi.BotAPI, pocketClient *pocket.Client, tokenRepository repository.TokenRepository, redirectUrl string) *Bot {
-	return &Bot{bot: bot, pocketClient: pocketClient, tokenRepository: tokenRepository, redirectUrl: redirectUrl}
+func NewBot(bot *tgbotapi.BotAPI, pocketClient *pocket.Client, tokenRepository repository.TokenRepository, redirectUrl string, messages config.Messages) *Bot {
+	return &Bot{bot: bot, pocketClient: pocketClient, tokenRepository: tokenRepository, redirectUrl: redirectUrl, messages: messages}
 }
 
 func (b *Bot) Start() error {

@@ -12,16 +12,16 @@ var (
 )
 
 func (b *Bot) handleError(chatId int64, err error) {
-	msg := tgbotapi.NewMessage(chatId, "Произошла неизвестная ошибка")
+	msg := tgbotapi.NewMessage(chatId, b.messages.Default)
 	switch err {
 	case errInvalidUrl:
-		msg.Text = "Ты не авторизирован! Используй команду старт!"
+		msg.Text = b.messages.InvalidURL
 		_, err = b.bot.Send(msg)
 	case errUnAuthorized:
-		msg.Text = "Ты не авторизирован! Используй команду старт!"
+		msg.Text = b.messages.UnAuthorized
 		_, err = b.bot.Send(msg)
 	case errUnableToSave:
-		msg.Text = "Увы, не удалось сохранить ссылку.Попробуй позже."
+		msg.Text = b.messages.UnableToSave
 		_, err = b.bot.Send(msg)
 	default:
 		_, err = b.bot.Send(msg)

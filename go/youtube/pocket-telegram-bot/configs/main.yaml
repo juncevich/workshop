@@ -1,0 +1,15 @@
+db_file: "bolt.db"
+
+bot_url: "https://t.me//bot_name"
+
+messages:
+  responses:
+    start: "Какой-то текст в ответ на команду старт."
+    already_authorized: "Ты уже авторизирован. Присылай ссылку, а я ее сохраню."
+    saved_successfully: "Ссылка успешно сохранена"
+    unknown_command: "Я не знаю такой команды ("
+  errors:
+    default: "Произошла неизвестная ошибка"
+    invalid_url: "Это невалидная ссылка!"
+    un_authorized: "Ты не авторизирован! Используй команду старт!"
+    unable_to_save: "Увы, не удалось сохранить ссылку.Попробуй позже."
