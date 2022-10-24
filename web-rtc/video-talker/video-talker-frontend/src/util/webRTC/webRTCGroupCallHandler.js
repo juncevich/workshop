@@ -17,6 +17,13 @@ export const connectWithMyPeer = () => {
         console.log('succesfully connected with peer server');
         console.log(id);
     });
+
+    myPeer.on('call', call => {
+        call.answer(store.getState().call.localStream);
+        call.on('stream', incomingStream => {
+            console.log('stream came');
+        });
+    });
 };
 
 export const createNewGroupCall = () => {
@@ -43,7 +50,12 @@ export const joinGroupCall = (hostSocketId, roomId) => {
     store.dispatch(setCallState(callStates.CALL_IN_PROGRESS));
 };
 
-export connectToNewUser = () => {
+export const connectToNewUser = (data) => {
+    const localStream = store.getState().call.localStream;
 
+    const call = myPeer.call(data.peerId, localStream);
+
+    call.on('stream', (incomingStream) => {
+        console.log('stream came');
+    });
 };
-
