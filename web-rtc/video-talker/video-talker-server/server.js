@@ -2,7 +2,7 @@ const express = require('express');
 const socket = require('socket.io');
 const {ExpressPeerServer} = require('peer');
 const groupCallHandler = require("./groupCallHandler");
-const { v4: uuidv4 } = require('uuid');
+const {v4: uuidv4} = require('uuid');
 
 const PORT = 5001;
 
@@ -130,5 +130,14 @@ io.on('connection', (socket) => {
             event: broadcastEventTypes.GROUP_CALL_ROOMS,
             groupCallRooms
         });
+    });
+
+    socket.on('group-call-join-request', (data) => {
+        io.to(data.roomId).emit('group-call-join-request', {
+            peerId: data.peerId,
+            streamId: data.streamId
+        });
+
+        socket.join(data.roomId);
     });
 });
