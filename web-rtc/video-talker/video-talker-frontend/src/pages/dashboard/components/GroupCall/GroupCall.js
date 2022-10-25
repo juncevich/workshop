@@ -15,12 +15,12 @@ const GroupCall = (props) => {
     const leaveRoom = () => {
         webRTCGroupCallHandler.leaveGroupCall();
     };
-    
+
     return (
         <>
             {!groupCallActive && localStream && callState !== callStates.CALL_IN_PROGRESS &&
                 <GroupCallButton onClickHandler={createRoom} label='Create room'/>}
-            {groupCallActive && <GroupCallRoom groupCallStreams={groupCallStreams}/>}
+            {groupCallActive && <GroupCallRoom {...props} />}
             {groupCallActive && <GroupCallButton onClickHandler={leaveRoom} label='Leave room' />}
         </>
     );
@@ -30,4 +30,11 @@ const mapStoreStateToProps = ({call}) => ({
     ...call
 });
 
-export default connect(mapStoreStateToProps)(GroupCall);
+const mapActionsToProps = (dispatch) => {
+    return {
+        setCameraEnabled: enabled => dispatch(setLocalCameraEnabled(enabled)),
+        setMicrophoneEnabled: enabled => dispatch(setLocalMicrophoneEnabled(enabled))
+    };
+};
+
+export default connect(mapStoreStateToProps, mapActionsToProps)(GroupCall);
