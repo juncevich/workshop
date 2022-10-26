@@ -12,6 +12,7 @@ import {
 import CallRejectedDialog from "./CallRejectedDialog/CallRejectedDialog";
 import ConversationButtons from "./ConversationButtons/ConversationButtons";
 import {connect} from "react-redux";
+import Messenger from "./Messenger/Messenger";
 
 const DirectCall = (props) => {
     const {
@@ -21,7 +22,8 @@ const DirectCall = (props) => {
         callerUsername,
         callingDialogVisible,
         callRejected,
-        hideCallRejectedDialog
+        hideCallRejectedDialog,
+        setDirectCallMessage
     } = props;
 
     return (
@@ -36,6 +38,8 @@ const DirectCall = (props) => {
             {callState === callStates.CALL_REQUESTED && <IncomingCallDialog callerUsername={callerUsername}/>}
             {callingDialogVisible && <CallingDialog/>}
             {remoteStream && callState === callStates.CALL_IN_PROGRESS && <ConversationButtons {...props} />}
+            {remoteStream && callState === callStates.CALL_IN_PROGRESS
+                && <Messenger message={message} setDirectCallMessage={setDirectCallMessage}/>}
         </>
     );
 };
@@ -50,7 +54,8 @@ function mapDispatchToProps(dispatch) {
     return {
         hideCallRejectedDialog: (callRejectedDetails) => dispatch(setCallRejected(callRejectedDetails)),
         setCameraEnabled: (enabled) => dispatch(setLocalCameraEnabled(enabled)),
-        setMicrophoneEnabled: (enabled) => dispatch(setLocalMicrophoneEnabled(enabled))
+        setMicrophoneEnabled: (enabled) => dispatch(setLocalMicrophoneEnabled(enabled)),
+        setDirectCallMessage: (received, content) => dispatch(setMessage(received, content))
     };
 }
 
