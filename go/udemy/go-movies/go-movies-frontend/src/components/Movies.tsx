@@ -1,13 +1,10 @@
-
 const Movies = () => {
 
-    return(
-        <>
-        <div className="text-center">
+    return (
+        <div>
             <h2>Movies</h2>
-            <hr />
+            <hr/>
         </div>
-        </>
     )
 }
 
