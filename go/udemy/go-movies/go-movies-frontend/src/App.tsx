@@ -41,7 +41,9 @@ function App() {
                     </nav>
                 </div>
                 <div className="col-md-10">
-                    <Outlet/>
+                    <Outlet context={{
+                        jwtToken, setJwtToken,
+                    }}/>
                 </div>
             </div>
         </div>

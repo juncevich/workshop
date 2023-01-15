@@ -1,6 +1,6 @@
-import {forwardRef} from "react";
+import {ForwardedRef, forwardRef} from "react";
 
-const Input = forwardRef((props: unknown[], ref) => {
+const Input = forwardRef((props: InputProps, ref: ForwardedRef<any>) => {
     return (
         <div className="mb-3">
             <label htmlFor={props.name} className="form-label">
@@ -21,5 +21,18 @@ const Input = forwardRef((props: unknown[], ref) => {
         </div>
     )
 })
+
+type InputProps = {
+    name: string,
+    title: string,
+    type: string,
+    className: string,
+    placeholder?: string,
+    onChange: any,
+    autoComplete: any,
+    value?: any,
+    errorDiv?: string,
+    errorMsg?: string
+}
 
 export default Input;

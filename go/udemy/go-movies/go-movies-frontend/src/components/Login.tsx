@@ -1,15 +1,19 @@
 import {useState} from "react";
 import Input from '../components/form/Input';
+import {useOutletContext} from "react-router-dom";
 
 const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (event) => {
+    const setJwtToken: any = useOutletContext()
+    const handleSubmit = (event: any) => {
         event.preventDefault();
-        if (email =="admin@example.com") {
 
+        console.log("email/password", email, password);
+        if (email === "admin@example.com") {
+            setJwtToken("asdf");
         }
     }
     return (
@@ -23,14 +27,14 @@ const Login = () => {
                        className="form-control"
                        name="email"
                        autoComplete="email-new"
-                       onChange={(event) => setEmail(event.target.value)}
+                       onChange={(event: any) => setEmail(event.target.value)}
                 />
                 <Input title="Password"
                        type="password"
                        className="form-control"
                        name="password"
                        autoComplete="password-new"
-                       onChange={(event) => setPassword(event.target.value)}
+                       onChange={(event: any) => setPassword(event.target.value)}
                 />
 
                 <hr/>
