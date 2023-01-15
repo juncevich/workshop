@@ -23,7 +23,7 @@ func main() {
 	log.Println("Starting application on port", port)
 	http.HandleFunc("/", Hello)
 	//start a webserver
-	err := http.ListenAndServe(":"+port, nil)
+	err := http.ListenAndServe(":"+port, app.routes())
 
 	if err != nil {
 		log.Fatal(err)
