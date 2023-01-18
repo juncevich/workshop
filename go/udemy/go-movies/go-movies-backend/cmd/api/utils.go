@@ -8,7 +8,7 @@ import (
 )
 
 type JSONResponse struct {
-	Error   string      `json:"error,omitempty"`
+	Error   bool        `json:"error,omitempty"`
 	Message string      `json:"message,omitempty"`
 	Data    interface{} `json:"data,omitempty"`
 }
@@ -50,4 +50,17 @@ func (app *application) readJSON(w http.ResponseWriter, r *http.Request, data in
 		return errors.New("Body must contain only one JSON object")
 	}
 	return nil
+}
+
+func (app *application) errorJSON(w http.ResponseWriter, err error, status ...int) error {
+	statusCode := http.StatusBadRequest
+
+	if len(status) > 0 {
+		statusCode = status[0]
+	}
+	var payload JSONResponse
+	payload.Error = true
+	payload.Message = err.Error()
+
+	return app.writeJSON(w, statusCode, payload)
 }
