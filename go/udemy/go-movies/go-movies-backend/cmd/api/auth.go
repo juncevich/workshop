@@ -1,6 +1,10 @@
 package main
 
-import "time"
+import (
+	"fmt"
+	"github.com/golang-jwt/jwt/v4"
+	"time"
+)
 
 type Auth struct {
 	Issuer        string        `json:"issuer"`
@@ -26,4 +30,39 @@ type TokenPairs struct {
 
 type Claims struct {
 	jwt.RegisteredClaims
+}
+
+func (j *Auth) GenerateTokenPair(user *JwtUser) (TokenPairs, error) {
+	token := jwt.New(jwt.SigningMethodHS256)
+	claims := token.Claims.(jwt.MapClaims)
+	claims["name"] = fmt.Sprintf("%s %s", user.Firstname, user.Lastname)
+	claims["sub"] = fmt.Sprint(user.ID)
+	claims["aud"] = j.Audience
+	claims["iss"] = j.Issuer
+	claims["iat"] = time.Now().UTC().Unix()
+	claims["typ"] = "JWT"
+
+	claims["exp"] = time.Now().UTC().Add(j.TokenExpiry).Unix()
+
+	signedAccessToken, err := token.SignedString([]byte(j.Secret))
+	if err != nil {
+		return TokenPairs{}, err
+	}
+
+	refreshToken := jwt.New(jwt.SigningMethodHS256)
+	refreshTokenClaims := refreshToken.Claims.(jwt.MapClaims)
+	refreshTokenClaims["sub"] = fmt.Sprint(user.ID)
+	refreshTokenClaims["iat"] = time.Now().UTC().Unix()
+
+	refreshTokenClaims["exp"] = time.Now().UTC().Add(j.RefreshExpiry)
+	signedRefreshToken, err := refreshToken.SignedString([]byte(j.Secret))
+	if err != nil {
+		return TokenPairs{}, err
+	}
+
+	var tokenPairs = TokenPairs{
+		Token:        signedAccessToken,
+		RefreshToken: signedRefreshToken,
+	}
+	return tokenPairs, nil
 }
