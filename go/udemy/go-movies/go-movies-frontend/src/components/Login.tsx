@@ -15,17 +15,37 @@ const Login = () => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
 
-        console.log("email/password", email, password);
-        if (email === "admin@example.com") {
-            setJwtToken("asdf");
-
-            setAlertClassName("d-none")
-            setAlertMessage("");
-            navigate("/");
-        } else {
-            setAlertClassName("alert alert-danger")
-            setAlertMessage("Invalid credentials");
+        let payload = {
+            email: email,
+            password: password
         }
+
+        const requestOptions: RequestInit = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(payload)
+        }
+
+        fetch(`/authenticate`, requestOptions)
+            .then(response => response.json())
+            .then((data) => {
+                if (data.error) {
+                    setAlertMessage(data.message)
+                    setAlertClassName("alert-danger")
+                } else {
+                    setJwtToken(data.token)
+                    setAlertMessage("")
+                    setAlertClassName("none")
+                    navigate("/")
+                }
+            })
+            .catch(error => {
+                setAlertMessage(error)
+                setAlertClassName("alert-danger")
+            })
     }
     return (
         <div className="col-md6 offset-md-3">
