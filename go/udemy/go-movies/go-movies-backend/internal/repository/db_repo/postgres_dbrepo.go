@@ -87,7 +87,7 @@ func (m *PostgresDBRepo) GetUserByEmail(email string) (*models.User, error) {
 		return nil, err
 	}
 
-	return nil, nil
+	return &user, nil
 }
 
 func (m *PostgresDBRepo) GetUserById(id int) (*models.User, error) {
@@ -114,5 +114,5 @@ func (m *PostgresDBRepo) GetUserById(id int) (*models.User, error) {
 		return nil, err
 	}
 
-	return nil, nil
+	return &user, nil
 }
