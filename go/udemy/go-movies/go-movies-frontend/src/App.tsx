@@ -7,6 +7,9 @@ function App() {
     const [alertMessage, setAlertMessage] = useState("");
     const [alertClassName, setAlertClassName] = useState("d-none");
 
+    const [ticking, setTicking] = useState(false);
+    const [tickInterval, setTickInterval] = useState();
+
     const navigate = useNavigate()
     const logout = () => {
         const requestOptions: RequestInit = {
@@ -39,6 +42,24 @@ function App() {
             })
         }
     }, [jwtToken])
+
+    const toggleRefresh = () => {
+        if (!ticking) {
+            let i = setInterval(() => {
+                console.log("this will run every second");
+            }, 1000)
+            // @ts-ignore
+            setTickInterval(i)
+            setTicking(true)
+        } else {
+
+            // @ts-ignore
+            setTickInterval(null)
+            clearInterval(tickInterval)
+            setTicking(false)
+
+        }
+    }
     return (
         <div className="container">
             <div className="row">
@@ -77,6 +98,7 @@ function App() {
                 </div>
                 <div className="col-md-10">
 
+                    <a className="btn btn-outline-secondary" href="#!" onClick={toggleRefresh}>Toggle ticking</a>
                     <Alert
                         message={alertMessage}
                         className={alertClassName}
