@@ -25,3 +25,5 @@ const Select = (props: any) => {
         </div>
     )
 }
+
+export default Select
