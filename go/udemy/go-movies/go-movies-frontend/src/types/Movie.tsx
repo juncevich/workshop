@@ -1,3 +1,5 @@
+import Genre from "./Genre";
+
 type MovieType = {
     id: number;
     title: string;
@@ -5,6 +7,8 @@ type MovieType = {
     runtime: number;
     mpaa_rating: string;
     description: string;
+    image: string;
+    genres: Array<Genre>
 };
 
 export default MovieType;
