@@ -13,6 +13,7 @@ const Movie = () => {
         description: "",
         image: "",
         genres: [],
+        genres_array: [],
     });
     let {id} = useParams();
 

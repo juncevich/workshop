@@ -9,6 +9,7 @@ type MovieType = {
     description: string;
     image: string;
     genres: Array<Genre>
+    genres_array: Array<any>
 };
 
 export default MovieType;

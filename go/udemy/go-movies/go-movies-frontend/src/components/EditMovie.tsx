@@ -3,6 +3,11 @@ import {useNavigate, useOutletContext, useParams} from "react-router-dom";
 import Input from "./form/Input";
 import Select from "./form/Select";
 import TextArea from "./form/TextArea";
+import MovieType from "../types/Movie";
+import Movie from "../types/Movie";
+import Genres from "./Genres";
+import Genre from "../types/Genre";
+import Checkbox from "./form/Checkbox";
 
 const EditMovie = () => {
 
@@ -14,14 +19,19 @@ const EditMovie = () => {
     }
     const [error, setError] = useState(null);
     const [errors, setErrors] = useState<string[]>([]);
-    const [movie, setMovie] = useState({
-        id: 0,
-        title: "",
-        release_date: "",
-        runtime: "",
-        mpaa_rating: "",
-        description: ""
-    });
+    const [movie, setMovie] = useState<MovieType>(
+        {
+            id: 0,
+            title: "",
+            release_date: "",
+            runtime: 0,
+            mpaa_rating: "",
+            description: "",
+            image: "",
+            genres: [],
+            genres_array: [],
+        }
+    );
 
     const mpaaOptions = [
         {id: "G", value: "G"},
@@ -33,13 +43,59 @@ const EditMovie = () => {
     ]
     let {id} = useParams();
 
+    if (id === undefined) {
+        id = "0";
+    }
+
     useEffect(() => {
             if (jwtToken === "") {
                 navigate("/login");
                 return;
             }
+
+            if (id === "0") {
+                setMovie({
+                    id: 0,
+                    title: "",
+                    release_date: "",
+                    runtime: 0,
+                    mpaa_rating: "",
+                    description: "",
+                    image: "",
+                    genres: [],
+                    genres_array: [Array<boolean>(13).fill(false)],
+                })
+
+                const headers = new Headers();
+                headers.append("Content-Type", "application/json");
+
+                const requestOptions = {
+                    method: 'GET',
+                    headers: headers,
+                };
+
+                fetch("/genres", requestOptions)
+                    .then(response => response.json())
+                    .then(data => {
+                        const checks: Array<Genre> = [];
+
+                        data.forEach((g: Genre) => {
+                            checks.push({id: g.id, checked: false, genre: g.genre})
+                        })
+
+                        setMovie(m => ({
+                            ...movie,
+                            genres: checks,
+                            genres_array: checks,
+                        }))
+                    }).catch(error => {
+                    console.log(error);
+                })
+            } else {
+
+            }
         },
-        [jwtToken, navigate])
+        [id, jwtToken, navigate])
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
@@ -53,6 +109,15 @@ const EditMovie = () => {
             [name]: value
         });
     }
+
+    const handleCheck = (event: any, position: number) => {
+        console.log("handle check")
+        console.log("value in handle check:", event.target.value)
+        console.log("checked is :", event.target.checked)
+        console.log("position is :", position)
+    }
+
+
     return (
         <div>
             <h2>Add/Edit movie</h2>
@@ -124,6 +189,22 @@ const EditMovie = () => {
 
                 <h3>Genres</h3>
 
+                {movie.genres && movie.genres.length > 1 &&
+                    <>
+                        {Array.from(movie.genres).map((g, i) => (
+                            <Checkbox
+                                title={g.genre}
+                                name={"genre"}
+                                key={i}
+                                it={"genre-" + i}
+                                onChange={(event: any) => handleCheck(event, i)}
+                                value={g.id}
+                                checked={movie.genres[i].checked}
+                            />
+
+                        ))}
+                    </>
+                }
 
             </form>
         </div>
