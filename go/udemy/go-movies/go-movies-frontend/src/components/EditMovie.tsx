@@ -18,7 +18,7 @@ const EditMovie = () => {
         return errors.indexOf(key) !== -1;
     }
     const [error, setError] = useState(null);
-    const [errors, setErrors] = useState<string[]>([]);
+    const [errors, setErrors] = useState<Array<string>>([]);
     const [movie, setMovie] = useState<MovieType>(
         {
             id: 0,
@@ -99,6 +99,28 @@ const EditMovie = () => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
+
+        let errors: Array<string> = [];
+        let required = [
+            {field: movie.title, name: "title"},
+            {field: movie.release_date, name: "release_date"},
+            {field: movie.runtime, name: "runtime"},
+            {field: movie.description, name: "description"},
+            {field: movie.mpaa_rating, name: "mpaa_rating"},
+        ]
+
+
+        required.forEach(function (obj) {
+            if (obj.field === "") {
+                errors.push(obj.name);
+            }
+        })
+
+        setErrors(errors);
+
+        if (errors.length > 0) {
+            return false
+        }
     }
 
     const handleChange = (event: any) => (event: any) => {
@@ -221,6 +243,9 @@ const EditMovie = () => {
                     </>
                 }
 
+                <hr/>
+
+                <button className={"btn btn-primary"}>Save</button>
             </form>
         </div>
     );
