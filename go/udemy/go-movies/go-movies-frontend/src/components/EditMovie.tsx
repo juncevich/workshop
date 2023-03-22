@@ -63,7 +63,7 @@ const EditMovie = () => {
                     description: "",
                     image: "",
                     genres: [],
-                    genres_array: [Array<boolean>(13).fill(false)],
+                    genres_array: Array<boolean>(13).fill(false),
                 })
 
                 const headers = new Headers();
@@ -84,9 +84,9 @@ const EditMovie = () => {
                         })
 
                         setMovie(m => ({
-                            ...movie,
+                            ...m,
                             genres: checks,
-                            genres_array: checks,
+                            genres_array: [],
                         }))
                     }).catch(error => {
                     console.log(error);
@@ -115,6 +115,21 @@ const EditMovie = () => {
         console.log("value in handle check:", event.target.value)
         console.log("checked is :", event.target.checked)
         console.log("position is :", position)
+
+        let tmpArr = movie.genres
+        tmpArr[position].checked = !tmpArr[position].checked
+
+        let tmpIDs = movie.genres_array
+        if (!event.target.checked) {
+            tmpIDs.splice(tmpIDs.indexOf(event.target.value))
+        } else {
+            tmpIDs.push(Boolean(parseInt(event.target.value, 10)))
+        }
+
+        setMovie(m => ({
+            ...m,
+            genres_array: tmpIDs,
+        }))
     }
 
 
