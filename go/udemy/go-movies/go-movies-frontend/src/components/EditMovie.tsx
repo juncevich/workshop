@@ -109,6 +109,10 @@ const EditMovie = () => {
             {field: movie.mpaa_rating, name: "mpaa_rating"},
         ]
 
+        if (movie.genres_array.length === 0) {
+            alert("You must select at least one genre");
+            errors.push("genres")
+        }
 
         required.forEach(function (obj) {
             if (obj.field === "") {
