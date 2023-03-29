@@ -17,7 +17,7 @@ const EditMovie = () => {
     const hasError = (key: string) => {
         return errors.indexOf(key) !== -1;
     }
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
     const [errors, setErrors] = useState<Array<string>>([]);
     const [movie, setMovie] = useState<MovieType>(
         {
@@ -92,7 +92,46 @@ const EditMovie = () => {
                     console.log(error);
                 })
             } else {
+                // editing an existing movie
+                const headers = new Headers();
+                headers.append("Content-Type", "application/json");
+                headers.append("Authorization", "Bearer " + jwtToken);
 
+                const requestOptions = {
+                    method: "GET",
+                    headers: headers,
+                }
+
+                fetch(`/admin/movies/${id}`, requestOptions)
+                    .then((response) => {
+                        if (response.status !== 200) {
+                            setError("Invalid response code: " + response.status)
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        // fix release date
+                        data.movie.release_date = new Date(data.movie.release_date).toISOString().split('T')[0];
+
+                        const checks:Genre[] = [];
+
+                        for (const g of data.genres) {
+                            if (data.movie.genres_array.indexOf(g.id) !== -1) {
+                                checks.push({id: g.id, checked: true, genre: g.genre});
+                            } else {
+                                checks.push({id: g.id, checked: false, genre: g.genre});
+                            }
+                        }
+
+                        // set state
+                        setMovie({
+                            ...data.movie,
+                            genres: checks,
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
             }
         },
         [id, jwtToken, navigate])
