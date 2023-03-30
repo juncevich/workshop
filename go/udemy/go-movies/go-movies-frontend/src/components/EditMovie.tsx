@@ -18,7 +18,7 @@ const EditMovie = () => {
         return errors.indexOf(key) !== -1;
     }
     const [error, setError] = useState("");
-    const [errors, setErrors] = useState<Array<string>>([]);
+    const [errors, setErrors] = useState<string[]>([]);
     const [movie, setMovie] = useState<MovieType>(
         {
             id: 0,
