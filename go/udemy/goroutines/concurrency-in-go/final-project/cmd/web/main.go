@@ -36,7 +36,7 @@ func main() {
 
 	// create channels
 
-	// create waitgroup
+	// create wait group
 	wg := sync.WaitGroup{}
 
 	// set up the application config
