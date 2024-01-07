@@ -68,19 +68,19 @@ func Signup() gin.HandlerFunc {
 		//To hash the password before sending it to the db
 		password := MaskPassword(*user.Password)
 		user.Password = &password
-		user.Created_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
-		user.Updated_at, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+		user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+		user.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 		user.ID = primitive.NewObjectID()
-		user.User_id = user.ID.Hex()
+		user.UserId = user.ID.Hex()
 		//Sign details to token
 		token, refreshToken, _ := helper.GenerateAllTokens(
 			*user.Email,
 			*user.Name,
 			*user.Username,
-			*user.User_type,
-			*&user.User_id)
+			*user.UserType,
+			*&user.UserId)
 		user.Token = &token
-		user.Refresh_token = &refreshToken
+		user.RefreshToken = &refreshToken
 
 		//Check to see if data being passed meets the requirements
 		if validationError := validate.Struct(&user); validationError != nil {
@@ -101,17 +101,17 @@ func Signup() gin.HandlerFunc {
 
 		//To add a new user to the database
 		newUser := models.User{
-			ID:            user.ID,
-			User_id:       user.ID.Hex(),
-			Name:          user.Name,
-			Username:      user.Username,
-			Email:         user.Email,
-			Password:      user.Password,
-			Created_at:    user.Created_at,
-			Updated_at:    user.Updated_at,
-			Token:         user.Token,
-			User_type:     user.User_type,
-			Refresh_token: user.Refresh_token,
+			ID:           user.ID,
+			UserId:       user.ID.Hex(),
+			Name:         user.Name,
+			Username:     user.Username,
+			Email:        user.Email,
+			Password:     user.Password,
+			CreatedAt:    user.CreatedAt,
+			UpdatedAt:    user.UpdatedAt,
+			Token:        user.Token,
+			UserType:     user.UserType,
+			RefreshToken: user.RefreshToken,
 		}
 
 		result, err := userCollection.InsertOne(ctx, newUser)
