@@ -1,0 +1,13 @@
+POST http://127.0.0.1:9000/users/signup
+Content-Type: application/json
+
+{
+ "Name":"name",
+ "Username":"user_name",
+ "Email":"user_email@email.com",
+ "Password":"user_password",
+ "User_type":"ADMIN"
+ }
+
+<> 2024-01-07T232920.201.json
+<> 2024-01-07T232903.400.json
