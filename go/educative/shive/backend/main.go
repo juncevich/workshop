@@ -9,14 +9,21 @@ import (
 )
 
 func main() {
+	//run database
+	database.StartDB()
+
+	port, router := setupRouter()
+
+	router.Run(":" + port)
+
+}
+
+func setupRouter() (string, *gin.Engine) {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8000"
 	}
 	router := gin.Default()
-
-	//run database
-	database.StartDB()
 
 	//Log events
 	router.Use(gin.Logger())
@@ -28,7 +35,5 @@ func main() {
 		c.JSON(200, gin.H{
 			"success": "Welcome to shive api!"})
 	})
-
-	router.Run(":" + port)
-
+	return port, router
 }
