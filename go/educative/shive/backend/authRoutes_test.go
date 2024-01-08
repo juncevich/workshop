@@ -60,6 +60,42 @@ func TestLoginRoute(t *testing.T) {
 	assert.Equal(t, "User created successfully!", loginRecorder.Body.String())
 }
 
+func TestGetUserRoute(t *testing.T) {
+	_, router := setupRouter()
+
+	signupRecorder := httptest.NewRecorder()
+	// JSON body
+	signupBodyBytes := []byte(`{
+ 		"Name":"name",
+ 		"Username":"user_name",
+ 		"Email":"user_email@email.com",
+ 		"Password":"user_password",
+ 		"User_type":"ADMIN"
+ 	}`)
+	signupReq, _ := http.NewRequest("POST", "/users/signup", bytes.NewBuffer(signupBodyBytes))
+	router.ServeHTTP(signupRecorder, signupReq)
+
+	loginRecorder := httptest.NewRecorder()
+	loginBodyBytes := []byte(`{
+ 		"Email":"user_email@email.com",
+ 		"Password":"user_password"
+ 	}`)
+	loginReq, _ := http.NewRequest("POST", "/users/login", bytes.NewBuffer(loginBodyBytes))
+	router.ServeHTTP(loginRecorder, loginReq)
+
+	getUserRecorder := httptest.NewRecorder()
+	getUserBodyBytes := []byte(`{
+ 		"Email":"user_email@email.com",
+ 		"Password":"user_password"
+ 	}`)
+	getUserReq, _ := http.NewRequest("GET", "/users/login", bytes.NewBuffer(getUserBodyBytes))
+	router.ServeHTTP(getUserRecorder, getUserReq)
+
+	assert.Equal(t, 201, getUserRecorder.Code)
+
+	assert.Equal(t, "User created successfully!", getUserRecorder.Body.String())
+}
+
 type UserCreateResponse struct {
 	Data    string `json:"data"`
 	Message string `json:"Message"`
