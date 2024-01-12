@@ -21,7 +21,7 @@ type JwtSignedDetails struct {
 	Username string
 	Uid      string
 	UserType string
-	jwt.Claims
+	jwt.MapClaims
 }
 
 var userCollection = database.OpenCollection(database.Client, "user")
@@ -43,13 +43,13 @@ func GenerateAllTokens(
 		Username: userName,
 		Uid:      uid,
 		UserType: userType,
-		Claims: jwt.MapClaims{
+		MapClaims: jwt.MapClaims{
 			"exp": time.Now().Local().Add(time.Hour * time.Duration(12)).Unix(),
 		},
 	}
 
 	refreshClaims := &JwtSignedDetails{
-		Claims: jwt.MapClaims{
+		MapClaims: jwt.MapClaims{
 			"exp": time.Now().Local().Add(time.Hour * time.Duration(100)).Unix(),
 		},
 	}
