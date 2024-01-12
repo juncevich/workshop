@@ -105,7 +105,6 @@ func TestGetUserRoute(t *testing.T) {
 	json.NewDecoder(getUserRecorder.Body).Decode(response)
 	assert.Equal(t, 200, loginRecorder.Code)
 
-	//assert.Equal(t, "User created successfully!", response)
 	assert.NotEmpty(t, response.ID)
 	assert.Empty(t, response.Name)
 	assert.Empty(t, response.Username)
