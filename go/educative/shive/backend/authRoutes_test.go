@@ -103,7 +103,7 @@ func TestGetUserRoute(t *testing.T) {
 
 	response := &UserLoginResponse{}
 	json.NewDecoder(getUserRecorder.Body).Decode(response)
-	assert.Equal(t, 200, loginRecorder.Code)
+	assert.Equal(t, 200, getUserRecorder.Code)
 
 	assert.NotEmpty(t, response.ID)
 	assert.Empty(t, response.Name)
@@ -115,6 +115,53 @@ func TestGetUserRoute(t *testing.T) {
 	assert.NotEmpty(t, response.CreatedAt)
 	assert.NotEmpty(t, response.UpdatedAt)
 	assert.Empty(t, response.UserId)
+}
+
+func TestGetAllUsersRoute(t *testing.T) {
+	_, router := setupRouter()
+
+	signupRecorder := httptest.NewRecorder()
+	// JSON body
+	signupBodyBytes := []byte(`{
+ 		"Name":"name",
+ 		"Username":"user_name",
+ 		"Email":"user_email@email.com",
+ 		"Password":"user_password",
+ 		"User_type":"ADMIN"
+ 	}`)
+	signupReq, _ := http.NewRequest("POST", "/users/signup", bytes.NewBuffer(signupBodyBytes))
+	router.ServeHTTP(signupRecorder, signupReq)
+
+	loginRecorder := httptest.NewRecorder()
+	loginBodyBytes := []byte(`{
+ 		"Email":"user_email@email.com",
+ 		"Password":"user_password"
+ 	}`)
+	loginReq, _ := http.NewRequest("POST", "/users/login", bytes.NewBuffer(loginBodyBytes))
+	router.ServeHTTP(loginRecorder, loginReq)
+	userLoginResponse := &UserLoginResponse{}
+	json.NewDecoder(loginRecorder.Body).Decode(userLoginResponse)
+
+	getAllUsersRecorder := httptest.NewRecorder()
+	getAllUsersReq, _ := http.NewRequest("GET", "/users", nil)
+	getAllUsersReq.Header.Add("token", userLoginResponse.Token)
+	router.ServeHTTP(getAllUsersRecorder, getAllUsersReq)
+
+	response := &GetAllUsersResponse{}
+	json.NewDecoder(getAllUsersRecorder.Body).Decode(response)
+	assert.Equal(t, 200, getAllUsersRecorder.Code)
+
+	assert.Equal(t, 2, response.TotalCount)
+	//assert.NotEmpty(t, response.ID)
+	//assert.Empty(t, response.Name)
+	//assert.Empty(t, response.Username)
+	//assert.Empty(t, response.Password)
+	//assert.Empty(t, response.Email)
+	//assert.Empty(t, response.UserType)
+	//assert.Empty(t, response.RefreshToken)
+	//assert.NotEmpty(t, response.CreatedAt)
+	//assert.NotEmpty(t, response.UpdatedAt)
+	//assert.Empty(t, response.UserId)
 }
 
 type UserCreateResponse struct {
@@ -135,4 +182,9 @@ type UserLoginResponse struct {
 	CreatedAt    string `json:"created_at"`
 	UpdatedAt    string `json:"updated_at"`
 	UserId       string `json:"user_id"`
+}
+
+type GetAllUsersResponse struct {
+	TotalCount int                 `json:"total_count"`
+	Users      []UserLoginResponse `json:"user_items"`
 }
