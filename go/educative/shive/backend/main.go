@@ -31,6 +31,7 @@ func setupRouter() (string, *gin.Engine) {
 	//Register app routes here
 	routes.AuthRoutes(router)
 	routes.UserRoutes(router)
+	routes.GenreRoutes(router)
 
 	router.GET("/api", func(c *gin.Context) {
 		c.JSON(200, gin.H{
