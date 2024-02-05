@@ -10,6 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"log"
 	"net/http"
+	"strconv"
 	"time"
 )
 
@@ -76,5 +77,34 @@ func CreateGenre() gin.HandlerFunc {
 			"Status":  http.StatusCreated,
 			"Message": "genre created successfully",
 			"Data":    map[string]interface{}{"data": result}})
+	}
+}
+
+func GetGenre() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		genreIdParam := c.Param("genre_id")
+		var genre models.Genre
+		defer cancel()
+
+		genreId, error := strconv.Atoi(genreIdParam)
+		if error != nil {
+			// Handle error
+		}
+		err := genreCollection.FindOne(ctx, bson.M{"genre_id": genreId}).Decode(&genre)
+
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"Status":  http.StatusInternalServerError,
+				"Message": "error",
+				"Data":    map[string]interface{}{"error": err.Error()},
+			})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"Status":  http.StatusOK,
+			"Message": "success",
+			"Data":    map[string]interface{}{"data": genre}})
 	}
 }
