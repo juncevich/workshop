@@ -11,7 +11,7 @@ import java.util.List;
 public interface OrderDomainService {
   OrderCreatedEvent validateAndInitiateOrder(Order order, Restaurant restaurant);
 
-  OrderPaidEvent pauOrder(Order order);
+  OrderPaidEvent payOrder(Order order);
 
   void approveOrder(Order order);
 
