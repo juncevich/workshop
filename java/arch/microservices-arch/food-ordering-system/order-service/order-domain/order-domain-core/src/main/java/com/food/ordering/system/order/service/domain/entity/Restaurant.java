@@ -10,11 +10,11 @@ import java.util.List;
 
 
 @Getter
-@Builder
 public class Restaurant extends AggregateRoot<RestaurantId> {
   private final List<Product> products;
   private boolean active;
 
+  @Builder
   public Restaurant(RestaurantId id, List<Product> products, boolean active) {
     super.setId(id);
     this.products = products;
