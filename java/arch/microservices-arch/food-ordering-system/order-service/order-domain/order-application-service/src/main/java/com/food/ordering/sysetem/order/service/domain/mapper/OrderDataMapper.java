@@ -1,6 +1,7 @@
 package com.food.ordering.sysetem.order.service.domain.mapper;
 
 import com.food.ordering.sysetem.order.service.domain.dto.create.CreateOrderCommand;
+import com.food.ordering.sysetem.order.service.domain.dto.create.CreateOrderResponse;
 import com.food.ordering.sysetem.order.service.domain.dto.create.OrderAddress;
 import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
@@ -42,6 +43,12 @@ public class OrderDataMapper {
         .build();
   }
 
+  public CreateOrderResponse orderToCreateOrderResponse(Order order) {
+    return CreateOrderResponse.builder()
+        .orderTrackingId(order.getTrackingId().getValue())
+        .orderStatus(order.getOrderStatus())
+        .build();
+  }
   private List<OrderItem> orderItemsToOrderItemEntities(
       @NotNull List<com.food.ordering.sysetem.order.service.domain.dto.create.OrderItem> orderItems) {
 
