@@ -1,3 +1,5 @@
+import {useState} from 'react'
+
 import {CORE_CONCEPTS} from './data.js'
 
 import Header from './components/Header/Header.jsx'
@@ -6,8 +8,11 @@ import TapButton from "./components/TapButton";
 
 
 function App() {
+    const [selectedTopic, setSelectedTopic] = useState('Please tap button');
+
     function handleSelect(selectedButton) {
-        console.log(selectedButton)
+        setSelectedTopic(selectedButton);
+        console.log(selectedButton);
     }
 
 
@@ -31,6 +36,7 @@ function App() {
                         <TapButton onSelect={() => handleSelect('props')}>Props</TapButton>
                         <TapButton onSelect={() => handleSelect('state')}>State</TapButton>
                     </menu>
+                    {selectedTopic}
                 </section>
             </main>
         </div>
