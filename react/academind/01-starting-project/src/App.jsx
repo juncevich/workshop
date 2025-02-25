@@ -6,8 +6,8 @@ import TapButton from "./components/TapButton";
 
 
 function App() {
-    function handleSelect() {
-        console.log('')
+    function handleSelect(selectedButton) {
+        console.log(selectedButton)
     }
 
 
@@ -26,10 +26,10 @@ function App() {
                 <section id="examples">
                     <h2>Examples</h2>
                     <menu>
-                        <TapButton onSelect={handleSelect}>Components</TapButton>
-                        <TapButton onSelect={handleSelect}>JSX</TapButton>
-                        <TapButton onSelect={handleSelect}>Props</TapButton>
-                        <TapButton onSelect={handleSelect}>State</TapButton>
+                        <TapButton onSelect={() => handleSelect('components')}>Components</TapButton>
+                        <TapButton onSelect={() => handleSelect('jsx')}>JSX</TapButton>
+                        <TapButton onSelect={() => handleSelect('props')}>Props</TapButton>
+                        <TapButton onSelect={() => handleSelect('state')}>State</TapButton>
                     </menu>
                 </section>
             </main>
