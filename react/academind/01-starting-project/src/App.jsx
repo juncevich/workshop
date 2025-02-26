@@ -8,13 +8,28 @@ import TapButton from "./components/TapButton";
 
 
 function App() {
-    const [selectedTopic, setSelectedTopic] = useState('components');
+    const [selectedTopic, setSelectedTopic] = useState();
 
     function handleSelect(selectedButton) {
         setSelectedTopic(selectedButton);
         console.log(selectedButton);
     }
 
+    let tabContent = <p>Please select a topic</p>
+    if (selectedTopic) {
+        tabContent = (
+            <div id="tab-content">
+
+                <h3>{EXAMPLES[selectedTopic].title}</h3>
+                <p>{EXAMPLES[selectedTopic].description}</p>
+                <pre>
+                            <code>
+                                {EXAMPLES[selectedTopic].code}
+                            </code>
+                        </pre>
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -36,16 +51,8 @@ function App() {
                         <TapButton onSelect={() => handleSelect('props')}>Props</TapButton>
                         <TapButton onSelect={() => handleSelect('state')}>State</TapButton>
                     </menu>
-                    {selectedTopic}
-                    <div id="tab-content">
-                        <h3>{EXAMPLES[selectedTopic].title}</h3>
-                        <p>{EXAMPLES[selectedTopic].description}</p>
-                        <pre>
-                            <code>
-                                {EXAMPLES[selectedTopic].code}
-                            </code>
-                        </pre>
-                    </div>
+                    {tabContent}
+
                 </section>
             </main>
         </div>
