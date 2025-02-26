@@ -37,10 +37,7 @@ function App() {
             <main>
                 <section id="core-concepts">
                     <ul>
-                        <CoreConcept {...CORE_CONCEPTS[0]}/>
-                        <CoreConcept {...CORE_CONCEPTS[1]}/>
-                        <CoreConcept {...CORE_CONCEPTS[2]}/>
-                        <CoreConcept {...CORE_CONCEPTS[3]}/>
+                        {CORE_CONCEPTS.map(coreConcept => <CoreConcept key={coreConcept.title} {...coreConcept}/>)}
                     </ul>
                 </section>
                 <section id="examples">
