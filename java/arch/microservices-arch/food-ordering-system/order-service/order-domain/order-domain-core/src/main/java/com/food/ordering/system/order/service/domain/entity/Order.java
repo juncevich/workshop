@@ -12,6 +12,7 @@ import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Order extends AggregateRoot<OrderId> {
@@ -66,7 +67,7 @@ public class Order extends AggregateRoot<OrderId> {
 
     if (!price.equals(orderItemsTotal)) {
       throw new OrderDomainException(
-          "Total price: " + price.getAmount() + "is not equal to Order items total: " + orderItemsTotal.getAmount() +
+          "Total price: " + price.getAmount() + " is not equal to Order items total: " + orderItemsTotal.getAmount() +
           "!");
     }
   }
@@ -236,5 +237,30 @@ public class Order extends AggregateRoot<OrderId> {
              ", trackingId=" + this.trackingId + ", orderStatus=" + this.orderStatus + ", failureMessages=" +
              this.failureMessages + ")";
     }
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof Order order)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    return Objects.equals(getCustomerId(), order.getCustomerId()) &&
+           Objects.equals(getRestaurantId(), order.getRestaurantId()) &&
+           Objects.equals(getDeliveryAddress(), order.getDeliveryAddress()) &&
+           Objects.equals(getPrice(), order.getPrice()) &&
+           Objects.equals(getItems(), order.getItems()) &&
+           Objects.equals(getTrackingId(), order.getTrackingId()) &&
+           getOrderStatus() == order.getOrderStatus() &&
+           Objects.equals(getFailureMessages(), order.getFailureMessages());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), getCustomerId(), getRestaurantId(), getDeliveryAddress(), getPrice(),
+        getItems(), getTrackingId(), getOrderStatus(), getFailureMessages());
   }
 }
