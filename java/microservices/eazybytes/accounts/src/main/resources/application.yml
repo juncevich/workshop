@@ -41,4 +41,4 @@ management:
         include: "*"
 
 build:
-  version: "test"
+  version: "1.0"
